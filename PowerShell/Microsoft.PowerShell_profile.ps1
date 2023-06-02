@@ -57,6 +57,6 @@ function myhistory([int]$Count=100) {
     Get-Content -LiteralPath (Get-PSReadLineOption).HistorySavePath | Select-Object -Last $Count
 }
 
-if ($PSVersionTable.PSVersion.Major -eq 7) {
+if ($PSVersionTable.PSVersion.Major -ge 7) {
     try { $null = gcm pshazz -ea stop; pshazz init } catch { }
 }
