@@ -1,0 +1,219 @@
+set encoding=utf-8  " Windows
+set t_Co=256        " Windows
+
+set nocompatible
+filetype off
+
+call plug#begin('$HOME/.vim/plugged')
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'kshenoy/vim-signature'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'sheerun/vim-polyglot'
+let g:python_highlight_all = 1
+Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'junegunn/vim-easy-align'
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+Plug 'Yggdroot/indentLine'
+let g:indentLine_char  = ''
+Plug 'frazrepo/vim-rainbow'
+let g:rainbow_active   = 1
+let g:rainbow_guifgs   = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
+let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
+Plug 'flazz/vim-colorschemes'
+Plug 'vimwiki/vimwiki'
+let g:vimwiki_listsyms = ' 󰁻󰁽󰂁󱟢'
+let g:vimwiki_list = [{'path': '~/.vim/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md',
+                      \ 'links_space_char': '_'}]
+au FileType vimwiki setlocal sw=6 ts=6 sts=6 tw=0 noexpandtab
+Plug 'itchyny/lightline.vim'
+Plug 'tpope/vim-vinegar'
+call plug#end()
+
+let g:lightline = {
+  \ 'colorscheme': 'one',
+  \ 'active' : {
+  \   'left' : [ [ 'mode', 'paste' ],
+  \            [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+  \   'right': [ [ 'percent' ],
+  \            [ 'fileformat', 'fileencoding', 'filetype', 'charvaluedec', 'charvaluehex' ],
+  \            [ 'lineinfo' ] ]
+  \ },
+  \ 'component_function': {
+  \   'gitbranch': 'FugitiveHead'
+  \ },
+  \ 'component': {
+  \   'charvaluedec': '%b',
+  \   'charvaluehex': '0x%B'
+  \ },
+\ }
+
+filetype plugin indent on
+syntax on
+
+let mapleader = " "
+
+" extended matching with "%"
+packadd! matchit
+
+set autoindent
+set backspace=indent,eol,start
+set background=dark
+set cmdheight=2
+set clipboard=unnamed
+set cursorcolumn
+set cursorline
+set display=truncate
+set expandtab
+set fileformats=unix,dos
+set foldmethod=syntax
+set hidden
+set history=1999
+set nohlsearch
+set ignorecase
+set incsearch
+set infercase
+" set iskeyword+=- " to make '-' a word character
+" set iskeyword-=_ " to make '_' not a word character
+set nolangremap
+set laststatus=2
+set list
+set listchars=tab:»·,trail:·
+set modelines=1
+set mouse=
+set number
+if &diff
+  set nu nornu nocul nocuc
+endif
+set nopaste
+set pastetoggle=<F12>
+set ruler
+set scrolloff=5
+set shiftwidth=4
+set smartcase
+set showcmd
+set showmatch
+set smartindent
+set smarttab
+set softtabstop=4
+set nostartofline
+set noswapfile
+set tabstop=4
+set tags=./tags;
+set textwidth=80
+set titleold=
+set title titlestring=
+set viminfo=
+set visualbell
+set undolevels=1000
+set whichwrap=<,>,h,l
+set wildchar=<TAB>
+set wildmenu
+set wildignorecase
+set wildmode=list:longest,full
+set nowrap
+set nowrapscan
+
+au BufWinEnter * normal zR
+
+augroup Python
+  au!
+  autocmd FileType python setlocal foldmethod=indent
+augroup END
+
+augroup vimStartup
+  au!
+  autocmd BufReadPost *
+    \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+    \ |   exe "normal! g`\""
+    \ | endif
+augroup END
+
+if !exists(":DiffOrig")
+  command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
+          \ | wincmd p | diffthis
+endif
+
+" Windows
+if &diffopt !~# 'internal'
+  set diffexpr=MyDiff()
+endif
+
+function MyDiff()
+  let opt = '-a --binary '
+  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+  let arg1 = v:fname_in
+  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+  let arg1 = substitute(arg1, '!', '\!', 'g')
+  let arg2 = v:fname_new
+  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+  let arg2 = substitute(arg2, '!', '\!', 'g')
+  let arg3 = v:fname_out
+  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+  let arg3 = substitute(arg3, '!', '\!', 'g')
+  if $VIMRUNTIME =~ ' '
+    if &sh =~ '\<cmd'
+      if empty(&shellxquote)
+        let l:shxq_sav = ''
+        set shellxquote&
+      endif
+      let cmd = '"' . $VIMRUNTIME . '\diff"'
+    else
+      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+    endif
+  else
+    let cmd = $VIMRUNTIME . '\diff'
+  endif
+  let cmd = substitute(cmd, '!', '\!', 'g')
+  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3
+  if exists('l:shxq_sav')
+    let &shellxquote=l:shxq_sav
+  endif
+endfunction
+
+map Q gq
+
+inoremap <C-U>  <C-G>u<C-U>
+inoremap <C-Z>  <C-O>u
+inoremap <S-Insert> <C-R>+
+inoremap ..l -------------------------------------------<CR><CR>
+inoremap ..d ======<C-R>=strftime("%a %Y-%m-%d %H:%M:%S %z")<CR>========<CR><CR>
+
+vnoremap <S-Del> "+x
+vnoremap <C-Insert> "+y"
+vnoremap <S-Insert> +gp
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+vnoremap < <gv
+vnoremap > >gv
+
+nnoremap / /\v
+nnoremap <C-W>e     <C-W>=
+nnoremap <C-W>=     <C-W>-
+nnoremap <C-W>-     <C-W>s
+nnoremap <C-W><bar> <C-W>v
+nnoremap <C-W>c     <C-L>
+nnoremap <C-W>X     <C-W>c
+nnoremap <leader>j :%!jq .<CR>
+nnoremap <leader>J :%!jq . -c<CR>
+nnoremap <leader>l :nohl<CR>
+nnoremap <silent> <leader>nn :execute "set nonu nornu nocuc nocul nolist" \| :IndentLinesDisable<CR>
+nnoremap <silent> <leader>N  :execute "set nu cul cuc list" \| :IndentLinesEnable<CR>
+nnoremap <silent> <leader>cc :execute "set colorcolumn=" . (&colorcolumn == "" ? "80,120" : "")<CR>
+nnoremap <silent> <leader>r  :execute "set rnu!"<CR>
+
+:command NN :IndentLinesToggle
+
+iab um µm
+iab usec µs
+
+colorscheme jellybeans
+set signcolumn=yes
+highlight clear specialkey
+highlight specialkey ctermfg=242
+highlight clear signcolumn
+highlight clear foldcolumn
+" vim:ft=vim:tw=0:sw=2:ts=2:sts=2:nowrap

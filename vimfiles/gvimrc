@@ -1,0 +1,14 @@
+colorscheme Atelier_Cavelight
+set bg=light
+if has("win32")
+  set guifont=UbuntuMono_Nerd_Font:h12:cANSI:qDRAFT
+  set guioptions=gmtTlar
+endif
+set mouse=nvi
+set mousehide
+set columns=130 lines=35
+set foldcolumn=3
+set signcolumn=yes
+highlight clear signcolumn
+highlight clear foldcolumn
+" vim:ft=vim:nowrap:sw=2:ts=2:sts=2:nobackup:noundofile
