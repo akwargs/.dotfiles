@@ -44,7 +44,7 @@ if filereadable( expand("$HOME/.vim/autoload/plug.vim") )
   let g:vimwiki_list = [{'path': '~/.vim/vimwiki/',
                         \ 'syntax': 'markdown', 'ext': '.md',
                         \ 'links_space_char': '_'}]
-  au FileType vimwiki setlocal sw=6 ts=6 sts=6 tw=0 noexpandtab
+  au FileType vimwiki setlocal sw=5 ts=5 sts=5 tw=0 noexpandtab
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'tpope/vim-vinegar'
