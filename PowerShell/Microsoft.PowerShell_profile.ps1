@@ -32,6 +32,8 @@ function gst    { git.exe status }
 function gcam   { git.exe commit -a -m $args }
 function gc!    { git.exe commit -v --amend $args }
 function gd     { git.exe diff $args }
+function mygp   { git.exe push }
+function mygl   { git.exe pull }
 function gpr    { git.exe pull --rebase $args }
 function mywiki { vim.exe +VimwikiIndex }
 function start_linux { vboxmanage startvm linux --type headless }
