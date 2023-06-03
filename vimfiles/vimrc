@@ -1,44 +1,70 @@
-set encoding=utf-8  " Windows
-set t_Co=256        " Windows
-
 set nocompatible
 filetype off
 
-call plug#begin('$HOME/.vim/plugged')
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
-Plug 'kshenoy/vim-signature'
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-Plug 'sheerun/vim-polyglot'
-let g:python_highlight_all = 1
-Plug 'Vimjas/vim-python-pep8-indent'
-Plug 'junegunn/vim-easy-align'
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
-Plug 'Yggdroot/indentLine'
-let g:indentLine_char  = ''
-Plug 'frazrepo/vim-rainbow'
-let g:rainbow_active   = 1
-let g:rainbow_guifgs   = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
-let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
-Plug 'flazz/vim-colorschemes'
-Plug 'vimwiki/vimwiki'
-let g:vimwiki_listsyms = ' 󰁻󰁽󰂁󱟢'
-let g:vimwiki_list = [{'path': '~/.vim/vimwiki/',
-                      \ 'syntax': 'markdown', 'ext': '.md',
-                      \ 'links_space_char': '_'}]
-au FileType vimwiki setlocal sw=6 ts=6 sts=6 tw=0 noexpandtab
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'tpope/vim-vinegar'
-call plug#end()
+if !has("win32")
+  if empty(glob("$HOME/.vim/autoload/plug.vim"))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  endif
+endif
+
+if has("win32")
+    set runtimepath+=~/.vim/
+    set encoding=utf-8
+    set t_Co=256
+  " TODO: vim-plug to install automatically in Windows in ~/.vim/autoload/
+endif
+
+if filereadable( expand("$HOME/.vim/autoload/plug.vim") )
+  autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+    \| PlugInstall --sync | source $MYVIMRC
+  \| endif
+
+  call plug#begin('$HOME/.vim/plugged')
+  Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-commentary'
+  Plug 'kshenoy/vim-signature'
+  Plug 'tpope/vim-fugitive'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'sheerun/vim-polyglot'
+  let g:python_highlight_all = 1
+  Plug 'Vimjas/vim-python-pep8-indent'
+  Plug 'junegunn/vim-easy-align'
+  xmap ga <Plug>(EasyAlign)
+  nmap ga <Plug>(EasyAlign)
+  Plug 'Yggdroot/indentLine'
+  let g:indentLine_char  = ''
+  Plug 'frazrepo/vim-rainbow'
+  let g:rainbow_active   = 1
+  let g:rainbow_guifgs   = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
+  let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
+  Plug 'flazz/vim-colorschemes'
+  Plug 'vimwiki/vimwiki'
+  let g:vimwiki_listsyms = ' 󰁻󰁽󰂁󱟢'
+  let g:vimwiki_list = [{'path': '~/.vim/vimwiki/',
+                        \ 'syntax': 'markdown', 'ext': '.md',
+                        \ 'links_space_char': '_'}]
+  au FileType vimwiki setlocal sw=6 ts=6 sts=6 tw=0 noexpandtab
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'tpope/vim-vinegar'
+  call plug#end()
+endif
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline_powerline_fonts = 1
-let g:airline_section_z = airline#section#create(['%3b|0x%02B ', 'windowswap', 'obsession', '%p%%', 'linenr', 'maxlinenr', 'colnr'])
+
+if filereadable( expand("$HOME/.vim/plugged/vim-airline/plugin/airline.vim") )
+  let g:airline_section_z = airline#section#create(['%3b|0x%02B ', 'windowswap', 'obsession', '%p%%', 'linenr', 'maxlinenr', 'colnr'])
+endif
+
+try
+  colorscheme jellybeans
+catch /^Vim\%((\a\+)\)\=:E185/
+  colorscheme elflord
+endtry
 
 filetype plugin indent on
 syntax on
@@ -199,7 +225,6 @@ nnoremap <silent> <leader>r  :execute "set rnu!"<CR>
 iab um µm
 iab usec µs
 
-colorscheme jellybeans
 set signcolumn=yes
 highlight clear specialkey
 highlight specialkey ctermfg=242
