@@ -202,7 +202,8 @@ nnoremap <leader>l :nohl<CR>
 nnoremap <silent> <leader>nn :execute "set nonu nornu nocuc nocul nolist" \| :IndentLinesDisable<CR>
 nnoremap <silent> <leader>N  :execute "set nu cul list" \| :IndentLinesEnable<CR>
 nnoremap <silent> <leader>cc :execute "set colorcolumn=" . (&colorcolumn == "" ? "80,120" : "")<CR>
-nnoremap <silent> <leader>r  :execute "set rnu!"<CR>
+nnoremap <silent> <leader>rr :execute "set rnu!"<CR>
+nnoremap <silent> <leader>rc :execute "set cuc!"<CR>
 
 :command NN :IndentLinesToggle
 
