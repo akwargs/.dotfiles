@@ -78,6 +78,7 @@ set cmdheight=2
 set clipboard=unnamed
 set cursorline
 set display=truncate
+set expandtab
 set fileformats=unix
 set foldmethod=syntax
 set hidden
