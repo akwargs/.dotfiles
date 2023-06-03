@@ -29,27 +29,16 @@ let g:vimwiki_list = [{'path': '~/.vim/vimwiki/',
                       \ 'syntax': 'markdown', 'ext': '.md',
                       \ 'links_space_char': '_'}]
 au FileType vimwiki setlocal sw=6 ts=6 sts=6 tw=0 noexpandtab
-Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-vinegar'
 call plug#end()
 
-let g:lightline = {
-  \ 'colorscheme': 'one',
-  \ 'active' : {
-  \   'left' : [ [ 'mode', 'paste' ],
-  \            [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
-  \   'right': [ [ 'percent' ],
-  \            [ 'fileformat', 'fileencoding', 'filetype', 'charvaluedec', 'charvaluehex' ],
-  \            [ 'lineinfo' ] ]
-  \ },
-  \ 'component_function': {
-  \   'gitbranch': 'FugitiveHead'
-  \ },
-  \ 'component': {
-  \   'charvaluedec': '%b',
-  \   'charvaluehex': '0x%B'
-  \ },
-\ }
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline_powerline_fonts = 1
+let g:airline_section_z = airline#section#create(['%3b|0x%02B ', 'windowswap', 'obsession', '%p%%', 'linenr', 'maxlinenr', 'colnr'])
 
 filetype plugin indent on
 syntax on
