@@ -74,27 +74,20 @@ let mapleader = " "
 " extended matching with "%"
 packadd! matchit
 
-set autoindent
-set backspace=indent,eol,start
-set background=dark
 set cmdheight=2
 set clipboard=unnamed
-" set cursorcolumn
 set cursorline
 set display=truncate
-set expandtab
-set fileformats=unix,dos
+set fileformats=unix
 set foldmethod=syntax
 set hidden
 set history=1999
-set nohlsearch
 set ignorecase
 set incsearch
 set infercase
 " set iskeyword+=- " to make '-' a word character
 " set iskeyword-=_ " to make '_' not a word character
 set nolangremap
-set laststatus=2
 set list
 set listchars=tab:»·,trail:·
 set modelines=1
@@ -103,33 +96,22 @@ set number
 if &diff
   set nu nornu nocul nocuc
 endif
-set nopaste
 set pastetoggle=<F12>
 set ruler
 set scrolloff=5
 set shiftwidth=4
 set smartcase
-set showcmd
 set showmatch
 set smartindent
-set smarttab
 set softtabstop=4
 set nostartofline
-set noswapfile
 set tabstop=4
-set tags=./tags;
 set textwidth=80
-set titleold=
-set title titlestring=
-set viminfo=
 set visualbell
-set undolevels=1000
 set whichwrap=<,>,h,l
-set wildchar=<TAB>
 set wildmenu
 set wildignorecase
 set wildmode=list:longest,full
-set nowrap
 set nowrapscan
 
 au BufWinEnter * normal zR
@@ -152,48 +134,49 @@ if !exists(":DiffOrig")
           \ | wincmd p | diffthis
 endif
 
-" Windows
-if &diffopt !~# 'internal'
-  set diffexpr=MyDiff()
-endif
-
-function MyDiff()
-  let opt = '-a --binary '
-  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-  let arg1 = v:fname_in
-  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-  let arg1 = substitute(arg1, '!', '\!', 'g')
-  let arg2 = v:fname_new
-  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-  let arg2 = substitute(arg2, '!', '\!', 'g')
-  let arg3 = v:fname_out
-  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-  let arg3 = substitute(arg3, '!', '\!', 'g')
-  if $VIMRUNTIME =~ ' '
-    if &sh =~ '\<cmd'
-      if empty(&shellxquote)
-        let l:shxq_sav = ''
-        set shellxquote&
+if !has("win32")
+  function MyDiff()
+    let opt = '-a --binary '
+    if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+    if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+    let arg1 = v:fname_in
+    if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+    let arg1 = substitute(arg1, '!', '\!', 'g')
+    let arg2 = v:fname_new
+    if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+    let arg2 = substitute(arg2, '!', '\!', 'g')
+    let arg3 = v:fname_out
+    if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+    let arg3 = substitute(arg3, '!', '\!', 'g')
+    if $VIMRUNTIME =~ ' '
+      if &sh =~ '\<cmd'
+        if empty(&shellxquote)
+          let l:shxq_sav = ''
+          set shellxquote&
+        endif
+        let cmd = '"' . $VIMRUNTIME . '\diff"'
+      else
+        let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
       endif
-      let cmd = '"' . $VIMRUNTIME . '\diff"'
     else
-      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+      let cmd = $VIMRUNTIME . '\diff'
     endif
-  else
-    let cmd = $VIMRUNTIME . '\diff'
+    let cmd = substitute(cmd, '!', '\!', 'g')
+    silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3
+    if exists('l:shxq_sav')
+      let &shellxquote=l:shxq_sav
+    endif
+  endfunction
+
+  if &diffopt !~# 'internal'
+    set diffexpr=MyDiff()
   endif
-  let cmd = substitute(cmd, '!', '\!', 'g')
-  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3
-  if exists('l:shxq_sav')
-    let &shellxquote=l:shxq_sav
-  endif
-endfunction
+endif
 
 map Q gq
 
-inoremap <C-U>  <C-G>u<C-U>
-inoremap <C-Z>  <C-O>u
+inoremap <C-U> <C-G>u<C-U>
+inoremap <C-Z> <C-O>u
 inoremap <S-Insert> <C-R>+
 inoremap ..l -------------------------------------------<CR><CR>
 inoremap ..d ======<C-R>=strftime("%a %Y-%m-%d %H:%M:%S %z")<CR>========<CR><CR>
