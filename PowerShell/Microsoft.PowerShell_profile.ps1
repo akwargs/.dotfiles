@@ -37,6 +37,7 @@ function mygl   { git.exe pull }
 function gpr    { git.exe pull --rebase $args }
 function mywiki { vim.exe +VimwikiIndex }
 function start_linux { vboxmanage startvm linux --type headless }
+function rmrf   { Remove-Item -Recurse -Force $args }
 
 function Get-PubIP {
     (Invoke-WebRequest http://ifconfig.me/ip ).Content
