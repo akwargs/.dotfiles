@@ -12,8 +12,7 @@ return {
       require("mason-null-ls").setup({
         ensure_installed = { "stylua", "jq", "flake8", "pyright", },
         automatic_setup = true,
-        handlers = {
-        },
+        handlers = {},
       })
     end,
   },
