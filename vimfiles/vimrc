@@ -64,7 +64,7 @@ set backspace=indent,eol,start
 set background=dark
 set cmdheight=2
 set clipboard=unnamed
-set cursorcolumn
+" set cursorcolumn
 set cursorline
 set display=truncate
 set expandtab
@@ -201,7 +201,7 @@ nnoremap <leader>j :%!jq .<CR>
 nnoremap <leader>J :%!jq . -c<CR>
 nnoremap <leader>l :nohl<CR>
 nnoremap <silent> <leader>nn :execute "set nonu nornu nocuc nocul nolist" \| :IndentLinesDisable<CR>
-nnoremap <silent> <leader>N  :execute "set nu cul cuc list" \| :IndentLinesEnable<CR>
+nnoremap <silent> <leader>N  :execute "set nu cul list" \| :IndentLinesEnable<CR>
 nnoremap <silent> <leader>cc :execute "set colorcolumn=" . (&colorcolumn == "" ? "80,120" : "")<CR>
 nnoremap <silent> <leader>r  :execute "set rnu!"<CR>
 
