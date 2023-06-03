@@ -1,0 +1,10 @@
+*~
+*.swp
+*.swo
+*.py[co]
+/venv*
+/.mypy_cache
+/.pytest_cache
+tags
+tags.*
+lazy-lock.json
