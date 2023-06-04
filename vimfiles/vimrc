@@ -149,8 +149,7 @@ if filereadable( expand("$HOME/.vim/plugged/vim-pencil/plugin/pencil.vim") )
     " automatic lefthand smartquote doesn't work right
     inoremap <buffer> <c-'> “
     inoremap <buffer> <a-'> ‘
-
-    " inoremap -- — 
+    inoremap <buffer> -- —
 
     " open most folds
     setlocal foldlevel=6
@@ -255,8 +254,8 @@ nnoremap <silent> <leader>rc :execute "set cuc!"<CR>
 
 :command NN :IndentLinesToggle
 
-iab um µm
-iab usec µs
+iab <buffer> um µm
+iab <buffer> usec µs
 
 set signcolumn=yes
 highlight clear specialkey
