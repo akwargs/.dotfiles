@@ -150,6 +150,8 @@ if filereadable( expand("$HOME/.vim/plugged/vim-pencil/plugin/pencil.vim") )
     inoremap <buffer> <c-'> “
     inoremap <buffer> <a-'> ‘
     inoremap <buffer> -- —
+    inoremap <buffer> ft' ′
+    inoremap <buffer> in" ″
 
     " open most folds
     setlocal foldlevel=6
