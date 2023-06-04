@@ -5,6 +5,7 @@
 /venv*
 /.mypy_cache
 /.pytest_cache
+.netrwhist
 tags
 tags.*
 lazy-lock.json
