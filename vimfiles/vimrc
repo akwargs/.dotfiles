@@ -99,7 +99,6 @@ if &diff
 endif
 set pastetoggle=<F12>
 set ruler
-set scrolloff=5
 set shiftwidth=4
 set smartcase
 set showmatch
