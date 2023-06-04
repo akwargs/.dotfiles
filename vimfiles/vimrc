@@ -48,6 +48,13 @@ if filereadable( expand("$HOME/.vim/autoload/plug.vim") )
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'tpope/vim-vinegar'
+  Plug 'preservim/vim-pencil'
+  Plug 'preservim/vim-lexical'
+  Plug 'preservim/vim-litecorrect'
+  Plug 'kana/vim-textobj-user'
+  Plug 'preservim/vim-textobj-sentence'
+  Plug 'preservim/vim-textobj-quote'
+  Plug 'preservim/vim-wordy'
   call plug#end()
 endif
 
@@ -120,16 +127,50 @@ augroup Python
   autocmd FileType python setlocal foldmethod=indent
 augroup END
 
-augroup Python
+augroup Vim
   au!
-  autocmd FileType python setlocal foldmethod=indent
+  autocmd FileType vim setlocal sw=2 ts=2 sts=2 foldmethod=indent
 augroup END
 
-augroup Spell
-  au!
-  autocmd FileType markdown setlocal spell
-  autocmd FileType text setlocal spell
-augroup END
+if filereadable( expand("$HOME/.vim/plugged/vim-pencil/plugin/pencil.vim") )
+  function! Prose()
+    call pencil#init()
+    call lexical#init()
+    call litecorrect#init()
+    call textobj#quote#init()
+    call textobj#sentence#init()
+
+    " manual reformatting shortcuts
+    nnoremap <buffer> <silent> Q gqap
+    xnoremap <buffer> <silent> Q gq
+    nnoremap <buffer> <silent> <leader>Q vapJgqap
+
+    inoremap <buffer> <c-'> “
+    inoremap <buffer> <a-'> ‘
+
+    " replace common punctuation
+    iabbrev <buffer> -- —
+    iabbrev <buffer> --- —
+    iabbrev <buffer> << «
+    iabbrev <buffer> >> »
+
+    " open most folds
+    setlocal foldlevel=6
+
+    " replace typographical quotes (reedes/vim-textobj-quote)
+    map <silent> <buffer> <leader>qc <Plug>ReplaceWithCurly
+    map <silent> <buffer> <leader>qs <Plug>ReplaceWithStraight
+
+    " highlight words (reedes/vim-wordy)
+    nnoremap <silent> <buffer> <F8> :<C-u>NextWordy<cr>
+    xnoremap <silent> <buffer> <F8> :<C-u>NextWordy<cr>
+    inoremap <silent> <buffer> <F8> <C-o>:NextWordy<cr>
+
+  endfunction
+
+  " automatically initialize buffer by file type
+  autocmd FileType text call Prose()
+endif
 
 augroup vimStartup
   au!
