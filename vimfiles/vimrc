@@ -122,6 +122,17 @@ augroup Python
   autocmd FileType python setlocal foldmethod=indent
 augroup END
 
+augroup Python
+  au!
+  autocmd FileType python setlocal foldmethod=indent
+augroup END
+
+augroup Spell
+  au!
+  autocmd FileType markdown setlocal spell
+  autocmd FileType text setlocal spell
+augroup END
+
 augroup vimStartup
   au!
   autocmd BufReadPost *
