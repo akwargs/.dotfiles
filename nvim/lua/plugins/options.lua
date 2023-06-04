@@ -1,5 +1,5 @@
 vim.opt.backup = true
-vim.opt.fileformat = "unix"
+vim.opt.fileformats = "unix,dos"
 vim.opt.undodir = "."
 
 return {}
