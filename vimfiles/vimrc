@@ -51,12 +51,11 @@ if filereadable( expand("$HOME/.vim/autoload/plug.vim") )
   call plug#end()
 endif
 
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-let g:airline_powerline_fonts = 1
-
 if filereadable( expand("$HOME/.vim/plugged/vim-airline/plugin/airline.vim") )
+  let g:airline#extensions#tabline#enabled = 1
+  let g:airline#extensions#tabline#buffer_nr_show = 1
+  let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+  let g:airline_powerline_fonts = 1
   let g:airline_section_z = airline#section#create(['%3b|0x%02B ', 'windowswap', 'obsession', '%p%%', 'linenr', 'maxlinenr', 'colnr'])
 endif
 
