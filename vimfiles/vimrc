@@ -79,7 +79,7 @@ set clipboard=unnamed
 set cursorline
 set display=truncate
 set expandtab
-set fileformats=unix
+set fileformats=unix,dos
 set foldmethod=syntax
 set hidden
 set history=1999
