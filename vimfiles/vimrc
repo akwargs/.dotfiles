@@ -85,6 +85,7 @@ set clipboard=unnamed
 set cursorline
 set display=truncate
 set expandtab
+set fileformat=unix
 set fileformats=unix,dos
 set foldmethod=syntax
 set hidden
@@ -145,14 +146,11 @@ if filereadable( expand("$HOME/.vim/plugged/vim-pencil/plugin/pencil.vim") )
     xnoremap <buffer> <silent> Q gq
     nnoremap <buffer> <silent> <leader>Q vapJgqap
 
+    " automatic lefthand smartquote doesn't work right
     inoremap <buffer> <c-'> “
     inoremap <buffer> <a-'> ‘
 
-    " replace common punctuation
-    iabbrev <buffer> -- —
-    iabbrev <buffer> --- —
-    iabbrev <buffer> << «
-    iabbrev <buffer> >> »
+    " inoremap -- — 
 
     " open most folds
     setlocal foldlevel=6
