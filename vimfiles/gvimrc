@@ -9,6 +9,8 @@ set mousehide
 set columns=130 lines=35
 set foldcolumn=3
 set signcolumn=yes
+map <ScrollWheelUp> <C-Y>
+map <ScrollWheelDown> <C-E>
 highlight clear signcolumn
 highlight clear foldcolumn
 " vim:ft=vim:nowrap:sw=2:ts=2:sts=2:nobackup:noundofile
