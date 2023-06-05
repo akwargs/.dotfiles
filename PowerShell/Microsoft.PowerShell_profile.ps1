@@ -35,6 +35,7 @@ function gd     { git.exe diff $args }
 function mygp   { git.exe push }
 function mygl   { git.exe pull }
 function gpr    { git.exe pull --rebase $args }
+function glog   { git.exe log --graph --oneline --decorate }
 function mywiki { vim.exe +VimwikiIndex }
 function start_linux { vboxmanage startvm linux --type headless }
 function rmrf   { Remove-Item -Recurse -Force $args }
@@ -43,9 +44,7 @@ function Get-PubIP {
     (Invoke-WebRequest http://ifconfig.me/ip ).Content
 }
 
-function Get-UTC {
-     Get-Date -Format u
-}
+function Get-UTC { Get-Date -Format u }
 
 function Get-Pass {
     -join(48..57+65..90+97..122|ForEach-Object{[char]$_}|Get-Random -C 20)
@@ -55,8 +54,12 @@ function mywhich($name) {
     Get-Command $name | Select-Object -ExpandProperty Definition
 }
 
-function myhistory([int]$Count=100) {
+function myh([int]$Count=100) {
     Get-Content -LiteralPath (Get-PSReadLineOption).HistorySavePath | Select-Object -Last $Count
+}
+
+function myln($original, $new) {
+    New-Item -ItemType HardLink -Path $new  -Target $original
 }
 
 if ($PSVersionTable.PSVersion.Major -ge 7) {
