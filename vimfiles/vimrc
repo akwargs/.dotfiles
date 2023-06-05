@@ -1,18 +1,27 @@
 set nocompatible
 filetype off
 
-if !has("win32")
-  if empty(glob("$HOME/.vim/autoload/plug.vim"))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"------------------------------------------------------
+if v:version >= 900
+"------------------------------------------------------
+if empty(glob("$HOME/.vim/autoload/plug.vim"))
+  if has("win32")
+    silent ! powershell -Command "
+          \ New-Item -Path "$env:HOME/.vim" -Name autoload -Type Directory -Force;
+          \ Invoke-WebRequest
+          \ -Uri 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+          \ -OutFile "$env:HOME/.vim/autoload/plug.vim"
+          \ "
+  else
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+          \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   endif
 endif
 
 if has("win32")
-    set runtimepath+=~/.vim/
-    set encoding=utf-8
-    set t_Co=256
-  " TODO: vim-plug to install automatically in Windows in ~/.vim/autoload/
+  set runtimepath+=~/.vim/
+  set encoding=utf-8
+  set t_Co=256
 endif
 
 if filereadable( expand("$HOME/.vim/autoload/plug.vim") )
@@ -74,24 +83,24 @@ if filereadable( expand("$HOME/.vim/plugged/vim-airline/plugin/airline.vim") )
                                   \ 'colnr'])
 endif
 
-try
-  colorscheme jellybeans
-catch /^Vim\%((\a\+)\)\=:E185/
-  colorscheme elflord
-endtry
+" extended matching with "%"
+packadd! matchit
+set display=truncate
+set nolangremap
+set signcolumn=yes
+"------------------------------------------------------
+endif "if v.version <= 900
+"------------------------------------------------------
+
 
 filetype plugin indent on
 syntax on
 
 let mapleader = " "
 
-" extended matching with "%"
-packadd! matchit
-
 set cmdheight=2
 set clipboard=unnamed
 set cursorline
-set display=truncate
 set expandtab
 set fileformat=unix
 set fileformats=unix,dos
@@ -103,7 +112,6 @@ set incsearch
 set infercase
 " set iskeyword+=- " to make '-' a word character
 " set iskeyword-=_ " to make '_' not a word character
-set nolangremap
 set list
 set listchars=tab:»·,trail:·
 set modelines=1
@@ -267,7 +275,12 @@ nnoremap <silent> <leader>RC :execute "set cuc!"<CR>
 iab <buffer> um µm
 iab <buffer> usec µs
 
-set signcolumn=yes
+try
+  colorscheme jellybeans
+catch /^Vim\%((\a\+)\)\=:E185/
+  colorscheme elflord
+endtry
+
 highlight clear specialkey
 highlight specialkey ctermfg=242
 highlight clear signcolumn
