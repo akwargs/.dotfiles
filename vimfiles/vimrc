@@ -184,7 +184,7 @@ if !exists(":DiffOrig")
           \ | wincmd p | diffthis
 endif
 
-if !has("win32")
+if has("win32")
   function MyDiff()
     let opt = '-a --binary '
     if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
