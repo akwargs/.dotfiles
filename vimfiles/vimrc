@@ -92,7 +92,6 @@ set signcolumn=yes
 endif "if v.version <= 900
 "------------------------------------------------------
 
-
 filetype plugin indent on
 syntax on
 
