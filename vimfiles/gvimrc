@@ -1,7 +1,7 @@
 colorscheme Atelier_Cavelight
 set bg=light
 if has("win32")
-  set guifont=Consolas:h12:cANSI:qDRAFT
+  set guifont=Consolas:h12
   set guioptions=gmtTlar
 endif
 set mouse=nvi

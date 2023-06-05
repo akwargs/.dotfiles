@@ -69,7 +69,7 @@ endif
 
 if filereadable( expand("$HOME/.vim/plugged/vim-airline/plugin/airline.vim") )
   if !has("gui_running")
-      let g:airline_powerline_fonts = 1
+    let g:airline_powerline_fonts = 1
   endif
   let g:airline#extensions#tabline#enabled = 1
   let g:airline#extensions#tabline#buffer_nr_show = 1
