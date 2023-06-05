@@ -68,9 +68,9 @@ if filereadable( expand("$HOME/.vim/autoload/plug.vim") )
 endif
 
 if filereadable( expand("$HOME/.vim/plugged/vim-airline/plugin/airline.vim") )
-  if !has("gui_running")
+  " if !has("gui_running")
     let g:airline_powerline_fonts = 1
-  endif
+  " endif
   let g:airline#extensions#tabline#enabled = 1
   let g:airline#extensions#tabline#buffer_nr_show = 1
   let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
