@@ -1,0 +1,7 @@
+{
+  "last_update": "2023-06-06T07:17:04.2665090-05:00",
+  "use_external_7zip": true,
+  "aria2-enabled": false,
+  "scoop_repo": "https://github.com/ScoopInstaller/Scoop",
+  "scoop_branch": "master"
+}
