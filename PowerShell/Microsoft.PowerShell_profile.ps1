@@ -36,7 +36,10 @@ function mygp   { git.exe push }
 function mygl   { git.exe pull }
 function gpr    { git.exe pull --rebase $args }
 function glog   { git.exe log --graph --oneline --decorate }
+function gcmsg  { git.exe commit -m $args }
 function mywiki { vim.exe +VimwikiIndex }
+function vi     { vim.exe -u NONE -U NONE $args }
+function mvim   { vim.exe -u $env:HOME\vimfiles\vimrc_minimal $args }
 function start_linux { vboxmanage startvm linux --type headless }
 function rmrf   { Remove-Item -Recurse -Force $args }
 
