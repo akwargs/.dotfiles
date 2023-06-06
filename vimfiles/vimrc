@@ -277,7 +277,7 @@ iab <buffer> usec µs
 try
   colorscheme jellybeans
 catch /^Vim\%((\a\+)\)\=:E185/
-  colorscheme elflord
+  colorscheme slate
 endtry
 
 highlight clear specialkey
