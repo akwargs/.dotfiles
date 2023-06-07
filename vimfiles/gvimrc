@@ -1,4 +1,5 @@
-colorscheme Atelier_Cavelight
+" colorscheme Atelier_Cavelight
+colorscheme stackoverflow
 set bg=light
 if has("win32")
   " set guifont=Consolas:h12
@@ -8,6 +9,7 @@ endif
 set mouse=nvi
 set mousehide
 set columns=130 lines=35
+set nocul
 set foldcolumn=3
 set signcolumn=yes
 map <ScrollWheelUp> <C-Y>
