@@ -41,6 +41,7 @@ function mywiki { vim.exe +VimwikiIndex }
 function vi     { vim.exe -u NONE -U NONE $args }
 function mvim   { vim.exe -u $env:HOME\vimfiles\vimrc_minimal $args }
 function start_linux { vboxmanage startvm linux --type headless }
+function linux  { putty.exe -load linux }
 function rmrf   { Remove-Item -Recurse -Force $args }
 
 function Get-PubIP {
