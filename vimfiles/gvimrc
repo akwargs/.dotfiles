@@ -3,7 +3,7 @@ colorscheme stackoverflow
 set bg=light
 if has("win32")
   " set guifont=Consolas:h12
-  set guifont=JetBrainsMonoNL_NFM_ExtraLight:h12:W200:cANSI:qDRAFT
+  set guifont=JetBrainsMonoNL_NFM_ExtraLight:h10:W200:cANSI:qDRAFT
   set guioptions=gmtTlar
 endif
 set mouse=nvi
