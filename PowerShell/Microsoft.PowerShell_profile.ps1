@@ -9,6 +9,7 @@ Import-Module z
 Set-Alias l PowerColorLS
 Set-Alias ll Get-ChildItem
 Set-Alias vboxmanage 'C:\Program Files\Oracle\VirtualBox\VBoxManage.exe'
+Set-Alias vim nvim
 
 $currentVersion = $PSVersionTable.PSVersion
 $requiredVersion = [Version]'7.2'
@@ -28,12 +29,12 @@ function lla    { PowerColorLS -l -a -sd }
 function m      { bat.exe --pager="less -XRF" $args }
 function d      { diff.exe -u $args }
 function g      { rg.exe -NPi $args }
-#function g($pattern)      { Select-String -Pattern $pattern $args }
-function mywiki { vim.exe +VimwikiIndex }
-function vi     { vim.exe -u NONE -U NONE $args }
-function mvim   { vim.exe -u $env:HOME\vimfiles\vimrc_minimal $args }
+# function g($pattern)      { Select-String -Pattern $pattern $args }
+# function mywiki { vim.exe +VimwikiIndex }
+# function vi     { vim.exe -u NONE -U NONE $args }
+# function mvim   { vim.exe -u $env:HOME\vimfiles\vimrc_minimal $args }
+# function linux  { putty.exe -load linux }
 function start_linux { vboxmanage startvm linux --type headless }
-function linux  { putty.exe -load linux }
 function rmrf   { Remove-Item -Recurse -Force $args }
 
 function Get-PubIP {
