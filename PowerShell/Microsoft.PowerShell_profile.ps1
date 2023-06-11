@@ -56,7 +56,11 @@ function myh([int]$Count=100) {
 }
 
 function myln($original, $new) {
-    New-Item -ItemType HardLink -Path $new  -Target $original
+    New-Item -ItemType HardLink -Path $new -Target $original
+}
+
+function mylnj($original, $new) {
+    New-Item -ItemType Junction -Path $new -Target $original
 }
 
 if ($PSVersionTable.PSVersion.Major -ge 7) {
