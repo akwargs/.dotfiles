@@ -9,7 +9,6 @@ Import-Module z
 Set-Alias l PowerColorLS
 Set-Alias ll Get-ChildItem
 Set-Alias vboxmanage 'C:\Program Files\Oracle\VirtualBox\VBoxManage.exe'
-Set-Alias vim nvim
 
 $currentVersion = $PSVersionTable.PSVersion
 $requiredVersion = [Version]'7.2'
@@ -25,13 +24,14 @@ Set-PSReadLineOption -HistorySavePath $Env:HOME\PSReadLineHistory.txt
 
 function pll    { PowerColorLS -l -sd }
 function plla   { PowerColorLS -l -a -sd }
-function lla    { PowerColorLS -l -a -sd }
+Set-Alias lla plla
 function m      { bat.exe --pager="less -XRF" $args }
 function d      { diff.exe -u $args }
 function g      { rg.exe -NPi $args }
 # function g($pattern)      { Select-String -Pattern $pattern $args }
 # function mywiki { vim.exe +VimwikiIndex }
 function vi     { nvim.exe -u NONE -U NONE $args }
+Set-Alias vim vi
 # function mvim   { vim.exe -u $env:HOME\vimfiles\vimrc_minimal $args }
 # function linux  { putty.exe -load linux }
 function start_linux { vboxmanage startvm linux --type headless }
