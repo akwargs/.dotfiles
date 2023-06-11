@@ -21,7 +21,7 @@ if ($currentVersion -ge $requiredVersion) {
 Set-PSReadLineOption -BellStyle Visual
 Set-PSReadLineOption -PredictionViewStyle ListView
 Set-PSReadLineOption -EditMode Emacs
-Set-PSReadLineOption -HistorySavePath $Env:HOME\PSReadLinePSReadLine.txt
+Set-PSReadLineOption -HistorySavePath $Env:HOME\PSReadLineHistory.txt
 
 function pll    { PowerColorLS -l -sd }
 function plla   { PowerColorLS -l -a -sd }
@@ -31,7 +31,7 @@ function d      { diff.exe -u $args }
 function g      { rg.exe -NPi $args }
 # function g($pattern)      { Select-String -Pattern $pattern $args }
 # function mywiki { vim.exe +VimwikiIndex }
-# function vi     { vim.exe -u NONE -U NONE $args }
+function vi     { nvim.exe -u NONE -U NONE $args }
 # function mvim   { vim.exe -u $env:HOME\vimfiles\vimrc_minimal $args }
 # function linux  { putty.exe -load linux }
 function start_linux { vboxmanage startvm linux --type headless }
