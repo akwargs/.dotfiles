@@ -1,11 +1,17 @@
-set mouse=a
-if exists(':GuiFont')
-    " Use GuiFont! to ignore font errors
-    GuiFont! "JetBrainsMonoNL NFM:h12"
+" TODO: why doesn't this load automatically?"
+
+function! SourceIfExists(file)
+  if filereadable(expand(a:file))
+    exe 'source' a:file
+  endif
+endfunction
+
+if has('gui_running')
+  call SourceIfExists($NVIM_QT_RUNTIME . "/runtime/plugin/nvim_gui_shim.vim")
 endif
 
-" TODO: why doesn't this load automatically?"
-:source C:/Program\ Files/Neovim/share/nvim-qt/runtime/plugin/nvim_gui_shim.vim
+set guifont="JetBrainsMonoNL_NFM_Light:h10:l"
+set mouse=a
 
 if exists(':GuiTabline')
     GuiTabline 0
