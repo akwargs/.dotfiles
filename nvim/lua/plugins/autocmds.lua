@@ -8,7 +8,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 vim.cmd([[
   augroup catp_cul_highlight
   autocmd!
-  au ColorScheme * highlight CursorColumn guibg=#2a2b3c
+  au ColorScheme * highlight CursorColumn guibg=#c4c8da
   augroup END
 ]])
 
