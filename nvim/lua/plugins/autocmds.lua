@@ -12,6 +12,7 @@ vim.cmd([[
   au ColorScheme * highlight CursorLine guibg=#ececec
   au ColorScheme * highlight CursorColumn guibg=#ececec
   au ColorScheme * highlight SignColumn guibg=#ececec
+  au ColorScheme * highlight Pmenu guibg=#ececec
   augroup END
 ]])
 
