@@ -1,8 +1,10 @@
 return {
+  { "rafi/awesome-vim-colorschemes" },
+
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "tokyonight-day",
+      colorscheme = "github",
     },
   },
 }

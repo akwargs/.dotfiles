@@ -1,5 +1,6 @@
 vim.opt.backup = true
-vim.opt.cursorcolumn = true
+vim.opt.cursorcolumn = false
+vim.opt.cursorline = false
 vim.opt.fileformats = "unix,dos"
 vim.opt.undodir = "."
 vim.opt.mouse = ""
