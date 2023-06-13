@@ -6,6 +6,7 @@ vim.cmd([[
     au ColorScheme * highlight CursorColumn guibg=#ececec
     au ColorScheme * highlight SignColumn guibg=#ececec
     au ColorScheme * highlight Pmenu guibg=#ececec
+    au ColorScheme * highlight WhiteSpace guifg=#ececec
   augroup END
 
   " augroup _CLIAnalyzer
