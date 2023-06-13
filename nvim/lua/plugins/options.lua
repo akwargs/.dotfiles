@@ -3,6 +3,7 @@ vim.opt.cursorcolumn = false
 vim.opt.cursorline = false
 vim.opt.diffopt:append({ "vertical" })
 vim.opt.fileformats = "unix,dos"
+vim.opt.listchars = "tab:»·,trail:·,nbsp:·"
 vim.opt.mouse = ""
 vim.opt.statuscolumn = "%s %C %l %=%{v:relnum?v:relnum:v:lnum}   "
 vim.opt.ttimeout = false
