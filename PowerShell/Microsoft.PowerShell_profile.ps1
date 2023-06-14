@@ -1,14 +1,17 @@
 $PowerShellProfile = $PROFILE.CurrentUserAllHosts
 $PowerShellPath = Split-Path $PowerShellProfile
 Import-Module $PowerShellPath\Modules\VirtualEnvWrapper.psm1
-Import-Module Terminal-Icons
-Import-Module PowerColorLS
+# Import-Module Terminal-Icons
+# Import-Module PowerColorLS
 Import-Module z
 # Import-Module git-aliases -DisableNameChecking
 
-Set-Alias l PowerColorLS
+# Set-Alias l PowerColorLS
 Set-Alias ll Get-ChildItem
+Set-Alias l ll
 Set-Alias vboxmanage 'C:\Program Files\Oracle\VirtualBox\VBoxManage.exe'
+Set-Alias wc lwc.exe
+Set-Alias http xh.exe
 
 $currentVersion = $PSVersionTable.PSVersion
 $requiredVersion = [Version]'7.2'
@@ -22,9 +25,9 @@ Set-PSReadLineOption -PredictionViewStyle ListView
 Set-PSReadLineOption -EditMode Emacs
 Set-PSReadLineOption -HistorySavePath $Env:HOME\PSReadLineHistory.txt
 
-function pll    { PowerColorLS -l -sd }
-function plla   { PowerColorLS -l -a -sd }
-Set-Alias lla plla
+# function pll    { PowerColorLS -l -sd }
+# function plla   { PowerColorLS -l -a -sd }
+# Set-Alias lla plla
 function m      { bat.exe --pager="less -XRF" $args }
 function d      { diff.exe -u $args }
 function g      { rg.exe -NPi $args }
@@ -51,7 +54,7 @@ function mywhich($name) {
     Get-Command $name | Select-Object -ExpandProperty Definition
 }
 
-function myh([int]$Count=100) {
+function myhist([int]$Count=100) {
     Get-Content -LiteralPath (Get-PSReadLineOption).HistorySavePath | Select-Object -Last $Count
 }
 
