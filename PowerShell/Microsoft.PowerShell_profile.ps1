@@ -12,6 +12,7 @@ Set-Alias l ll
 Set-Alias vboxmanage 'C:\Program Files\Oracle\VirtualBox\VBoxManage.exe'
 Set-Alias wc lwc.exe
 Set-Alias http xh.exe
+Set-Alias m bat.exe
 
 $currentVersion = $PSVersionTable.PSVersion
 $requiredVersion = [Version]'7.2'
@@ -28,7 +29,7 @@ Set-PSReadLineOption -HistorySavePath $Env:HOME\PSReadLineHistory.txt
 # function pll    { PowerColorLS -l -sd }
 # function plla   { PowerColorLS -l -a -sd }
 # Set-Alias lla plla
-function m      { bat.exe --pager="less -XRF" $args }
+# function m      { bat.exe --pager="less -XRF" $args }
 function d      { diff.exe -u $args }
 function g      { rg.exe -NPi $args }
 # function g($pattern)      { Select-String -Pattern $pattern $args }
