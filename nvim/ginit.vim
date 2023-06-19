@@ -11,7 +11,7 @@ if has('gui_running')
   set guifont="JetBrainsMonoNL_NFM_Light:h10:l"
   set mouse=a
   if exists(':GuiTabline')
-    GuiTabline 0
+    GuiTabline 1
   endif
 
   if exists(':GuiPopupmenu')
