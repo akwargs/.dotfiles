@@ -41,11 +41,13 @@ Set-Alias vim vi
 function start_linux { vboxmanage startvm linux --type headless }
 function rmrf   { Remove-Item -Recurse -Force $args }
 
-function NvChad { Set-Item -Path Env:NVIM_APPNAME -Value NvChad }
-function AstroNvim { Set-Item -Path Env:NVIM_APPNAME -Value AstroNvim }
-function kickstart { Set-Item -Path Env:NVIM_APPNAME -Value kickstart }
-function LunarVim { Set-Item -Path Env:NVIM_APPNAME -Value LunarVim }
-function SpaceVim { Set-Item -Path Env:NVIM_APPNAME -Value SpaceVim }
+function NvChad { Set-Item -Path Env:NVIM_APPNAME -Value NvChad && nvim }
+function AstroNvim { Set-Item -Path Env:NVIM_APPNAME -Value AstroNvim && nvim }
+function kickstart { Set-Item -Path Env:NVIM_APPNAME -Value kickstart && nvim }
+function LunarVim { Set-Item -Path Env:NVIM_APPNAME -Value LunarVim && nvim }
+function SpaceVim { Set-Item -Path Env:NVIM_APPNAME -Value SpaceVim && nvim }
+function LazyVim { Set-Item -Path Env:NVIM_APPNAME -Value LazyVim && nvim }
+function mynvim { Remove-Item -Path Env:NVIM_APPNAME && nvim }
 
 function Get-PubIP {
     (Invoke-WebRequest http://ifconfig.me/ip ).Content
