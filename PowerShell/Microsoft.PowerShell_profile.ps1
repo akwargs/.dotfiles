@@ -32,7 +32,7 @@ Set-PSReadLineOption -HistorySavePath $Env:HOME\PSReadLineHistory.txt
 # function m      { bat.exe --pager="less -XRF" $args }
 function d      { diff.exe -u $args }
 function g      { rg.exe -NPi $args }
-# function g($pattern)      { Select-String -Pattern $pattern $args }
+# function g($pattern)      { Select-String -Pattern $pattern }
 # function mywiki { vim.exe +VimwikiIndex }
 function vi     { nvim.exe -u NONE -U NONE $args }
 Set-Alias vim vi
@@ -40,6 +40,12 @@ Set-Alias vim vi
 # function linux  { putty.exe -load linux }
 function start_linux { vboxmanage startvm linux --type headless }
 function rmrf   { Remove-Item -Recurse -Force $args }
+
+function NvChad { Set-Item -Path Env:NVIM_APPNAME -Value NvChad }
+function AstroNvim { Set-Item -Path Env:NVIM_APPNAME -Value AstroNvim }
+function kickstart { Set-Item -Path Env:NVIM_APPNAME -Value kickstart }
+function LunarVim { Set-Item -Path Env:NVIM_APPNAME -Value LunarVim }
+function SpaceVim { Set-Item -Path Env:NVIM_APPNAME -Value SpaceVim }
 
 function Get-PubIP {
     (Invoke-WebRequest http://ifconfig.me/ip ).Content
