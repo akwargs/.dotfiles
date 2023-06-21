@@ -53,7 +53,7 @@ function Get-PubIP {
     (Invoke-WebRequest http://ifconfig.me/ip ).Content
 }
 
-function Get-UTC { Get-Date -Format u }
+function Get-UTC { Get-Date -Format U }
 
 function Get-Pass {
     -join(48..57+65..90+97..122|ForEach-Object{[char]$_}|Get-Random -C 20)
