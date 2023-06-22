@@ -8,7 +8,6 @@ Import-Module z
 
 # Set-Alias l PowerColorLS
 Set-Alias ll Get-ChildItem
-Set-Alias l ll
 Set-Alias vboxmanage 'C:\Program Files\Oracle\VirtualBox\VBoxManage.exe'
 Set-Alias wc lwc.exe
 Set-Alias http xh.exe
@@ -26,6 +25,7 @@ Set-PSReadLineOption -PredictionViewStyle ListView
 Set-PSReadLineOption -EditMode Emacs
 Set-PSReadLineOption -HistorySavePath $Env:HOME\PSReadLineHistory.txt
 
+function l      { Get-ChildItem -Name }
 # function pll    { PowerColorLS -l -sd }
 # function plla   { PowerColorLS -l -a -sd }
 # Set-Alias lla plla
