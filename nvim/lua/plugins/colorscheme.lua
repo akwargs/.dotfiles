@@ -1,10 +1,10 @@
 return {
-  { "rafi/awesome-vim-colorschemes" },
+	{ "rafi/awesome-vim-colorschemes" },
 
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "github",
-    },
-  },
+	{
+		"LazyVim/LazyVim",
+		opts = {
+			colorscheme = "OceanicNextLight",
+		},
+	},
 }
