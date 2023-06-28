@@ -1,6 +1,6 @@
 vim.opt.backup = true
-vim.opt.cursorcolumn = false
-vim.opt.cursorline = false
+vim.opt.cursorcolumn = true
+vim.opt.cursorline = true
 vim.opt.diffopt:append({ "vertical" })
 vim.opt.fileformats = "unix,dos"
 vim.opt.listchars = "tab:»·,trail:·,nbsp:·"
