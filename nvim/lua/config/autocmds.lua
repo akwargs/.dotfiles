@@ -11,13 +11,13 @@ vim.cmd([[
     au ColorScheme * highlight SignColumn guibg=#ececec
     au ColorScheme * highlight Pmenu guibg=#ececec
     au ColorScheme * highlight WhiteSpace guifg=#c4c8da
-  augroup END
+  augroup end
 
   augroup _CLIAnalyzer
     au!
     au BufRead session-capture.*.txt setlocal ft=log
     au BufRead *.log setlocal ft=log
-  augroup END
+  augroup end
 
   augroup _logs
     au!
