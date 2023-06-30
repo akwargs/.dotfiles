@@ -13,16 +13,16 @@ vim.cmd([[
     au ColorScheme * highlight WhiteSpace guifg=#c4c8da
   augroup END
 
-  " augroup _CLIAnalyzer
-  "   au!
-  "   au BufRead session-capture.*.txt setlocal ft=log
-  "   au BufRead *.log setlocal ft=log
-  " augroup END
+  augroup _CLIAnalyzer
+    au!
+    au BufRead session-capture.*.txt setlocal ft=log
+    au BufRead *.log setlocal ft=log
+  augroup END
 
-  " augroup _logs
-  "   au!
-  "   au filetype log let g:indent_blankline_enabled = v:false
-  " augroup end
+  augroup _logs
+    au!
+    au filetype log let g:indent_blankline_enabled = v:false
+  augroup end
 ]])
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
