@@ -8,7 +8,7 @@ vim.opt.diffopt:append({ "vertical" })
 vim.opt.fileformats = "unix,dos"
 vim.opt.listchars = "tab:»·,trail:·,nbsp:·"
 vim.opt.mouse = ""
-vim.opt.statuscolumn = "%s %C %l %=%{v:relnum?v:relnum:v:lnum}   "
+-- vim.opt.statuscolumn = "%s %C %l %=%{v:relnum?v:relnum:v:lnum}   "
 vim.opt.ttimeout = false
 vim.opt.undodir = "."
 
