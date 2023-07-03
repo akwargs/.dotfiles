@@ -23,6 +23,14 @@ vim.cmd([[
     au!
     au filetype log let g:indent_blankline_enabled = v:false
   augroup end
+
+  if !&diff
+    augroup _rnu_toggle
+      autocmd!
+      autocmd InsertEnter * if &signcolumn == "yes" | set nornu | endif
+      autocmd InsertLeave * if &signcolumn == "yes" | set rnu | endif
+    augroup end
+  endif
 ]])
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
