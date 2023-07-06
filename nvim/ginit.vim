@@ -23,7 +23,7 @@ if has('gui_running')
   endif
 
   try
-    colorscheme OceanicNextLight
+    colorscheme mymountaineer-light
   endtry
 
   " Right Click Context Menu (Copy-Cut-Paste)
