@@ -1,10 +1,10 @@
 return {
-	{ "rafi/awesome-vim-colorschemes" },
+  { "rafi/awesome-vim-colorschemes" },
 
-	{
-		"LazyVim/LazyVim",
-		opts = {
-			colorscheme = "mountaineer-light",
-		},
-	},
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "mymountaineer-light",
+    },
+  },
 }
