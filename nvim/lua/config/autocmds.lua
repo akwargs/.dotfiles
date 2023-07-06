@@ -31,6 +31,11 @@ vim.cmd([[
       autocmd InsertLeave * if &signcolumn == "yes" | set rnu | endif
     augroup end
   endif
+
+  augroup _logs
+    au!
+    au filetype help setlocal cul! cuc!
+  augroup end
 ]])
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
