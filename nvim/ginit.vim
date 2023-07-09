@@ -8,7 +8,15 @@ endfunction
 
 if has('gui_running')
   call SourceIfExists($NVIM_QT_RUNTIME . "/runtime/plugin/nvim_gui_shim.vim")
-  set guifont="JetBrainsMonoNL_NFM_Light:h10:l"
+
+  if has('unix')
+    set guifont="JetBrainsMonoNL_Nerd_Font_Mono:h10:l"
+  endif
+
+  if has('win32')
+    set guifont="JetBrainsMonoNL_NFM_Light:h10:l"
+  endif
+
   set mouse=a
   if exists(':GuiTabline')
     GuiTabline 1
