@@ -1,0 +1,27 @@
+# Maintainer:
+# Contributor:
+
+pkgbase=python-aggregate-prefixes
+pkgname=('python-aggregate-prefixes')
+_pkgname=aggregate_prefixes
+pkgver=0.7.0
+pkgrel=2
+pkgdesc="Fast IPv4 and IPv6 prefix aggregator written in Python."
+url='https://pypi.org/project/aggregate-prefixes'
+arch=('any')
+license=('MIT')
+depends=('python')
+makedepends=('python-setuptools')
+source=("${pkgbase}-${pkgver}.tar.gz::https://pypi.io/packages/source/a/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('7373549d45aaf62a87472a63a52630ce7f2473bd427293acd3e19c21a7ace725')
+
+build() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python setup.py build
+}
+
+package() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python setup.py install --root="${pkgdir}" --skip-build --optimize=1
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
