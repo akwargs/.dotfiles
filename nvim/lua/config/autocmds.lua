@@ -11,6 +11,7 @@ vim.cmd([[
     au ColorScheme * highlight SignColumn guibg=#ececec
     au ColorScheme * highlight Pmenu guibg=#ececec
     au ColorScheme * highlight WhiteSpace guifg=#c4c8da
+    au ColorScheme * set background=light
   augroup end
 
   augroup _CLIAnalyzer
