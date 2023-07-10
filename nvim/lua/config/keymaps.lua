@@ -48,13 +48,13 @@ vim.api.nvim_set_keymap("n", "<C-w><Right>", ":vertical resize +2<CR>", { norema
 vim.api.nvim_set_keymap(
 	"i",
 	"..l",
-	"-------------------------------------------<CR><CR>",
+	"--------------------------------------------<CR><CR>",
 	{ noremap = true, silent = true }
 )
 vim.api.nvim_set_keymap(
 	"i",
 	"..d",
-	'======<C-R>=strftime("%a %Y-%m-%d %H:%M:%S %z")<CR>========<CR><CR>',
+	'=======<C-R>=strftime("%a %Y-%m-%d %H:%M:%S %z")<CR>========<CR><CR>',
 	{ noremap = true, silent = true }
 )
 
