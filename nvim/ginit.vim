@@ -18,6 +18,7 @@ if has('gui_running')
   endif
 
   set mouse=a
+
   if exists(':GuiTabline')
     GuiTabline 1
   endif
