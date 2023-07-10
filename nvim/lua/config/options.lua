@@ -13,5 +13,5 @@ vim.opt.ttimeout = false
 vim.opt.undodir = "."
 
 if vim.g.neovide then
-  vim.opt.guifont = "JetBrainsMonoNL Nerd Font Mono:h10"
+	vim.opt.guifont = "JetBrainsMonoNL Nerd Font Mono:h10"
 end
