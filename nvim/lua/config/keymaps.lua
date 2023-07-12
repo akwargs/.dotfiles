@@ -18,7 +18,7 @@ vim.api.nvim_set_keymap("n", "<C-PageUp>", ":bp<CR>", { noremap = true, silent =
 vim.api.nvim_set_keymap("n", "<C-PageDown>", ":bn<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("i", "<C-PageUp>", "<ESC>:bp<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("i", "<C-PageDown>", "<ESC>:bn<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>NN", ":IndentBlanklineToggle<CR>", { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("n", "<leader>NN", ":IndentBlanklineToggle<CR>", { noremap = true, silent = true })
 
 -- Sensical splits - match tmux
 vim.api.nvim_set_keymap("n", "<C-w>%", "<C-w>s", { noremap = true, silent = true })
@@ -46,16 +46,16 @@ vim.api.nvim_set_keymap("n", "<C-w><Right>", ":vertical resize +2<CR>", { norema
 
 -- Quick lines
 vim.api.nvim_set_keymap(
-	"i",
-	"..l",
-	"--------------------------------------------<CR><CR>",
-	{ noremap = true, silent = true }
+  "i",
+  "..l",
+  "--------------------------------------------<CR><CR>",
+  { noremap = true, silent = true }
 )
 vim.api.nvim_set_keymap(
-	"i",
-	"..d",
-	'=======<C-R>=strftime("%a %Y-%m-%d %H:%M:%S %z")<CR>========<CR><CR>',
-	{ noremap = true, silent = true }
+  "i",
+  "..d",
+  '=======<C-R>=strftime("%a %Y-%m-%d %H:%M:%S %z")<CR>========<CR><CR>',
+  { noremap = true, silent = true }
 )
 
 -- Very magic mode
@@ -88,7 +88,8 @@ vim.api.nvim_set_keymap(
 
 -- Haven't yet updated these
 vim.cmd([[
-  nnoremap <leader>nn :execute "set signcolumn="  .  (&signcolumn == "yes" ? "yes:4" : "yes") \| set nu! rnu! cul! list!<CR> :IndentBlanklineToggle<CR>
+  nnoremap <leader>nn :execute "set signcolumn="  .  (&signcolumn == "yes" ? "yes:4" : "yes") \| set nonu nornu nocul nolist<CR> :IndentBlanklineDisable<CR> :lua vim.b.miniindentscope_disable=true<CR>
+  nnoremap <leader>NN :execute "set signcolumn="  .  (&signcolumn == "yes" ? "yes:4" : "yes") \| set nu rnu cul list<CR> :IndentBlanklineEnable<CR> :lua vim.b.miniindentscope_disable=false<CR>
   " nnoremap <leader>nn :execute "set signcolumn="  .  (&signcolumn == "yes" ? "yes:4" : "yes") \| set nu! rnu! \| set cul!<CR> :IndentBlanklineToggle<CR>
   nnoremap <leader>cc :execute "set colorcolumn=" . (&colorcolumn == "" ? "80,120" : "")<CR>
 ]])
