@@ -23,7 +23,7 @@ if ($currentVersion -ge $requiredVersion) {
 Set-PSReadLineOption -BellStyle Visual
 Set-PSReadLineOption -PredictionViewStyle ListView
 Set-PSReadLineOption -EditMode Emacs
-Set-PSReadLineOption -HistorySavePath $Env:HOME\PSReadLineHistory.txt
+Set-PSReadLineOption -HistorySavePath $Env:HOME\.PSReadLineHistory.txt
 
 function l      { Get-ChildItem -Name }
 # function pll    { PowerColorLS -l -sd }
