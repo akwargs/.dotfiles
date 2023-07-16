@@ -11,7 +11,8 @@ vim.opt.mouse = ""
 -- vim.opt.statuscolumn = "%s %C %l %=%{v:relnum?v:relnum:v:lnum}   "
 vim.opt.ttimeout = false
 vim.opt.undodir = "."
+-- vim.opt.winbar = "%=%m %f"
 
 if vim.g.neovide then
-	vim.opt.guifont = "JetBrainsMonoNL Nerd Font Mono:h10"
+  vim.opt.guifont = "JetBrainsMonoNL Nerd Font Mono:h10"
 end
