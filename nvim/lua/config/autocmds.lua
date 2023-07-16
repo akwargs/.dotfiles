@@ -38,6 +38,11 @@ vim.cmd([[
     augroup end
   endif
 
+  augroup _WinSeparator
+    au!
+    au BufRead,BufNew,BufAdd * highlight WinSeparator guibg=none
+  augroup end
+
   augroup _logs
     au!
     au filetype help setlocal cul! cuc!
