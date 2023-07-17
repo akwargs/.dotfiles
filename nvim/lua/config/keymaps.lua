@@ -89,8 +89,10 @@ vim.api.nvim_set_keymap("i", "<A-BS>", "<C-w>", { noremap = true, silent = true 
 
 -- Haven't yet updated these
 vim.cmd([[
-  nnoremap <leader>nn :execute "set signcolumn="  .  (&signcolumn == "yes" ? "yes:4" : "yes") \| set nonu nornu nocul nolist<CR> :IndentBlanklineDisable<CR> :lua vim.b.miniindentscope_disable=true<CR>
-  nnoremap <leader>NN :execute "set signcolumn="  .  (&signcolumn == "yes" ? "yes:4" : "yes") \| set nu rnu cul list<CR> :IndentBlanklineEnable<CR> :lua vim.b.miniindentscope_disable=false<CR>
+  " nnoremap <leader>nn :execute "set signcolumn="  .  (&signcolumn == "yes" ? "yes:4" : "yes") \| set nonu nornu nocul nolist<CR> :IndentBlanklineDisable<CR> :lua vim.b.miniindentscope_disable=true<CR>
+  " nnoremap <leader>NN :execute "set signcolumn="  .  (&signcolumn == "yes" ? "yes:4" : "yes") \| set nu rnu cul list<CR> :IndentBlanklineEnable<CR> :lua vim.b.miniindentscope_disable=false<CR>
   " nnoremap <leader>nn :execute "set signcolumn="  .  (&signcolumn == "yes" ? "yes:4" : "yes") \| set nu! rnu! \| set cul!<CR> :IndentBlanklineToggle<CR>
+  nnoremap <leader>nn :set scl=no nonu nornu nocul nolist<CR> :IndentBlanklineDisable<CR> :lua vim.b.miniindentscope_disable=true<CR>
+  nnoremap <leader>NN :set scl=auto nu rnu cul list<CR> :IndentBlanklineEnable<CR> :lua vim.b.miniindentscope_disable=false<CR>
   nnoremap <leader>cc :execute "set colorcolumn=" . (&colorcolumn == "" ? "80,120" : "")<CR>
 ]])
