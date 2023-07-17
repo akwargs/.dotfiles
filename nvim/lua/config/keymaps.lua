@@ -57,6 +57,7 @@ vim.api.nvim_set_keymap(
   '=======<C-R>=strftime("%a %Y-%m-%d %H:%M:%S %z")<CR>========<CR><CR>',
   { noremap = true, silent = true }
 )
+vim.api.nvim_set_keymap("i", "<A-BS>", "<C-w>", { noremap = true, silent = true })
 
 -- Very magic mode
 -- vim.api.nvim_set_keymap("n", "/", "/\\v", { noremap = true, silent = true })
