@@ -3,7 +3,7 @@ highlight clear
 if exists('syntax_on')
   syntax reset
 endif
-set background=dark
+set background=light
 
 let s:t_Co = exists('&t_Co') && !empty(&t_Co) && &t_Co > 1 ? &t_Co : 2
 
@@ -290,6 +290,7 @@ else
 endif
 " }}}
 " }}}
+highlight! WinSeparator guibg=NONE
 " Extended File Types: {{{
 " Markdown: {{{
 " builtin: {{{

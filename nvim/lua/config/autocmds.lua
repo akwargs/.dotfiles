@@ -12,8 +12,8 @@ vim.cmd([[
     " au ColorScheme * highlight ColorColumn guibg=#ececec
     au ColorScheme * highlight Pmenu guibg=#ececec
     au ColorScheme * highlight WhiteSpace guifg=#c4c8da
-    au ColorScheme * highlight WinSeparator guibg=none
-    au ColorScheme * set background=light
+    " au ColorScheme * highlight WinSeparator guibg=none
+    " au ColorScheme * set background=light
     " https://github.com/neovim/neovim/wiki/FAQ#cursor-style-isnt-restored-after-exiting-or-suspending-and-resuming-nvim
     " au ColorScheme * highlight EndOfBuffer ctermbg=NONE ctermfg=200 cterm=NONE
     " au ColorScheme * highlight Normal ctermbg=NONE ctermfg=200 cterm=NONE
@@ -38,10 +38,10 @@ vim.cmd([[
     augroup end
   endif
 
-  augroup _WinSeparator
-    au!
-    au BufRead,BufNew,BufAdd * highlight WinSeparator guibg=none
-  augroup end
+  " augroup _WinSeparator
+  "   au!
+  "   au BufRead,BufNew,BufAdd * highlight WinSeparator guibg=none
+  " augroup end
 
   augroup _logs
     au!
