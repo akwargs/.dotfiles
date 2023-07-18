@@ -49,7 +49,7 @@ if filereadable( expand("$HOME/.vim/autoload/plug.vim") )
   let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
   Plug 'flazz/vim-colorschemes'
   Plug 'vimwiki/vimwiki'
-  let g:vimwiki_listsyms = ' 󰁻󰁽󰂁󱟢'
+  let g:vimwiki_listsyms = '󰂎󰁻󰁽󰂁󱟢'
   let g:vimwiki_list = [{'path': '~/.vim/vimwiki/',
                         \ 'syntax': 'markdown', 'ext': '.md',
                         \ 'links_space_char': '_'}]
