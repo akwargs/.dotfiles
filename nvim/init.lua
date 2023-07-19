@@ -1,6 +1,3 @@
 -- bootstrap lazy.nvim, LazyVim and your plugins
--- vim.cmd([[
---   " let g:python3_host_prog = '/usr/local/Python/pyenv/versions/py3nvim/bin/python'
---   " let g:python3_host_prog = '/usr/bin/python3'
--- ]])
+vim.g.python3_host_prog = "/usr/local/Python/pyenv/versions/py3nvim/bin/python"
 require("config.lazy")
