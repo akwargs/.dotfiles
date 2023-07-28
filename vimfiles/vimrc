@@ -2,7 +2,7 @@ set nocompatible
 filetype off
 
 "------------------------------------------------------
-if v:version >= 900
+" if v:version >= 900
 "------------------------------------------------------
 if empty(glob("$HOME/.vim/autoload/plug.vim"))
   if has("win32")
@@ -30,47 +30,110 @@ if filereadable( expand("$HOME/.vim/autoload/plug.vim") )
   \| endif
 
   call plug#begin('$HOME/.vim/plugged')
+  " Plug 'tpope/vim-sensible'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-commentary'
-  Plug 'kshenoy/vim-signature'
   Plug 'tpope/vim-fugitive'
-  Plug 'airblade/vim-gitgutter'
-  Plug 'sheerun/vim-polyglot'
-  let g:python_highlight_all = 1
-  Plug 'Vimjas/vim-python-pep8-indent'
+  " Plug 'tpope/fugitive-gitlab.vim'
+  Plug 'tpope/vim-repeat'
+  Plug 'tpope/vim-unimpaired'
+  Plug 'tpope/vim-rsi'          ""readline style insertion
+  Plug 'tpope/vim-endwise'
+  Plug 'tpope/vim-eunuch'
+  Plug 'tpope/vim-abolish'
+  Plug 'tpope/vim-tbone'        ""tmux
+  Plug 'tpope/vim-sleuth'       ""auto sw et
+  Plug 'tpope/vim-characterize'
+  Plug 'tpope/vim-speeddating'
+  " Plug 'tpope/vim-apathy'       ""path searching options
+
   Plug 'junegunn/vim-easy-align'
   xmap ga <Plug>(EasyAlign)
   nmap ga <Plug>(EasyAlign)
+  Plug 'godlygeek/tabular'
+  Plug 'easymotion/vim-easymotion'
+  Plug 'justinmk/vim-sneak'
+  let g:sneak#label = 1
+  Plug 'inkarkat/vim-ReplaceWithRegister'
+  Plug 'tommcdo/vim-exchange'
+  Plug 'dbakker/vim-paragraph-motion'
+  " Plug 'terryma/vim-multiple-cursors'
+  " Plug 'unblevable/quick-scope'  ""too slow
+  " Plug 'bkad/CamelCaseMotion'
+  " Plug 'jlanzarotta/bufexplorer'
+
+  " Programming
+  Plug 'sheerun/vim-polyglot'
+  let g:python_highlight_all = 1
+  Plug 'Vimjas/vim-python-pep8-indent'
+  " Plug 'editorconfig/editorconfig-vim'
+  Plug 'SirVer/ultisnips'
+  let g:UltiSnipsExpandTrigger="<tab>"
+  let g:UltiSnipsJumpForwardTrigger="<c-b>"
+  let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+  " Plug 'ervandew/supertab'
+  " Plug 'honza/vim-snippets'
+  " Plug 'tpope/vim-jdaddy'       ""JSON
+  " Plug 'tpope/vim-scriptease'   ""Dev Plugins
+  Plug 'tpope/vim-ragtag'
+  Plug 'kien/ctrlp.vim'
+
+  " Objects
+  " Plug 'wellle/targets.vim'
+  " Plug 'kana/vim-textobj-user'
+  " Plug 'kana/vim-textobj-entire'
+  " Plug 'kana/vim-textobj-indent'
+  " Plug 'preservim/vim-textobj-sentence'
+  " Plug 'preservim/vim-textobj-quote'
+  " Plug 'michaeljsmith/vim-indent-object'
+  " Plug 'vim-scripts/argtextobj.vim'
+  " let g:argtextobj_pairs="[:],(:),<:>"
+
+  " Signs and Colors
+  Plug 'airblade/vim-gitgutter'
+  Plug 'kshenoy/vim-signature'
+  Plug 'machakann/vim-highlightedyank'
+  let g:highlightedyank_highlight_duration = 250
+  let g:highlightedyank_highlight_in_visual = 0
   Plug 'Yggdroot/indentLine'
   let g:indentLine_char  = ''
   Plug 'frazrepo/vim-rainbow'
   let g:rainbow_active   = 1
-  let g:rainbow_guifgs   = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
-  let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
+  " let g:rainbow_guifgs   = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
+  " let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
+
+  " Colorscheme
+  Plug 'itchyny/lightline.vim'
+  " Plug 'vim-airline/vim-airline'
+  " Plug 'vim-airline/vim-airline-themes'
+  Plug 'preservim/vim-colors-pencil'
+  Plug 'pbrisbin/vim-colors-off'
   Plug 'flazz/vim-colorschemes'
+  Plug 'axvr/photon.vim'
+  Plug 'nanotech/jellybeans.vim'
+
+  " New/Enhance functionality
+  Plug 'tpope/vim-vinegar'    ""Improves netrw
   Plug 'vimwiki/vimwiki'
   let g:vimwiki_listsyms = '󰂎󰁻󰁽󰂁󱟢'
   let g:vimwiki_list = [{'path': '~/.vim/vimwiki/',
                         \ 'syntax': 'markdown', 'ext': '.md',
                         \ 'links_space_char': '_'}]
-  au FileType vimwiki setlocal sw=5 ts=5 sts=5 tw=0 noexpandtab
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
-  Plug 'tpope/vim-vinegar'
-  Plug 'preservim/vim-pencil'
-  Plug 'preservim/vim-lexical'
-  Plug 'preservim/vim-litecorrect'
-  Plug 'kana/vim-textobj-user'
-  Plug 'preservim/vim-textobj-sentence'
-  Plug 'preservim/vim-textobj-quote'
-  Plug 'preservim/vim-wordy'
+  au FileType vimwiki setlocal tw=0
+
+  " Try later
+  " Plug 'preservim/vim-pencil'
+  " Plug 'preservim/vim-lexical'
+  " Plug 'preservim/vim-litecorrect'
+  " Plug 'preservim/vim-wordy'
   call plug#end()
 endif
 
 if filereadable( expand("$HOME/.vim/plugged/vim-airline/plugin/airline.vim") )
-  " if !has("gui_running")
+  " let g:airline_theme = 'pencil'
+  if !has("gui_running")
     let g:airline_powerline_fonts = 1
-  " endif
+  endif
   let g:airline#extensions#tabline#enabled = 1
   let g:airline#extensions#tabline#buffer_nr_show = 1
   let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
@@ -83,45 +146,68 @@ if filereadable( expand("$HOME/.vim/plugged/vim-airline/plugin/airline.vim") )
                                   \ 'colnr'])
 endif
 
+if filereadable( expand("$HOME/.vim/plugged/lightline.vim/plugin/lightline.vim") )
+  let g:lightline = {
+    \ 'colorscheme': 'one',
+    \ 'active' : {
+    \   'left' : [ [ 'mode', 'paste' ],
+    \            [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+    \   'right': [ [ 'percent' ],
+    \            [ 'fileformat', 'fileencoding', 'filetype', 'charvaluedec', 'charvaluehex' ],
+    \            [ 'lineinfo' ] ]
+    \ },
+    \ 'component_function': {
+    \   'gitbranch': 'FugitiveHead'
+    \ },
+    \ 'component': {
+    \   'charvaluedec': '%b',
+    \   'charvaluehex': '0x%B'
+    \ },
+  \ }
+  endif
+
 " extended matching with "%"
 packadd! matchit
-set display=truncate
-set nolangremap
-set signcolumn=yes
+" or Plug 'adelarsq/vim-matchit'
 "------------------------------------------------------
-endif "if v:version >= 900
+" endif "if v:version >= 900
 "------------------------------------------------------
 
 filetype plugin indent on
 syntax on
 
 let mapleader = " "
-
+set backup
 set cmdheight=2
 set clipboard=unnamed
-set cursorline
+" set cursorline
+" set cursorcolumn
+set display=truncate
 set expandtab
-set fileformat=unix
-set fileformats=unix,dos
+" set fileformat=unix
+set fileformats=unix,dos,mac
 set foldmethod=syntax
 set hidden
-set history=1999
+set history=100
 set ignorecase
 set incsearch
 set infercase
 " set iskeyword+=- " to make '-' a word character
 " set iskeyword-=_ " to make '_' not a word character
+set nolangremap
+set laststatus=2
 set list
 set listchars=tab:»·,trail:·
 set modelines=1
 set mouse=
-set number
+set nu rnu
 if &diff
   set nu nornu nocul nocuc
 endif
 set pastetoggle=<F12>
 set ruler
 set shiftwidth=4
+set signcolumn=yes
 set smartcase
 set showmatch
 set smartindent
@@ -129,6 +215,8 @@ set softtabstop=4
 set nostartofline
 set tabstop=4
 set textwidth=80
+set undodir=.
+set undofile
 set visualbell
 set whichwrap=<,>,h,l
 set wildmenu
@@ -238,6 +326,14 @@ if has("win32")
   endif
 endif
 
+if !&diff
+  augroup signcolumngroup
+    au!
+    autocmd BufEnter,FocusGained,InsertLeave * if &signcolumn == "yes" | set rnu | endif
+    autocmd BufLeave,FocusLost,InsertEnter   * if &signcolumn == "yes" | set nornu | endif
+  augroup END
+endif
+
 map Q gq
 
 inoremap <C-U> <C-G>u<C-U>
@@ -263,25 +359,55 @@ nnoremap <C-W>X     <C-W>c
 nnoremap <leader>j :%!jq .<CR>
 nnoremap <leader>J :%!jq . -c<CR>
 nnoremap <leader>l :nohl<CR>
-nnoremap <silent> <leader>nn :execute "set nonu nornu nocuc nocul nolist" \| :IndentLinesDisable<CR>
-nnoremap <silent> <leader>N  :execute "set nu cul list" \| :IndentLinesEnable<CR>
-nnoremap <silent> <leader>cc :execute "set colorcolumn=" . (&colorcolumn == "" ? "80,120" : "")<CR>
-nnoremap <silent> <leader>RR :execute "set rnu!"<CR>
-nnoremap <silent> <leader>RC :execute "set cuc!"<CR>
 
-:command NN :IndentLinesToggle
+function! Toggler()
+  :GitGutterSignsToggle
+  :IndentLinesToggle
+endfunction
+
+nnoremap <silent> <leader>nn :exe "set nu! rnu! list!" \| call Toggler()<CR>
+nnoremap <silent> <leader>cc :exe "set colorcolumn=" . (&colorcolumn == "" ?R"80,120" : "")<CR>
+nnoremap <silent> <leader>RR :exe "set rnu!"<CR>
+nnoremap <silent> <leader>RC :exe "set cuc!"<CR>
+" :command NN :IndentLinesToggle
 
 iab <buffer> um µm
 iab <buffer> usec µs
 
-try
-  colorscheme jellybeans
-catch /^Vim\%((\a\+)\)\=:E185/
-  colorscheme slate
-endtry
+if !empty($VIM_LIGHT)
+  set bg=light
+  try
+    " colorscheme pencil
+    " let g:pencil_higher_contrast_ui = 1
+    " let g:pencil_neutral_code_bg = 1
+    " let g:pencil_gutter_color = 1
+    " let g:pencil_spell_undercurl = 1
+    " let g:pencil_terminal_italics = 1
+    " colorscheme off
+    " let g:colors_off_a_little=1
+    " colorscheme stackoverflow
+    colorscheme antiphoton
+    highlight clear specialkey
+    highlight clear signcolumn
+    highlight clear foldcolumn
+    " augroup HIGHLIGHT
+    "   au!
+    "   au ColorScheme * highlight clear specialkey
+    "   au ColorScheme * highlight clear signcolumn
+    "   au ColorScheme * highlight clear foldcolumn
+    "   " au ColorScheme * highlight specialkey ctermfg=242
+    "   " au ColorScheme * highlight specialkey ctermfg=249
+    " augroup END
+  catch /^Vim\%((\a\+)\)\=:E185/
+    colorscheme default
+  endtry
+else
+  set bg=dark
+  try
+    colorscheme jellybeans
+  catch /^Vim\%((\a\+)\)\=:E185/
+    colorscheme slate
+  endtry
+endif
 
-highlight clear specialkey
-highlight specialkey ctermfg=242
-highlight clear signcolumn
-highlight clear foldcolumn
 " vim:ft=vim:tw=0:sw=2:ts=2:sts=2:nowrap
