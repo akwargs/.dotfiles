@@ -34,7 +34,7 @@
 - `+`           -- Create and/or decorate links.
 
 
-- [ ] -- 0% complete
+- [󰂎] -- 0% complete
 - [󰁻] -- 1-33% complete
 - [󰁽] -- 34-66% complete
 - [󰂁] -- 67-99% complete
