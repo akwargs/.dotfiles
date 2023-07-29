@@ -404,9 +404,9 @@ if !empty($VIM_LIGHT)
 else
   set bg=dark
   try
-    colorscheme jellybeans
+    colorscheme photon
   catch /^Vim\%((\a\+)\)\=:E185/
-    colorscheme slate
+    colorscheme off
   endtry
 endif
 
