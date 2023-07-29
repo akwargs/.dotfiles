@@ -71,8 +71,8 @@ if filereadable( expand("$HOME/.vim/autoload/plug.vim") )
   let g:UltiSnipsExpandTrigger="<tab>"
   let g:UltiSnipsJumpForwardTrigger="<c-b>"
   let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+  Plug 'honza/vim-snippets'
   " Plug 'ervandew/supertab'
-  " Plug 'honza/vim-snippets'
   " Plug 'tpope/vim-jdaddy'       ""JSON
   " Plug 'tpope/vim-scriptease'   ""Dev Plugins
   Plug 'tpope/vim-ragtag'
@@ -99,8 +99,8 @@ if filereadable( expand("$HOME/.vim/autoload/plug.vim") )
   let g:indentLine_char  = ''
   Plug 'frazrepo/vim-rainbow'
   let g:rainbow_active   = 1
-  " let g:rainbow_guifgs   = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
-  " let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
+  let g:rainbow_guifgs   = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
+  let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
 
   " Colorscheme
   Plug 'itchyny/lightline.vim'
@@ -215,7 +215,7 @@ set softtabstop=4
 set nostartofline
 set tabstop=4
 set textwidth=80
-set undodir=.
+" set undodir=.
 set undofile
 set visualbell
 set whichwrap=<,>,h,l
