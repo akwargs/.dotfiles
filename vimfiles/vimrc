@@ -77,7 +77,7 @@ if filereadable( expand("$HOME/.vim/autoload/plug.vim") )
   " Plug 'tpope/vim-jdaddy'       ""JSON
   " Plug 'tpope/vim-scriptease'   ""Dev Plugins
   Plug 'tpope/vim-ragtag'
-  Plug 'kien/ctrlp.vim'
+  Plug 'ctrlpvim/ctrlp.vim'
 
   " Objects
   " Plug 'wellle/targets.vim'
