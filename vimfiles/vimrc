@@ -367,7 +367,7 @@ function! Toggler()
 endfunction
 
 nnoremap <silent> <leader>nn :exe "set nu! rnu! list!" \| call Toggler()<CR>
-nnoremap <silent> <leader>cc :exe "set colorcolumn=" . (&colorcolumn == "" ?R"80,120" : "")<CR>
+nnoremap <silent> <leader>cc :exe "set colorcolumn=" . (&colorcolumn == "" ? "80,120" : "")<CR>
 nnoremap <silent> <leader>RR :exe "set rnu!"<CR>
 nnoremap <silent> <leader>RC :exe "set cuc!"<CR>
 " :command NN :IndentLinesToggle
