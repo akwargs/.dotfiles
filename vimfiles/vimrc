@@ -216,6 +216,7 @@ set softtabstop=4
 set nostartofline
 set tabstop=4
 set textwidth=80
+set timeout timeoutlen=3000 ttimeoutlen=100
 " set undodir=.
 set undofile
 set visualbell
