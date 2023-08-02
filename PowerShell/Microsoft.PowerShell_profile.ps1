@@ -3,15 +3,8 @@ $PowerShellPath = Split-Path $PowerShellProfile
 Import-Module $PowerShellPath\Modules\VirtualEnvWrapper.psm1
 # Import-Module Terminal-Icons
 # Import-Module PowerColorLS
-Import-Module z
 # Import-Module git-aliases -DisableNameChecking
-
-# Set-Alias l PowerColorLS
-Set-Alias ll Get-ChildItem
-Set-Alias vboxmanage 'C:\Program Files\Oracle\VirtualBox\VBoxManage.exe'
-Set-Alias wc lwc.exe
-Set-Alias http xh.exe
-Set-Alias m bat.exe
+Import-Module z
 
 $currentVersion = $PSVersionTable.PSVersion
 $requiredVersion = [Version]'7.2'
@@ -25,60 +18,6 @@ Set-PSReadLineOption -PredictionViewStyle ListView
 Set-PSReadLineOption -EditMode Emacs
 Set-PSReadLineOption -HistorySavePath $Env:HOME\.PSReadLineHistory.txt
 
-function l      { Get-ChildItem -Name }
-# function pll    { PowerColorLS -l -sd }
-# function plla   { PowerColorLS -l -a -sd }
-# Set-Alias lla plla
-# function m      { bat.exe --pager="less -XRF" $args }
-function d      { diff.exe -u $args }
-function g      { rg.exe -NPi $args }
-# function g($pattern)      { Select-String -Pattern $pattern }
-# function mywiki { vim.exe +VimwikiIndex }
-function vi     { nvim.exe -u NONE -U NONE $args }
-Set-Alias vim vi
-# function mvim   { vim.exe -u $env:HOME\vimfiles\vimrc_minimal $args }
-# function linux  { putty.exe -load linux }
-function start_linux { vboxmanage startvm linux --type headless }
-function rmrf   { Remove-Item -Recurse -Force $args }
-
-function NvChad { Set-Item -Path Env:NVIM_APPNAME -Value NvChad && nvim }
-function AstroNvim { Set-Item -Path Env:NVIM_APPNAME -Value AstroNvim && nvim }
-function kickstart { Set-Item -Path Env:NVIM_APPNAME -Value kickstart && nvim }
-function LunarVim { Set-Item -Path Env:NVIM_APPNAME -Value LunarVim && nvim }
-function SpaceVim { Set-Item -Path Env:NVIM_APPNAME -Value SpaceVim && nvim }
-function LazyVim { Set-Item -Path Env:NVIM_APPNAME -Value LazyVim && nvim }
-function mynvim { Remove-Item -Path Env:NVIM_APPNAME && nvim }
-
-function Get-PubIP {
-    (Invoke-WebRequest http://ifconfig.me/ip ).Content
-}
-
-function Get-UTC { Get-Date -Format U }
-
-function Get-Pass {
-    -join(48..57+65..90+97..122|ForEach-Object{[char]$_}|Get-Random -C 20)
-}
-
-function mywhich($name) {
-    Get-Command $name | Select-Object -ExpandProperty Definition
-}
-
-function myhist([int]$Count=100) {
-    Get-Content -LiteralPath (Get-PSReadLineOption).HistorySavePath | Select-Object -Last $Count
-}
-
-function myln($original, $new) {
-    New-Item -ItemType HardLink -Path $new -Target $original
-}
-
-function mylnj($original, $new) {
-    New-Item -ItemType Junction -Path $new -Target $original
-}
-
-if ($PSVersionTable.PSVersion.Major -ge 7) {
-    try { $null = gcm pshazz -ea stop; pshazz init } catch { }
-}
-
 # from https://github.com/gluons/powershell-git-aliases
 # Import-Module leads to git error; TODO: debug
 Remove-Alias gc -Force -ErrorAction SilentlyContinue
@@ -89,7 +28,71 @@ Remove-Alias gl -Force -ErrorAction SilentlyContinue
 Remove-Alias gm -Force -ErrorAction SilentlyContinue
 Remove-Alias gp -Force -ErrorAction SilentlyContinue
 Remove-Alias gpv -Force -ErrorAction SilentlyContinue
+Remove-Alias history -Force -ErrorAction SilentlyContinue
 
+# Set-Alias l PowerColorLS
+Set-Alias ll Get-ChildItem
+Set-Alias vboxmanage 'C:\Program Files\Oracle\VirtualBox\VBoxManage.exe'
+Set-Alias wc lwc.exe
+Set-Alias http xh.exe
+Set-Alias m bat.exe
+
+function l      { Get-ChildItem -Name }
+function d      { diff.exe -u $args }
+function g      { rg.exe -NPi $args }
+# function g($pattern)      { Select-String -Pattern $pattern }
+function m      { bat.exe --pager="less -XRF" $args }
+function rmrf   { Remove-Item -Recurse -Force $args }
+# function pll    { PowerColorLS -l -sd }
+# function plla   { PowerColorLS -l -a -sd }
+# Set-Alias lla plla
+# function mywiki { vim.exe +VimwikiIndex }
+# function vi     { nvim.exe -u NONE -U NONE $args }
+# Set-Alias vim vi
+# function mvim   { vim.exe -u $env:HOME\vimfiles\vimrc_minimal $args }
+# function linux  { putty.exe -load linux }
+# function start_linux { vboxmanage startvm linux --type headless }
+# function NvChad { Set-Item -Path Env:NVIM_APPNAME -Value NvChad && nvim }
+# function AstroNvim { Set-Item -Path Env:NVIM_APPNAME -Value AstroNvim && nvim }
+# function kickstart { Set-Item -Path Env:NVIM_APPNAME -Value kickstart && nvim }
+# function LunarVim { Set-Item -Path Env:NVIM_APPNAME -Value LunarVim && nvim }
+# function SpaceVim { Set-Item -Path Env:NVIM_APPNAME -Value SpaceVim && nvim }
+# function LazyVim { Set-Item -Path Env:NVIM_APPNAME -Value LazyVim && nvim }
+# function mynvim { Remove-Item -Path Env:NVIM_APPNAME && nvim }
+
+if ($PSVersionTable.PSVersion.Major -ge 7) {
+    try { $null = gcm pshazz -ea stop; pshazz init } catch { }
+}
+
+function Get-PubIP {
+    (Invoke-WebRequest http://ifconfig.me/ip ).Content
+}
+
+function Get-UTC {
+    Get-Date -Format U
+}
+
+function Get-Pass {
+    -join(48..57+65..90+97..122|ForEach-Object{[char]$_}|Get-Random -C 20)
+}
+
+function which($name) {
+    Get-Command $name | Select-Object -ExpandProperty Definition
+}
+
+function history([int]$Count=100) {
+    Get-Content -LiteralPath (Get-PSReadLineOption).HistorySavePath | Select-Object -Last $Count
+}
+
+function link($original, $new) {
+    New-Item -ItemType HardLink -Path $new -Target $original
+}
+
+function myjunction($original, $new) {
+    New-Item -ItemType Junction -Path $new -Target $original
+}
+
+# Git
 function ga {
     git add $args
 }
@@ -496,4 +499,3 @@ function ggp {
 
     git push origin $CurrentBranch
 }
-
