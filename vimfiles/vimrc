@@ -357,9 +357,9 @@ nnoremap <C-W>-     <C-W>s
 nnoremap <C-W><bar> <C-W>v
 nnoremap <C-W>c     <C-L>
 nnoremap <C-W>X     <C-W>c
-nnoremap <leader>j :%!jq .<CR>
-nnoremap <leader>J :%!jq . -c<CR>
-nnoremap <leader>l :nohl<CR>
+nnoremap <leader>jq :%!jq .<CR>
+nnoremap <leader>Jq :%!jq . -c<CR>
+nnoremap <leader>hl :nohl<CR>
 
 function! Toggler()
   :GitGutterSignsToggle
@@ -368,8 +368,8 @@ endfunction
 
 nnoremap <silent> <leader>nn :exe "set nu! rnu! list!" \| call Toggler()<CR>
 nnoremap <silent> <leader>cc :exe "set colorcolumn=" . (&colorcolumn == "" ? "80,120" : "")<CR>
-nnoremap <silent> <leader>RR :exe "set rnu!"<CR>
-nnoremap <silent> <leader>RC :exe "set cuc!"<CR>
+nnoremap <silent> <leader>rr :exe "set rnu!"<CR>
+nnoremap <silent> <leader>cu :exe "set cuc!"<CR>
 " :command NN :IndentLinesToggle
 
 iab <buffer> um µm
