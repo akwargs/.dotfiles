@@ -1,9 +1,3 @@
-if exists('g:vscode')
-""VSCode extension
-
-else
-""begin ordinary Neovim
-
 set nocompatible
 filetype off
 if empty(glob("$HOME/.vim/autoload/plug.vim"))
@@ -300,6 +294,4 @@ if has("gui_running")
   map <ScrollWheelUp>   <C-Y>
   map <ScrollWheelDown> <C-E>
 endif
-
-endif ""if exists('g:vscode')
 " vim:ft=vim:tw=0:sw=2:ts=2:sts=2:nowrap
