@@ -1,9 +1,6 @@
 set nocompatible
 filetype off
 
-"------------------------------------------------------
-" if v:version >= 900
-"------------------------------------------------------
 if empty(glob("$HOME/.vim/autoload/plug.vim"))
   if has("win32")
     silent ! powershell -Command "
@@ -30,12 +27,11 @@ if filereadable( expand("$HOME/.vim/autoload/plug.vim") )
   \| endif
 
   call plug#begin('$HOME/.vim/plugged')
-  " Plug 'tpope/vim-sensible'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-fugitive'
+  Plug 'tpope/fugitive-gitlab.vim'
   Plug 'tpope/vim-rhubarb'
-  " Plug 'tpope/fugitive-gitlab.vim'
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-unimpaired'
   Plug 'tpope/vim-rsi'          ""readline style insertion
@@ -46,8 +42,7 @@ if filereadable( expand("$HOME/.vim/autoload/plug.vim") )
   Plug 'tpope/vim-sleuth'       ""auto sw et
   Plug 'tpope/vim-characterize'
   Plug 'tpope/vim-speeddating'
-  " Plug 'tpope/vim-apathy'       ""path searching options
-
+  Plug 'tpope/vim-apathy'       ""path searching options
   Plug 'junegunn/vim-easy-align'
   xmap ga <Plug>(EasyAlign)
   nmap ga <Plug>(EasyAlign)
@@ -58,37 +53,24 @@ if filereadable( expand("$HOME/.vim/autoload/plug.vim") )
   Plug 'inkarkat/vim-ReplaceWithRegister'
   Plug 'tommcdo/vim-exchange'
   Plug 'dbakker/vim-paragraph-motion'
-  " Plug 'terryma/vim-multiple-cursors'
-  " Plug 'unblevable/quick-scope'  ""too slow
-  " Plug 'bkad/CamelCaseMotion'
-  " Plug 'jlanzarotta/bufexplorer'
-
-  " Programming
   Plug 'sheerun/vim-polyglot'
   let g:python_highlight_all = 1
   Plug 'Vimjas/vim-python-pep8-indent'
-  " Plug 'editorconfig/editorconfig-vim'
+  Plug 'editorconfig/editorconfig-vim'
   Plug 'SirVer/ultisnips'
   let g:UltiSnipsExpandTrigger="<tab>"
   let g:UltiSnipsJumpForwardTrigger="<c-b>"
   let g:UltiSnipsJumpBackwardTrigger="<c-z>"
   Plug 'honza/vim-snippets'
-  " Plug 'ervandew/supertab'
-  " Plug 'tpope/vim-jdaddy'       ""JSON
-  " Plug 'tpope/vim-scriptease'   ""Dev Plugins
+  Plug 'tpope/vim-jdaddy'       ""JSON
   Plug 'tpope/vim-ragtag'
   Plug 'ctrlpvim/ctrlp.vim'
+  Plug 'adelarsq/vim-matchit'
+  " Plug 'tpope/vim-scriptease'   ""for developing plugins
 
   " Objects
-  " Plug 'wellle/targets.vim'
-  " Plug 'kana/vim-textobj-user'
-  " Plug 'kana/vim-textobj-entire'
-  " Plug 'kana/vim-textobj-indent'
-  " Plug 'preservim/vim-textobj-sentence'
-  " Plug 'preservim/vim-textobj-quote'
-  " Plug 'michaeljsmith/vim-indent-object'
-  " Plug 'vim-scripts/argtextobj.vim'
-  " let g:argtextobj_pairs="[:],(:),<:>"
+  Plug 'wellle/targets.vim'
+  Plug 'michaeljsmith/vim-indent-object'
 
   " Signs and Colors
   Plug 'airblade/vim-gitgutter'
@@ -121,12 +103,6 @@ if filereadable( expand("$HOME/.vim/autoload/plug.vim") )
                         \ 'syntax': 'markdown', 'ext': '.md',
                         \ 'links_space_char': '_'}]
   au FileType vimwiki setlocal tw=0
-
-  " Try later
-  " Plug 'preservim/vim-pencil'
-  " Plug 'preservim/vim-lexical'
-  " Plug 'preservim/vim-litecorrect'
-  " Plug 'preservim/vim-wordy'
   call plug#end()
 endif
 
@@ -167,12 +143,7 @@ if filereadable( expand("$HOME/.vim/plugged/lightline.vim/plugin/lightline.vim")
   \ }
   endif
 
-" extended matching with "%"
-packadd! matchit
-" or Plug 'adelarsq/vim-matchit'
-"------------------------------------------------------
-" endif "if v:version >= 900
-"------------------------------------------------------
+"" packadd! matchit - replaced with plugin
 
 filetype plugin indent on
 syntax on
@@ -185,7 +156,7 @@ set clipboard=unnamed
 " set cursorcolumn
 set display=truncate
 set expandtab
-" set fileformat=unix
+set fileformat=unix
 set fileformats=unix,dos,mac
 set foldmethod=syntax
 set hidden
@@ -237,44 +208,6 @@ augroup Vim
   au!
   autocmd FileType vim setlocal sw=2 ts=2 sts=2 foldmethod=indent
 augroup END
-
-if filereadable( expand("$HOME/.vim/plugged/vim-pencil/plugin/pencil.vim") )
-  function! Prose()
-    call pencil#init()
-    call lexical#init()
-    call litecorrect#init()
-    call textobj#quote#init()
-    call textobj#sentence#init()
-
-    " manual reformatting shortcuts
-    nnoremap <buffer> <silent> Q gqap
-    xnoremap <buffer> <silent> Q gq
-    nnoremap <buffer> <silent> <leader>Q vapJgqap
-
-    " automatic lefthand smartquote doesn't work right
-    inoremap <buffer> <c-'> “
-    inoremap <buffer> <a-'> ‘
-    inoremap <buffer> -- —
-    inoremap <buffer> ft' ′
-    inoremap <buffer> in" ″
-
-    " open most folds
-    setlocal foldlevel=6
-
-    " replace typographical quotes (reedes/vim-textobj-quote)
-    map <silent> <buffer> <leader>qc <Plug>ReplaceWithCurly
-    map <silent> <buffer> <leader>qs <Plug>ReplaceWithStraight
-
-    " highlight words (reedes/vim-wordy)
-    nnoremap <silent> <buffer> <F8> :<C-u>NextWordy<cr>
-    xnoremap <silent> <buffer> <F8> :<C-u>NextWordy<cr>
-    inoremap <silent> <buffer> <F8> <C-o>:NextWordy<cr>
-
-  endfunction
-
-  " automatically initialize buffer by file type
-  autocmd FileType text call Prose()
-endif
 
 augroup vimStartup
   au!
