@@ -1,6 +1,11 @@
+if exists('g:vscode')
+""VSCode extension
+
+else
+""begin ordinary Neovim
+
 set nocompatible
 filetype off
-
 if empty(glob("$HOME/.vim/autoload/plug.vim"))
   if has("win32")
     silent ! powershell -Command "
@@ -30,8 +35,8 @@ if filereadable( expand("$HOME/.vim/autoload/plug.vim") )
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-fugitive'
-  Plug 'tpope/fugitive-gitlab.vim'
   Plug 'tpope/vim-rhubarb'
+  Plug 'tpope/fugitive-gitlab.vim'
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-unimpaired'
   Plug 'tpope/vim-rsi'          ""readline style insertion
@@ -53,6 +58,9 @@ if filereadable( expand("$HOME/.vim/autoload/plug.vim") )
   Plug 'inkarkat/vim-ReplaceWithRegister'
   Plug 'tommcdo/vim-exchange'
   Plug 'dbakker/vim-paragraph-motion'
+  Plug 'jlanzarotta/bufexplorer'
+  Plug 'terryma/vim-multiple-cursors'
+  Plug 'bkad/CamelCaseMotion'
   Plug 'sheerun/vim-polyglot'
   let g:python_highlight_all = 1
   Plug 'Vimjas/vim-python-pep8-indent'
@@ -62,17 +70,19 @@ if filereadable( expand("$HOME/.vim/autoload/plug.vim") )
   let g:UltiSnipsJumpForwardTrigger="<c-b>"
   let g:UltiSnipsJumpBackwardTrigger="<c-z>"
   Plug 'honza/vim-snippets'
-  Plug 'tpope/vim-jdaddy'       ""JSON
+  Plug 'tpope/vim-jdaddy'
   Plug 'tpope/vim-ragtag'
   Plug 'ctrlpvim/ctrlp.vim'
-  Plug 'adelarsq/vim-matchit'
-  " Plug 'tpope/vim-scriptease'   ""for developing plugins
-
-  " Objects
   Plug 'wellle/targets.vim'
   Plug 'michaeljsmith/vim-indent-object'
-
-  " Signs and Colors
+  Plug 'adelarsq/vim-matchit'
+  Plug 'tpope/vim-vinegar'
+  Plug 'vimwiki/vimwiki'
+  let g:vimwiki_listsyms = '󰂎󰁻󰁽󰂁󱟢'
+  let g:vimwiki_list = [{'path': '~/vimfiles/vimwiki/',
+                        \ 'syntax': 'markdown', 'ext': '.md',
+                        \ 'links_space_char': '_'}]
+  au FileType vimwiki setlocal tw=0
   Plug 'airblade/vim-gitgutter'
   Plug 'kshenoy/vim-signature'
   Plug 'machakann/vim-highlightedyank'
@@ -80,13 +90,10 @@ if filereadable( expand("$HOME/.vim/autoload/plug.vim") )
   let g:highlightedyank_highlight_in_visual = 0
   Plug 'Yggdroot/indentLine'
   let g:indentLine_char  = ''
+  let g:indentLine_defaultGroup = 'SpecialKey'
+  let g:indentLine_enabled = 0
   Plug 'frazrepo/vim-rainbow'
   let g:rainbow_active   = 1
-  let g:rainbow_guifgs   = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
-  let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
-
-  " Colorscheme
-  " Plug 'itchyny/lightline.vim'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'preservim/vim-colors-pencil'
@@ -94,20 +101,15 @@ if filereadable( expand("$HOME/.vim/autoload/plug.vim") )
   Plug 'flazz/vim-colorschemes'
   Plug 'axvr/photon.vim'
   Plug 'nanotech/jellybeans.vim'
-
-  " New/Enhance functionality
-  Plug 'tpope/vim-vinegar'    ""Improves netrw
-  Plug 'vimwiki/vimwiki'
-  let g:vimwiki_listsyms = '󰂎󰁻󰁽󰂁󱟢'
-  let g:vimwiki_list = [{'path': '~/.vim/vimwiki/',
-                        \ 'syntax': 'markdown', 'ext': '.md',
-                        \ 'links_space_char': '_'}]
-  au FileType vimwiki setlocal tw=0
   call plug#end()
 endif
 
+filetype plugin indent on
+syntax on
+let mapleader = " "
+
 if filereadable( expand("$HOME/.vim/plugged/vim-airline/plugin/airline.vim") )
-  " let g:airline_theme = 'pencil'
+  let g:airline_theme = 'pencil'
   let g:airline_powerline_fonts = 1
   let g:airline#extensions#tabline#enabled = 1
   let g:airline#extensions#tabline#buffer_nr_show = 1
@@ -121,41 +123,12 @@ if filereadable( expand("$HOME/.vim/plugged/vim-airline/plugin/airline.vim") )
                                   \ 'colnr'])
 endif
 
-" if filereadable( expand("$HOME/.vim/plugged/lightline.vim/plugin/lightline.vim") )
-"   let g:lightline = {
-"     \ 'colorscheme': 'one',
-"     \ 'active' : {
-"     \   'left' : [ [ 'mode', 'paste' ],
-"     \            [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
-"     \   'right': [ [ 'percent' ],
-"     \            [ 'fileformat', 'fileencoding', 'filetype', 'charvaluedec', 'charvaluehex' ],
-"     \            [ 'lineinfo' ] ]
-"     \ },
-"     \ 'component_function': {
-"     \   'gitbranch': 'FugitiveHead'
-"     \ },
-"     \ 'component': {
-"     \   'charvaluedec': '%b',
-"     \   'charvaluehex': '0x%B'
-"     \ },
-"   \ }
-"   endif
-
-"" packadd! matchit - replaced with plugin
-
-filetype plugin indent on
-syntax on
-
-let mapleader = " "
-set backup
 set cmdheight=2
 set clipboard=unnamed
-" set cursorline
-" set cursorcolumn
 set display=truncate
 set expandtab
 set fileformat=unix
-set fileformats=unix,dos,mac
+set fileformats=unix,dos
 set foldmethod=syntax
 set hidden
 set history=100
@@ -186,8 +159,14 @@ set nostartofline
 set tabstop=4
 set textwidth=80
 set timeout timeoutlen=3000 ttimeoutlen=100
-" set undodir=.
-set undofile
+if has('nvim')
+  set noundofile
+  set nobackup
+else
+  set undodir=.
+  set undofile
+  set backup
+endif
 set visualbell
 set whichwrap=<,>,h,l
 set wildmenu
@@ -267,82 +246,60 @@ if !&diff
   augroup END
 endif
 
-map Q gq
+function! Toggler()
+  :GitGutterSignsToggle
+endfunction
 
+map Q gq
 inoremap <C-U> <C-G>u<C-U>
 inoremap <C-Z> <C-O>u
 inoremap <S-Insert> <C-R>+
 inoremap ..l -------------------------------------------<CR><CR>
 inoremap ..d ======<C-R>=strftime("%a %Y-%m-%d %H:%M:%S %z")<CR>========<CR><CR>
-
 vnoremap <S-Del> "+x
 vnoremap <C-Insert> "+y"
 vnoremap <S-Insert> +gp
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 vnoremap < <gv
 vnoremap > >gv
-
 nnoremap / /\v
-nnoremap <C-W>e     <C-W>=
-nnoremap <C-W>=     <C-W>-
-nnoremap <C-W>-     <C-W>s
-nnoremap <C-W><bar> <C-W>v
-nnoremap <C-W>c     <C-L>
-nnoremap <C-W>X     <C-W>c
-nnoremap <leader>jq :%!jq .<CR>
-nnoremap <leader>Jq :%!jq . -c<CR>
-nnoremap <leader>hl :nohl<CR>
-
-function! Toggler()
-  :GitGutterSignsToggle
-  :IndentLinesToggle
-endfunction
-
+nnoremap <C-W>e      <C-W>=
+nnoremap <C-W>=      <C-W>-
+nnoremap <C-W>-      <C-W>s
+nnoremap <C-W><bar>  <C-W>v
+nnoremap <C-W>c      <C-L>
+nnoremap <C-W>X      <C-W>c
+nnoremap <leader>jq  :%!jq .<CR>
+nnoremap <leader>Jq  :%!jq . -c<CR>
+nnoremap <leader>hl  :nohl<CR>
 nnoremap <silent> <leader>nn :exe "set nu! rnu! list!" \| call Toggler()<CR>
 nnoremap <silent> <leader>cc :exe "set colorcolumn=" . (&colorcolumn == "" ? "80,120" : "")<CR>
 nnoremap <silent> <leader>rr :exe "set rnu!"<CR>
 nnoremap <silent> <leader>cu :exe "set cuc!"<CR>
-" :command NN :IndentLinesToggle
-
 iab <buffer> um µm
 iab <buffer> usec µs
 
 if !empty($VIM_LIGHT)
   set bg=light
   try
-    " colorscheme pencil
-    " let g:pencil_higher_contrast_ui = 1
-    " let g:pencil_neutral_code_bg = 1
-    " let g:pencil_gutter_color = 1
-    " let g:pencil_spell_undercurl = 1
-    " let g:pencil_terminal_italics = 1
-    " colorscheme off
-    " let g:colors_off_a_little=1
-    " colorscheme stackoverflow
     colorscheme antiphoton
     highlight clear specialkey
     highlight clear signcolumn
     highlight clear foldcolumn
-    " augroup HIGHLIGHT
-    "   au!
-    "   au ColorScheme * highlight clear specialkey
-    "   au ColorScheme * highlight clear signcolumn
-    "   au ColorScheme * highlight clear foldcolumn
-    "   " au ColorScheme * highlight specialkey ctermfg=242
-    "   " au ColorScheme * highlight specialkey ctermfg=249
-    " augroup END
   catch /^Vim\%((\a\+)\)\=:E185/
-    colorscheme default
-  endtry
-else
-  set bg=dark
-  try
-    colorscheme jellybeans
-    " colorscheme photon
-  catch /^Vim\%((\a\+)\)\=:E185/
-    colorscheme slate
-    " colorscheme off
+    colorscheme off
   endtry
 endif
 
+if has("gui_running")
+  set guifont=JetBrainsMonoNL_NFM_Light:h10:W200:cANSI:qDRAFT
+  set guioptions=gmtTlar
+  set mouse=nvi
+  set mousehide
+  set columns=130 lines=35
+  map <ScrollWheelUp>   <C-Y>
+  map <ScrollWheelDown> <C-E>
+endif
+
+endif ""if exists('g:vscode')
 " vim:ft=vim:tw=0:sw=2:ts=2:sts=2:nowrap
