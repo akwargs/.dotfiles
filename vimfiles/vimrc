@@ -86,9 +86,9 @@ if filereadable( expand("$HOME/.vim/autoload/plug.vim") )
   let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
 
   " Colorscheme
-  Plug 'itchyny/lightline.vim'
-  " Plug 'vim-airline/vim-airline'
-  " Plug 'vim-airline/vim-airline-themes'
+  " Plug 'itchyny/lightline.vim'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
   Plug 'preservim/vim-colors-pencil'
   Plug 'pbrisbin/vim-colors-off'
   Plug 'flazz/vim-colorschemes'
@@ -108,9 +108,7 @@ endif
 
 if filereadable( expand("$HOME/.vim/plugged/vim-airline/plugin/airline.vim") )
   " let g:airline_theme = 'pencil'
-  if !has("gui_running")
-    let g:airline_powerline_fonts = 1
-  endif
+  let g:airline_powerline_fonts = 1
   let g:airline#extensions#tabline#enabled = 1
   let g:airline#extensions#tabline#buffer_nr_show = 1
   let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
@@ -123,25 +121,25 @@ if filereadable( expand("$HOME/.vim/plugged/vim-airline/plugin/airline.vim") )
                                   \ 'colnr'])
 endif
 
-if filereadable( expand("$HOME/.vim/plugged/lightline.vim/plugin/lightline.vim") )
-  let g:lightline = {
-    \ 'colorscheme': 'one',
-    \ 'active' : {
-    \   'left' : [ [ 'mode', 'paste' ],
-    \            [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
-    \   'right': [ [ 'percent' ],
-    \            [ 'fileformat', 'fileencoding', 'filetype', 'charvaluedec', 'charvaluehex' ],
-    \            [ 'lineinfo' ] ]
-    \ },
-    \ 'component_function': {
-    \   'gitbranch': 'FugitiveHead'
-    \ },
-    \ 'component': {
-    \   'charvaluedec': '%b',
-    \   'charvaluehex': '0x%B'
-    \ },
-  \ }
-  endif
+" if filereadable( expand("$HOME/.vim/plugged/lightline.vim/plugin/lightline.vim") )
+"   let g:lightline = {
+"     \ 'colorscheme': 'one',
+"     \ 'active' : {
+"     \   'left' : [ [ 'mode', 'paste' ],
+"     \            [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+"     \   'right': [ [ 'percent' ],
+"     \            [ 'fileformat', 'fileencoding', 'filetype', 'charvaluedec', 'charvaluehex' ],
+"     \            [ 'lineinfo' ] ]
+"     \ },
+"     \ 'component_function': {
+"     \   'gitbranch': 'FugitiveHead'
+"     \ },
+"     \ 'component': {
+"     \   'charvaluedec': '%b',
+"     \   'charvaluehex': '0x%B'
+"     \ },
+"   \ }
+"   endif
 
 "" packadd! matchit - replaced with plugin
 
