@@ -49,9 +49,9 @@ if filereadable( expand("$HOME/.vim/autoload/plug.vim") )
   Plug 'easymotion/vim-easymotion'
   Plug 'justinmk/vim-sneak'
   let g:sneak#label = 1
+  Plug 'dbakker/vim-paragraph-motion'
   Plug 'inkarkat/vim-ReplaceWithRegister'
   Plug 'tommcdo/vim-exchange'
-  Plug 'dbakker/vim-paragraph-motion'
   Plug 'jlanzarotta/bufexplorer'
   Plug 'terryma/vim-multiple-cursors'
   Plug 'sheerun/vim-polyglot'
@@ -244,17 +244,20 @@ function! Toggler()
 endfunction
 
 map Q gq
+
 inoremap <C-U> <C-G>u<C-U>
 inoremap <C-Z> <C-O>u
 inoremap <S-Insert> <C-R>+
 inoremap ..l -------------------------------------------<CR><CR>
 inoremap ..d ======<C-R>=strftime("%a %Y-%m-%d %H:%M:%S %z")<CR>========<CR><CR>
+
 vnoremap <S-Del> "+x
 vnoremap <C-Insert> "+y"
 vnoremap <S-Insert> +gp
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 vnoremap < <gv
 vnoremap > >gv
+
 nnoremap / /\v
 nnoremap <C-W>e      <C-W>=
 nnoremap <C-W>=      <C-W>-
@@ -264,11 +267,14 @@ nnoremap <C-W>c      <C-L>
 nnoremap <C-W>X      <C-W>c
 nnoremap <leader>jq  :%!jq .<CR>
 nnoremap <leader>Jq  :%!jq . -c<CR>
-nnoremap <leader>hl  :nohl<CR>
+nnoremap <leader>l   :nohl<CR>
 nnoremap <silent> <leader>nn :exe "set nu! rnu! list!" \| call Toggler()<CR>
 nnoremap <silent> <leader>cc :exe "set colorcolumn=" . (&colorcolumn == "" ? "80,120" : "")<CR>
 nnoremap <silent> <leader>rr :exe "set rnu!"<CR>
 nnoremap <silent> <leader>cu :exe "set cuc!"<CR>
+
+:command NN :IndentLinesToggle
+
 iab <buffer> um µm
 iab <buffer> usec µs
 
