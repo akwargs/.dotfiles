@@ -54,7 +54,6 @@ if filereadable( expand("$HOME/.vim/autoload/plug.vim") )
   Plug 'dbakker/vim-paragraph-motion'
   Plug 'jlanzarotta/bufexplorer'
   Plug 'terryma/vim-multiple-cursors'
-  Plug 'bkad/CamelCaseMotion'
   Plug 'sheerun/vim-polyglot'
   let g:python_highlight_all = 1
   Plug 'Vimjas/vim-python-pep8-indent'
