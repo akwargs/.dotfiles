@@ -272,7 +272,7 @@ nnoremap <silent> <leader>cc :exe "set colorcolumn=" . (&colorcolumn == "" ? "80
 nnoremap <silent> <leader>rr :exe "set rnu!"<CR>
 nnoremap <silent> <leader>cu :exe "set cuc!"<CR>
 
-:command NN :IndentLinesToggle
+:command IN :IndentLinesToggle
 
 iab <buffer> um µm
 iab <buffer> usec µs
