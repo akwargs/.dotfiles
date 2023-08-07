@@ -248,7 +248,7 @@ inoremap <C-U> <C-G>u<C-U>
 inoremap <C-Z> <C-O>u
 inoremap <S-Insert> <C-R>+
 inoremap ..l -------------------------------------------<CR><CR>
-inoremap ..d ======<C-R>=strftime("%a %Y-%m-%d %H:%M:%S %z")<CR>========<CR><CR>
+inoremap ..d ============<C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>============<CR><CR>
 
 vnoremap <S-Del> "+x
 vnoremap <C-Insert> "+y"
