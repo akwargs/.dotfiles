@@ -80,7 +80,6 @@ if filereadable( expand("$HOME/.vim/autoload/plug.vim") )
   Plug 'kshenoy/vim-signature'
   Plug 'machakann/vim-highlightedyank'
   let g:highlightedyank_highlight_duration = 250
-  let g:highlightedyank_highlight_in_visual = 0
   Plug 'Yggdroot/indentLine'
   let g:indentLine_char  = ''
   let g:indentLine_defaultGroup = 'SpecialKey'
