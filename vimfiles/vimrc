@@ -238,6 +238,11 @@ if !&diff
   augroup END
 endif
 
+augroup Insert
+  au!
+  au InsertEnter,InsertLeave * set cul! cuc!
+augroup END
+
 function! Toggler()
   :GitGutterSignsToggle
 endfunction
