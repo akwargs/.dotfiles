@@ -132,6 +132,7 @@ set infercase
 " set iskeyword-=_ " to make '_' not a word character
 set nolangremap
 set laststatus=2
+set linebreak
 set list
 set listchars=tab:»·,trail:·
 set modelines=1
