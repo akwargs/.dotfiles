@@ -121,7 +121,6 @@ set cmdheight=2
 set clipboard=unnamed
 set display=truncate
 set expandtab
-set fileformat=unix
 set fileformats=unix,dos
 set foldmethod=syntax
 set hidden
