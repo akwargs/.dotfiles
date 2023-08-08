@@ -68,6 +68,8 @@ if filereadable( expand("$HOME/.vim/autoload/plug.vim") )
   Plug 'ctrlpvim/ctrlp.vim'
   Plug 'wellle/targets.vim'
   Plug 'michaeljsmith/vim-indent-object'
+  Plug 'kana/vim-textobj-user'
+  Plug 'kana/vim-textobj-entire'
   Plug 'adelarsq/vim-matchit'
   Plug 'tpope/vim-vinegar'
   Plug 'vimwiki/vimwiki'
