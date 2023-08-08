@@ -1,25 +1,9 @@
 $PowerShellProfile = $PROFILE.CurrentUserAllHosts
 $PowerShellPath = Split-Path $PowerShellProfile
 Import-Module $PowerShellPath\Modules\VirtualEnvWrapper.psm1
-# Import-Module Terminal-Icons
-# Import-Module PowerColorLS
-# Import-Module git-aliases -DisableNameChecking
 Import-Module z
+Import-Module posh-git
 
-$currentVersion = $PSVersionTable.PSVersion
-$requiredVersion = [Version]'7.2'
-if ($currentVersion -ge $requiredVersion) {
-    $PSStyle.Progress.UseOSCIndicator = 1
-    Set-PSReadLineOption -PredictionSource HistoryandPlugin
-}
-
-Set-PSReadLineOption -BellStyle Visual
-Set-PSReadLineOption -PredictionViewStyle ListView
-Set-PSReadLineOption -EditMode Emacs
-Set-PSReadLineOption -HistorySavePath $Env:HOME\.PSReadLineHistory.txt
-
-# from https://github.com/gluons/powershell-git-aliases
-# Import-Module leads to git error; TODO: debug
 Remove-Alias gc -Force -ErrorAction SilentlyContinue
 Remove-Alias gcb -Force -ErrorAction SilentlyContinue
 Remove-Alias gcm -Force -ErrorAction SilentlyContinue
@@ -30,7 +14,13 @@ Remove-Alias gp -Force -ErrorAction SilentlyContinue
 Remove-Alias gpv -Force -ErrorAction SilentlyContinue
 Remove-Alias history -Force -ErrorAction SilentlyContinue
 
-# Set-Alias l PowerColorLS
+$PSStyle.Progress.UseOSCIndicator = 1
+Set-PSReadLineOption -BellStyle Visual
+Set-PSReadLineOption -PredictionViewStyle ListView
+Set-PSReadLineOption -PredictionSource HistoryandPlugin
+Set-PSReadLineOption -EditMode Emacs
+Set-PSReadLineOption -HistorySavePath $Env:HOME\.PSReadLineHistory.txt
+
 Set-Alias ll Get-ChildItem
 Set-Alias vboxmanage 'C:\Program Files\Oracle\VirtualBox\VBoxManage.exe'
 Set-Alias wc lwc.exe
@@ -40,29 +30,10 @@ Set-Alias m bat.exe
 function l      { Get-ChildItem -Name }
 function d      { diff.exe -u $args }
 function g      { rg.exe -NPi $args }
-# function g($pattern)      { Select-String -Pattern $pattern }
 function m      { bat.exe --pager="less -XRF" $args }
+function vimwiki { vim.exe +VimwikiIndex }
+function vi     { vim.exe -u NONE -U NONE $args }
 function rmrf   { Remove-Item -Recurse -Force $args }
-# function pll    { PowerColorLS -l -sd }
-# function plla   { PowerColorLS -l -a -sd }
-# Set-Alias lla plla
-# function mywiki { vim.exe +VimwikiIndex }
-# function vi     { nvim.exe -u NONE -U NONE $args }
-# Set-Alias vim vi
-# function mvim   { vim.exe -u $env:HOME\vimfiles\vimrc_minimal $args }
-# function linux  { putty.exe -load linux }
-# function start_linux { vboxmanage startvm linux --type headless }
-# function NvChad { Set-Item -Path Env:NVIM_APPNAME -Value NvChad && nvim }
-# function AstroNvim { Set-Item -Path Env:NVIM_APPNAME -Value AstroNvim && nvim }
-# function kickstart { Set-Item -Path Env:NVIM_APPNAME -Value kickstart && nvim }
-# function LunarVim { Set-Item -Path Env:NVIM_APPNAME -Value LunarVim && nvim }
-# function SpaceVim { Set-Item -Path Env:NVIM_APPNAME -Value SpaceVim && nvim }
-# function LazyVim { Set-Item -Path Env:NVIM_APPNAME -Value LazyVim && nvim }
-# function mynvim { Remove-Item -Path Env:NVIM_APPNAME && nvim }
-
-if ($PSVersionTable.PSVersion.Major -ge 7) {
-    try { $null = gcm pshazz -ea stop; pshazz init } catch { }
-}
 
 function Get-PubIP {
     (Invoke-WebRequest http://ifconfig.me/ip ).Content
