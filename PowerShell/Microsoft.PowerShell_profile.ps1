@@ -3,7 +3,7 @@ $PowerShellPath = Split-Path $PowerShellProfile
 Import-Module $PowerShellPath\Modules\VirtualEnvWrapper.psm1
 Import-Module z
 Import-Module posh-git
-
+$GitPromptSettings.DefaultPromptPrefix.Text = 'PS '
 Remove-Alias gc -Force -ErrorAction SilentlyContinue
 Remove-Alias gcb -Force -ErrorAction SilentlyContinue
 Remove-Alias gcm -Force -ErrorAction SilentlyContinue
