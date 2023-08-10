@@ -249,11 +249,15 @@ if !empty($VIM_LIGHT)
   set bg=light
   try
     colorscheme antiphoton
+    " colorscheme off
     highlight clear specialkey
     highlight clear signcolumn
     highlight clear foldcolumn
   catch /^Vim\%((\a\+)\)\=:E185/
-    colorscheme off
+    colorscheme default
+    highlight clear specialkey
+    highlight clear signcolumn
+    highlight clear foldcolumn
   endtry
 endif
 
