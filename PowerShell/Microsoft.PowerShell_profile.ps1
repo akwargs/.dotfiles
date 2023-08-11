@@ -3,7 +3,9 @@ $PowerShellPath = Split-Path $PowerShellProfile
 Import-Module $PowerShellPath\Modules\VirtualEnvWrapper.psm1
 Import-Module z
 Import-Module posh-git
+
 $GitPromptSettings.DefaultPromptPrefix.Text = 'PS '
+
 Remove-Alias gc -Force -ErrorAction SilentlyContinue
 Remove-Alias gcb -Force -ErrorAction SilentlyContinue
 Remove-Alias gcm -Force -ErrorAction SilentlyContinue
@@ -15,6 +17,7 @@ Remove-Alias gpv -Force -ErrorAction SilentlyContinue
 Remove-Alias history -Force -ErrorAction SilentlyContinue
 
 $PSStyle.Progress.UseOSCIndicator = 1
+
 Set-PSReadLineOption -BellStyle Visual
 Set-PSReadLineOption -PredictionViewStyle ListView
 Set-PSReadLineOption -PredictionSource HistoryandPlugin
@@ -22,18 +25,14 @@ Set-PSReadLineOption -EditMode Emacs
 Set-PSReadLineOption -HistorySavePath $Env:HOME\.PSReadLineHistory.txt
 
 Set-Alias ll Get-ChildItem
+Set-Alias m more
+Set-Alias d 'C:\Program Files\Vim\vim90\diff.exe'
 Set-Alias vboxmanage 'C:\Program Files\Oracle\VirtualBox\VBoxManage.exe'
-Set-Alias wc lwc.exe
-Set-Alias http xh.exe
-Set-Alias m bat.exe
 
-function l      { Get-ChildItem -Name }
-function d      { diff.exe -u $args }
-function g      { rg.exe -NPi $args }
-function m      { bat.exe --pager="less -XRF" $args }
-function vimwiki { vim.exe +VimwikiIndex }
-function vi     { vim.exe -u NONE -U NONE $args }
-function rmrf   { Remove-Item -Recurse -Force $args }
+function l              { Get-ChildItem -Name }
+function g($pattern)    { Select-String -Pattern $pattern }
+function vimwiki        { vim.exe +VimwikiIndex }
+function rmrf           { Remove-Item -Recurse -Force $args }
 
 function Get-PubIP {
     (Invoke-WebRequest http://ifconfig.me/ip ).Content
