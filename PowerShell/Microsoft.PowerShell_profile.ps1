@@ -30,7 +30,7 @@ Set-Alias d 'C:\Program Files\Vim\vim90\diff.exe'
 Set-Alias vboxmanage 'C:\Program Files\Oracle\VirtualBox\VBoxManage.exe'
 
 function l              { Get-ChildItem -Name }
-function g($pattern)    { Select-String -Pattern $pattern }
+function g($pattern)    { Select-String -Pattern $pattern $args }
 function vimwiki        { vim.exe +VimwikiIndex }
 function rmrf           { Remove-Item -Recurse -Force $args }
 
