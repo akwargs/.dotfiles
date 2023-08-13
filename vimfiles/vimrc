@@ -58,11 +58,6 @@ if filereadable( expand("$HOME/.vim/autoload/plug.vim") )
   let g:python_highlight_all = 1
   Plug 'Vimjas/vim-python-pep8-indent'
   Plug 'editorconfig/editorconfig-vim'
-  Plug 'SirVer/ultisnips'
-  let g:UltiSnipsExpandTrigger="<tab>"
-  let g:UltiSnipsJumpForwardTrigger="<c-b>"
-  let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-  Plug 'honza/vim-snippets'
   Plug 'tpope/vim-jdaddy'
   Plug 'tpope/vim-ragtag'
   Plug 'ctrlpvim/ctrlp.vim'
@@ -72,12 +67,6 @@ if filereadable( expand("$HOME/.vim/autoload/plug.vim") )
   Plug 'kana/vim-textobj-entire'
   Plug 'adelarsq/vim-matchit'
   Plug 'tpope/vim-vinegar'
-  Plug 'vimwiki/vimwiki'
-  let g:vimwiki_listsyms = '󰂎󰁻󰁽󰂁󱟢'
-  let g:vimwiki_list = [{'path': '~/vimfiles/vimwiki/',
-                        \ 'syntax': 'markdown', 'ext': '.md',
-                        \ 'links_space_char': '_'}]
-  au FileType vimwiki setlocal tw=0
   Plug 'airblade/vim-gitgutter'
   Plug 'kshenoy/vim-signature'
   Plug 'machakann/vim-highlightedyank'
