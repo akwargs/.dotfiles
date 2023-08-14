@@ -113,9 +113,9 @@ set timeout timeoutlen=3000 ttimeoutlen=100
 set visualbell
 set undofile
 if has('nvim')
-  set undodir=~/.undo/nvim
+  set undodir=~/temp/nvim
 else
-  set undodir=~/.undo/vim
+  set undodir=~/temp
 endif
 set whichwrap=<,>,h,l
 set wildignorecase
