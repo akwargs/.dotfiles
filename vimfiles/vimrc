@@ -73,6 +73,7 @@ if filereadable( expand("$HOME/.vim/plugged/vim-airline/plugin/airline.vim") )
                                   \ 'colnr'])
 endif
 
+set backup
 set cmdheight=2
 set clipboard=unnamed
 set display=truncate
@@ -109,18 +110,16 @@ set nostartofline
 set tabstop=4
 set textwidth=80
 set timeout timeoutlen=3000 ttimeoutlen=100
-if has('nvim')
-  set noundofile
-  set nobackup
-else
-  set undodir=.
-  set undofile
-  set backup
-endif
 set visualbell
+set undofile
+if has('nvim')
+  set undodir=~/.undo/nvim
+else
+  set undodir=~/.undo/vim
+endif
 set whichwrap=<,>,h,l
-set wildmenu
 set wildignorecase
+set wildmenu
 set wildmode=list:longest,full
 set nowrapscan
 
@@ -217,8 +216,12 @@ if !empty($VIM_LIGHT)
   endtry
 endif
 
-if has("gui_running")
-  set guifont=JetBrainsMonoNL_NFM_Light:h10:W200:cANSI:qDRAFT
+if has('gui_running')
+  if has('nvim')
+    set guifont="JetBrainsMonoNL_NFM_Light:h10:l"
+  else
+    set guifont="JetBrainsMonoNL_NFM_Light:h10:W200:cANSI:qDRAFT"
+  endif
   set guioptions=gmtTlar
   set mouse=nvi
   set mousehide
