@@ -1,92 +1,59 @@
 set nocompatible
+set runtimepath+=~/.vim/
+set encoding=utf-8
+set t_Co=256
 filetype off
-if empty(glob("$HOME/.vim/autoload/plug.vim"))
-  if has("win32")
-    silent ! powershell -Command "
-          \ New-Item -Path "$env:HOME/.vim" -Name autoload -Type Directory -Force;
-          \ Invoke-WebRequest
-          \ -Uri 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-          \ -OutFile "$env:HOME/.vim/autoload/plug.vim"
-          \ "
-  else
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-          \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  endif
-endif
 
-if has("win32")
-  set runtimepath+=~/.vim/
-  set encoding=utf-8
-  set t_Co=256
-endif
-
-if filereadable( expand("$HOME/.vim/autoload/plug.vim") )
-  autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-    \| PlugInstall --sync | source $MYVIMRC
-  \| endif
-
-  call plug#begin('$HOME/.vim/plugged')
-  Plug 'tpope/vim-surround'
-  Plug 'tpope/vim-commentary'
-  Plug 'tpope/vim-fugitive'
-  Plug 'tpope/vim-rhubarb'
-  Plug 'tpope/fugitive-gitlab.vim'
-  Plug 'tpope/vim-repeat'
-  Plug 'tpope/vim-unimpaired'
-  Plug 'tpope/vim-rsi'          ""readline style insertion
-  Plug 'tpope/vim-endwise'
-  Plug 'tpope/vim-eunuch'
-  Plug 'tpope/vim-abolish'
-  Plug 'tpope/vim-tbone'        ""tmux
-  Plug 'tpope/vim-sleuth'       ""auto sw et
-  Plug 'tpope/vim-characterize'
-  Plug 'tpope/vim-speeddating'
-  Plug 'tpope/vim-apathy'       ""path searching options
-  Plug 'junegunn/vim-easy-align'
-  xmap ga <Plug>(EasyAlign)
-  nmap ga <Plug>(EasyAlign)
-  Plug 'godlygeek/tabular'
-  Plug 'easymotion/vim-easymotion'
-  Plug 'justinmk/vim-sneak'
-  let g:sneak#label = 1
-  Plug 'dbakker/vim-paragraph-motion'
-  Plug 'inkarkat/vim-ReplaceWithRegister'
-  Plug 'tommcdo/vim-exchange'
-  Plug 'jlanzarotta/bufexplorer'
-  Plug 'terryma/vim-multiple-cursors'
-  Plug 'sheerun/vim-polyglot'
-  let g:python_highlight_all = 1
-  Plug 'Vimjas/vim-python-pep8-indent'
-  Plug 'editorconfig/editorconfig-vim'
-  Plug 'tpope/vim-jdaddy'
-  Plug 'tpope/vim-ragtag'
-  Plug 'ctrlpvim/ctrlp.vim'
-  Plug 'wellle/targets.vim'
-  Plug 'michaeljsmith/vim-indent-object'
-  Plug 'kana/vim-textobj-user'
-  Plug 'kana/vim-textobj-entire'
-  Plug 'adelarsq/vim-matchit'
-  Plug 'tpope/vim-vinegar'
-  Plug 'airblade/vim-gitgutter'
-  Plug 'kshenoy/vim-signature'
-  Plug 'machakann/vim-highlightedyank'
-  let g:highlightedyank_highlight_duration = 250
-  Plug 'Yggdroot/indentLine'
-  let g:indentLine_char  = ''
-  let g:indentLine_defaultGroup = 'SpecialKey'
-  let g:indentLine_enabled = 0
-  Plug 'frazrepo/vim-rainbow'
-  let g:rainbow_active   = 1
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
-  Plug 'preservim/vim-colors-pencil'
-  Plug 'pbrisbin/vim-colors-off'
-  Plug 'flazz/vim-colorschemes'
-  Plug 'axvr/photon.vim'
-  Plug 'nanotech/jellybeans.vim'
-  call plug#end()
-endif
-
+call plug#begin('$HOME/.vim/plugged')
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-rsi'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-speeddating'
+Plug 'junegunn/vim-easy-align'
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+Plug 'godlygeek/tabular'
+Plug 'easymotion/vim-easymotion'
+Plug 'justinmk/vim-sneak'
+let g:sneak#label = 1
+Plug 'dbakker/vim-paragraph-motion'
+Plug 'inkarkat/vim-ReplaceWithRegister'
+Plug 'tommcdo/vim-exchange'
+Plug 'jlanzarotta/bufexplorer'
+Plug 'sheerun/vim-polyglot'
+let g:python_highlight_all = 1
+Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'tpope/vim-ragtag'
+Plug 'wellle/targets.vim'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-entire'
+Plug 'adelarsq/vim-matchit'
+Plug 'tpope/vim-vinegar'
+Plug 'airblade/vim-gitgutter'
+Plug 'kshenoy/vim-signature'
+Plug 'machakann/vim-highlightedyank'
+let g:highlightedyank_highlight_duration = 250
+Plug 'Yggdroot/indentLine'
+let g:indentLine_char  = ''
+let g:indentLine_defaultGroup = 'SpecialKey'
+let g:indentLine_enabled = 0
+Plug 'frazrepo/vim-rainbow'
+let g:rainbow_active   = 1
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'preservim/vim-colors-pencil'
+Plug 'pbrisbin/vim-colors-off'
+Plug 'axvr/photon.vim'
+call plug#end()
 filetype plugin indent on
 syntax on
 let mapleader = " "
