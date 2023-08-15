@@ -16,7 +16,6 @@ Plug 'godlygeek/tabular'
 Plug 'dbakker/vim-paragraph-motion'
 Plug 'sheerun/vim-polyglot'
 Plug 'Vimjas/vim-python-pep8-indent'
-Plug 'adelarsq/vim-matchit'
 Plug 'airblade/vim-gitgutter'
 Plug 'kshenoy/vim-signature'
 Plug 'axvr/photon.vim'
@@ -43,6 +42,7 @@ Plug 'itchyny/lightline.vim'
 " Plug 'Yggdroot/indentLine'
 " Plug 'frazrepo/vim-rainbow'
 call plug#end()
+packadd! matchit
 
 
 "-------------------------------------------
