@@ -45,33 +45,33 @@ let g:highlightedyank_highlight_duration = 250
 Plug 'Yggdroot/indentLine'
 let g:indentLine_char  = ''
 let g:indentLine_defaultGroup = 'SpecialKey'
-let g:indentLine_enabled = 0
+let g:indentLine_enabled = 1
 Plug 'frazrepo/vim-rainbow'
 let g:rainbow_active   = 1
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'preservim/vim-colors-pencil'
-Plug 'pbrisbin/vim-colors-off'
 Plug 'axvr/photon.vim'
+Plug 'itchyny/lightline.vim'
 call plug#end()
 filetype plugin indent on
 syntax on
 let mapleader = " "
 
-if filereadable( expand("$HOME/.vim/plugged/vim-airline/plugin/airline.vim") )
-  let g:airline_theme = 'pencil'
-  let g:airline_powerline_fonts = 1
-  let g:airline#extensions#tabline#enabled = 1
-  let g:airline#extensions#tabline#buffer_nr_show = 1
-  let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-  let g:airline_section_z = airline#section#create(['%3b|0x%02B ',
-                                  \ 'windowswap',
-                                  \ 'obsession',
-                                  \ '%p%%',
-                                  \ 'linenr',
-                                  \ 'maxlinenr',
-                                  \ 'colnr'])
-endif
+let g:lightline = {
+  \ 'colorscheme': 'one',
+  \ 'active' : {
+  \   'left' : [ [ 'mode', 'paste' ],
+  \            [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+  \   'right': [ [ 'percent' ],
+  \            [ 'fileformat', 'fileencoding', 'filetype', 'charvaluedec', 'charvaluehex' ],
+  \            [ 'lineinfo' ] ]
+  \ },
+  \ 'component_function': {
+  \   'gitbranch': 'FugitiveHead'
+  \ },
+  \ 'component': {
+  \   'charvaluedec': '%b',
+  \   'charvaluehex': '0x%B'
+  \ },
+\ }
 
 set backup
 set cmdheight=2
