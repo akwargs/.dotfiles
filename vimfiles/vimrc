@@ -19,9 +19,6 @@ Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'adelarsq/vim-matchit'
 Plug 'airblade/vim-gitgutter'
 Plug 'kshenoy/vim-signature'
-Plug 'machakann/vim-highlightedyank'
-Plug 'Yggdroot/indentLine'
-Plug 'frazrepo/vim-rainbow'
 Plug 'axvr/photon.vim'
 Plug 'itchyny/lightline.vim'
 "-------------------------------------------
@@ -42,6 +39,9 @@ Plug 'itchyny/lightline.vim'
 " Plug 'kana/vim-textobj-user'
 " Plug 'kana/vim-textobj-entire'
 " Plug 'tpope/vim-vinegar'
+" Plug 'machakann/vim-highlightedyank'
+" Plug 'Yggdroot/indentLine'
+" Plug 'frazrepo/vim-rainbow'
 call plug#end()
 
 
@@ -49,17 +49,22 @@ call plug#end()
 " Related to plugins
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
-let g:highlightedyank_highlight_duration = 250
-let g:indentLine_char = ''
-let g:indentLine_defaultGroup = 'SpecialKey'
-let g:indentLine_enabled = 1
 let g:lightline = { 'colorscheme': 'one', }
 let g:python_highlight_all = 1
-let g:rainbow_active   = 1
+" let g:highlightedyank_highlight_duration = 250
+" let g:indentLine_char = ''
+" let g:indentLine_defaultGroup = 'SpecialKey'
+" let g:indentLine_enabled = 1
+" let g:rainbow_active   = 1
+function! Toggler()
+  :GitGutterSignsToggle
+  " :IndentLinesToggle
+endfunction
 colorscheme antiphoton
 highlight clear specialkey
 highlight clear signcolumn
 highlight clear foldcolumn
+" :command IN :IndentLinesToggle
 "-------------------------------------------
 
 
@@ -79,6 +84,7 @@ set fileformats=unix,dos
 set foldmethod=syntax
 set hidden
 set history=100
+set hls
 set ignorecase
 set incsearch
 set infercase
@@ -162,16 +168,11 @@ augroup END
 
 
 "-------------------------------------------
-" Custom functions/commands
+" Custom functions/commands without plugins
 if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
           \ | wincmd p | diffthis
 endif
-function! Toggler()
-  :GitGutterSignsToggle
-  :IndentLinesToggle
-endfunction
-:command IN :IndentLinesToggle
 "-------------------------------------------
 
 
