@@ -5,52 +5,57 @@ set t_Co=256
 filetype off
 
 call plug#begin('$HOME/.vim/plugged')
+"-------------------------------------------
+" Plugins I know I want
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-sleuth'
-Plug 'tpope/vim-speeddating'
 Plug 'junegunn/vim-easy-align'
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 Plug 'godlygeek/tabular'
-Plug 'easymotion/vim-easymotion'
-Plug 'justinmk/vim-sneak'
-let g:sneak#label = 1
 Plug 'dbakker/vim-paragraph-motion'
-Plug 'inkarkat/vim-ReplaceWithRegister'
-Plug 'tommcdo/vim-exchange'
-Plug 'jlanzarotta/bufexplorer'
 Plug 'sheerun/vim-polyglot'
 let g:python_highlight_all = 1
 Plug 'Vimjas/vim-python-pep8-indent'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'tpope/vim-ragtag'
-Plug 'wellle/targets.vim'
-Plug 'michaeljsmith/vim-indent-object'
-Plug 'kana/vim-textobj-user'
-Plug 'kana/vim-textobj-entire'
 Plug 'adelarsq/vim-matchit'
-Plug 'tpope/vim-vinegar'
 Plug 'airblade/vim-gitgutter'
 Plug 'kshenoy/vim-signature'
 Plug 'machakann/vim-highlightedyank'
 let g:highlightedyank_highlight_duration = 250
 Plug 'Yggdroot/indentLine'
-let g:indentLine_char  = ''
+let g:indentLine_char = ''
 let g:indentLine_defaultGroup = 'SpecialKey'
 let g:indentLine_enabled = 1
 Plug 'frazrepo/vim-rainbow'
 let g:rainbow_active   = 1
 Plug 'axvr/photon.vim'
 Plug 'itchyny/lightline.vim'
+"-------------------------------------------
+" Plugins I'm not sure I want
+" Plug 'tpope/vim-repeat'
+" Plug 'tpope/vim-unimpaired'
+" Plug 'tpope/vim-eunuch'
+" Plug 'tpope/vim-abolish'
+" Plug 'tpope/vim-sleuth'
+" Plug 'tpope/vim-speeddating'
+" Plug 'easymotion/vim-easymotion'
+" Plug 'justinmk/vim-sneak'
+" let g:sneak#label = 1
+" Plug 'inkarkat/vim-ReplaceWithRegister'
+" Plug 'tommcdo/vim-exchange'
+" Plug 'jlanzarotta/bufexplorer'
+" Plug 'editorconfig/editorconfig-vim'
+" Plug 'tpope/vim-ragtag'
+" Plug 'wellle/targets.vim'
+" Plug 'michaeljsmith/vim-indent-object'
+" Plug 'kana/vim-textobj-user'
+" Plug 'kana/vim-textobj-entire'
+" Plug 'tpope/vim-vinegar'
 call plug#end()
+
 filetype plugin indent on
 syntax on
 let mapleader = " "
@@ -209,17 +214,10 @@ nnoremap <silent> <leader>cl :exe "set cuc! cul!"<CR>
 iab <buffer> um µm
 iab <buffer> usec µs
 
-try
-  colorscheme antiphoton
-  highlight clear specialkey
-  highlight clear signcolumn
-  highlight clear foldcolumn
-catch /^Vim\%((\a\+)\)\=:E185/
-  colorscheme default
-  highlight clear specialkey
-  highlight clear signcolumn
-  highlight clear foldcolumn
-endtry
+colorscheme antiphoton
+highlight clear specialkey
+highlight clear signcolumn
+highlight clear foldcolumn
 
 if has('gui_running')
   if has('nvim')
