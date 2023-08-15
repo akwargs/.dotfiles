@@ -1,8 +1,7 @@
-set nocompatible
 set runtimepath+=~/.vim/
-set encoding=utf-8
-set t_Co=256
+set nocompatible
 filetype off
+
 
 call plug#begin('$HOME/.vim/plugged')
 "-------------------------------------------
@@ -13,24 +12,16 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-endwise'
 Plug 'junegunn/vim-easy-align'
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
 Plug 'godlygeek/tabular'
 Plug 'dbakker/vim-paragraph-motion'
 Plug 'sheerun/vim-polyglot'
-let g:python_highlight_all = 1
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'adelarsq/vim-matchit'
 Plug 'airblade/vim-gitgutter'
 Plug 'kshenoy/vim-signature'
 Plug 'machakann/vim-highlightedyank'
-let g:highlightedyank_highlight_duration = 250
 Plug 'Yggdroot/indentLine'
-let g:indentLine_char = ''
-let g:indentLine_defaultGroup = 'SpecialKey'
-let g:indentLine_enabled = 1
 Plug 'frazrepo/vim-rainbow'
-let g:rainbow_active   = 1
 Plug 'axvr/photon.vim'
 Plug 'itchyny/lightline.vim'
 "-------------------------------------------
@@ -41,9 +32,6 @@ Plug 'itchyny/lightline.vim'
 " Plug 'tpope/vim-abolish'
 " Plug 'tpope/vim-sleuth'
 " Plug 'tpope/vim-speeddating'
-" Plug 'easymotion/vim-easymotion'
-" Plug 'justinmk/vim-sneak'
-" let g:sneak#label = 1
 " Plug 'inkarkat/vim-ReplaceWithRegister'
 " Plug 'tommcdo/vim-exchange'
 " Plug 'jlanzarotta/bufexplorer'
@@ -56,33 +44,36 @@ Plug 'itchyny/lightline.vim'
 " Plug 'tpope/vim-vinegar'
 call plug#end()
 
+
+"-------------------------------------------
+" Related to plugins
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+let g:highlightedyank_highlight_duration = 250
+let g:indentLine_char = ''
+let g:indentLine_defaultGroup = 'SpecialKey'
+let g:indentLine_enabled = 1
+let g:lightline = { 'colorscheme': 'one', }
+let g:python_highlight_all = 1
+let g:rainbow_active   = 1
+colorscheme antiphoton
+highlight clear specialkey
+highlight clear signcolumn
+highlight clear foldcolumn
+"-------------------------------------------
+
+
+"-------------------------------------------
+" Begin standard vimrc
 filetype plugin indent on
 syntax on
 let mapleader = " "
-
-let g:lightline = {
-  \ 'colorscheme': 'one',
-  \ 'active' : {
-  \   'left' : [ [ 'mode', 'paste' ],
-  \            [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
-  \   'right': [ [ 'percent' ],
-  \            [ 'fileformat', 'fileencoding', 'filetype', 'charvaluedec', 'charvaluehex' ],
-  \            [ 'lineinfo' ] ]
-  \ },
-  \ 'component_function': {
-  \   'gitbranch': 'FugitiveHead'
-  \ },
-  \ 'component': {
-  \   'charvaluedec': '%b',
-  \   'charvaluehex': '0x%B'
-  \ },
-\ }
-
 set background=light
 set backup
 set cmdheight=2
 set clipboard=unnamed
 set display=truncate
+set encoding=utf-8
 set expandtab
 set fileformats=unix,dos
 set foldmethod=syntax
@@ -114,6 +105,7 @@ set noshowmode ""redundant with statusline
 set smartindent
 set softtabstop=4
 set nostartofline
+set t_Co=256
 set tabstop=4
 set textwidth=80
 set timeout timeoutlen=3000 ttimeoutlen=100
@@ -129,25 +121,25 @@ set wildignorecase
 set wildmenu
 set wildmode=list:longest,full
 set nowrapscan
+"-------------------------------------------
 
+
+"-------------------------------------------
+" autocommands
 au BufWinEnter * normal zR
-
 augroup Python
   au!
   autocmd FileType python setlocal foldmethod=indent
 augroup END
-
 augroup Vim
   au!
   autocmd FileType vim setlocal sw=2 ts=2 sts=2 foldmethod=indent
 augroup END
-
 augroup Logs
   au!
   autocmd FileType log setlocal syntax=off
   autocmd BufRead session-capture* setlocal ft=log
 augroup END
-
 augroup vimStartup
   au!
   autocmd BufReadPost *
@@ -155,12 +147,6 @@ augroup vimStartup
     \ |   exe "normal! g`\""
     \ | endif
 augroup END
-
-if !exists(":DiffOrig")
-  command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
-          \ | wincmd p | diffthis
-endif
-
 if !&diff
   augroup signcolumngroup
     au!
@@ -168,32 +154,35 @@ if !&diff
     autocmd BufLeave,FocusLost,InsertEnter   * if &signcolumn == "yes" | set nornu | endif
   augroup END
 endif
-
 augroup Insert
   au!
   au InsertEnter,InsertLeave * set cul! cuc!
 augroup END
+"-------------------------------------------
 
+
+"-------------------------------------------
+" Custom functions/commands
+if !exists(":DiffOrig")
+  command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
+          \ | wincmd p | diffthis
+endif
 function! Toggler()
   :GitGutterSignsToggle
   :IndentLinesToggle
 endfunction
+:command IN :IndentLinesToggle
+"-------------------------------------------
 
+
+"-------------------------------------------
+" Maps and abbreviations
 map Q gq
-
 inoremap <C-U> <C-G>u<C-U>
 inoremap <C-Z> <C-O>u
 inoremap <S-Insert> <C-R>+
 inoremap ..l -------------------------------------------<CR><CR>
 inoremap ..d ============<C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>============<CR><CR>
-
-vnoremap <S-Del> "+x
-vnoremap <C-Insert> "+y"
-vnoremap <S-Insert> +gp
-vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
-vnoremap < <gv
-vnoremap > >gv
-
 nnoremap / /\v
 nnoremap <C-W>e     <C-W>=
 nnoremap <C-W>=     <C-W>-
@@ -208,17 +197,19 @@ nnoremap <silent> <leader>nn :exe "set nu! rnu! list!" \| call Toggler()<CR>
 nnoremap <silent> <leader>cc :exe "set cc=" . (&cc == "" ? "80,120" : "")<CR>
 nnoremap <silent> <leader>rr :exe "set rnu!"<CR>
 nnoremap <silent> <leader>cl :exe "set cuc! cul!"<CR>
-
-:command IN :IndentLinesToggle
-
+vnoremap <S-Del> "+x
+vnoremap <C-Insert> "+y"
+vnoremap <S-Insert> +gp
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+vnoremap < <gv
+vnoremap > >gv
 iab <buffer> um µm
 iab <buffer> usec µs
+"-------------------------------------------
 
-colorscheme antiphoton
-highlight clear specialkey
-highlight clear signcolumn
-highlight clear foldcolumn
 
+"-------------------------------------------
+" GUI
 if has('gui_running')
   if has('nvim')
     set guifont="JetBrainsMonoNL_NFM_Light:h10:l"
