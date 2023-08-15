@@ -73,6 +73,7 @@ let g:lightline = {
   \ },
 \ }
 
+set background=light
 set backup
 set cmdheight=2
 set clipboard=unnamed
@@ -96,7 +97,7 @@ set modelines=1
 set mouse=
 set nu rnu
 if &diff
-  set nu nornu nocul nocuc
+  set nornu nocul nocuc
 endif
 set pastetoggle=<F12>
 set ruler
@@ -192,14 +193,14 @@ nnoremap / /\v
 nnoremap <C-W>e      <C-W>=
 nnoremap <C-W>=      <C-W>-
 nnoremap <C-W>-      <C-W>s
-nnoremap <C-W><bar>  <C-W>v
-nnoremap <C-W>c      <C-L>
-nnoremap <C-W>X      <C-W>c
-nnoremap <leader>jq  :%!jq .<CR>
-nnoremap <leader>Jq  :%!jq . -c<CR>
-nnoremap <leader>l   :nohl<CR>
+nnoremap <C-W><bar> <C-W>v
+nnoremap <C-W>c     <C-L>
+nnoremap <C-W>X     <C-W>c
+nnoremap <leader>jq :%!jq .<CR>
+nnoremap <leader>Jq :%!jq . -c<CR>
+nnoremap <leader>l  :nohl<CR>
 nnoremap <silent> <leader>nn :exe "set nu! rnu! list!" \| call Toggler()<CR>
-nnoremap <silent> <leader>cc :exe "set colorcolumn=" . (&colorcolumn == "" ? "80,120" : "")<CR>
+nnoremap <silent> <leader>cc :exe "set cc=" . (&cc == "" ? "80,120" : "")<CR>
 nnoremap <silent> <leader>rr :exe "set rnu!"<CR>
 nnoremap <silent> <leader>cl :exe "set cuc! cul!"<CR>
 
@@ -208,20 +209,17 @@ nnoremap <silent> <leader>cl :exe "set cuc! cul!"<CR>
 iab <buffer> um µm
 iab <buffer> usec µs
 
-if !empty($VIM_LIGHT)
-  set bg=light
-  try
-    colorscheme antiphoton
-    highlight clear specialkey
-    highlight clear signcolumn
-    highlight clear foldcolumn
-  catch /^Vim\%((\a\+)\)\=:E185/
-    colorscheme default
-    highlight clear specialkey
-    highlight clear signcolumn
-    highlight clear foldcolumn
-  endtry
-endif
+try
+  colorscheme antiphoton
+  highlight clear specialkey
+  highlight clear signcolumn
+  highlight clear foldcolumn
+catch /^Vim\%((\a\+)\)\=:E185/
+  colorscheme default
+  highlight clear specialkey
+  highlight clear signcolumn
+  highlight clear foldcolumn
+endtry
 
 if has('gui_running')
   if has('nvim')
