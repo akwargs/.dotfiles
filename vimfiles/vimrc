@@ -68,6 +68,13 @@ highlight clear foldcolumn
 "-------------------------------------------
 
 
+if has('nvim')
+  set undodir=~/temp/nvim
+else
+  set undodir=~/temp
+endif
+
+
 "-------------------------------------------
 " Begin standard vimrc
 filetype plugin indent on
@@ -117,11 +124,6 @@ set textwidth=80
 set timeout timeoutlen=3000 ttimeoutlen=100
 set visualbell
 set undofile
-if has('nvim')
-  set undodir=~/temp/nvim
-else
-  set undodir=~/temp
-endif
 set whichwrap=<,>,h,l
 set wildignorecase
 set wildmenu
