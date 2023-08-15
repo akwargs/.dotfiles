@@ -104,6 +104,7 @@ set shiftwidth=4
 set signcolumn=yes
 set smartcase
 set showmatch
+set noshowmode ""redundant with statusline
 set smartindent
 set softtabstop=4
 set nostartofline
