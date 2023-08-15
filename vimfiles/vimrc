@@ -136,6 +136,12 @@ augroup Vim
   autocmd FileType vim setlocal sw=2 ts=2 sts=2 foldmethod=indent
 augroup END
 
+augroup Logs
+  au!
+  autocmd FileType log setlocal syntax=off
+  autocmd BufRead session-capture* setlocal ft=log
+augroup END
+
 augroup vimStartup
   au!
   autocmd BufReadPost *
