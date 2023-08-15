@@ -195,9 +195,9 @@ vnoremap < <gv
 vnoremap > >gv
 
 nnoremap / /\v
-nnoremap <C-W>e      <C-W>=
-nnoremap <C-W>=      <C-W>-
-nnoremap <C-W>-      <C-W>s
+nnoremap <C-W>e     <C-W>=
+nnoremap <C-W>=     <C-W>-
+nnoremap <C-W>-     <C-W>s
 nnoremap <C-W><bar> <C-W>v
 nnoremap <C-W>c     <C-L>
 nnoremap <C-W>X     <C-W>c
