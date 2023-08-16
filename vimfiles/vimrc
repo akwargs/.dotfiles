@@ -184,18 +184,19 @@ endif
 "-------------------------------------------
 " Maps and abbreviations
 map Q gq
+inoremap <C-S> <Esc>:up<CR>gi
 inoremap <C-U> <C-G>u<C-U>
 inoremap <C-Z> <C-O>u
 inoremap <S-Insert> <C-R>+
 inoremap ..l -------------------------------------------<CR><CR>
 inoremap ..d ============<C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>============<CR><CR>
 nnoremap / /\v
-nnoremap <C-W>e     <C-W>=
-nnoremap <C-W>=     <C-W>-
-nnoremap <C-W>-     <C-W>s
+nnoremap <C-W>e <C-W>=
+nnoremap <C-W>= <C-W>-
+nnoremap <C-W>- <C-W>s
 nnoremap <C-W><bar> <C-W>v
-nnoremap <C-W>c     <C-L>
-nnoremap <C-W>X     <C-W>c
+nnoremap <C-W>c <C-L>
+nnoremap <C-W>X <C-W>c
 nnoremap <leader>jq :%!jq .<CR>
 nnoremap <leader>Jq :%!jq . -c<CR>
 nnoremap <leader>l  :nohl<CR>
