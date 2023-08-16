@@ -49,7 +49,10 @@ packadd! matchit
 " Related to plugins
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
-let g:lightline = { 'colorscheme': 'one', }
+let g:lightline = { 'colorscheme': 'one',
+      \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+      \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
+      \ }
 let g:python_highlight_all = 1
 " let g:highlightedyank_highlight_duration = 250
 " let g:indentLine_char = ''
