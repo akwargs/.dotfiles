@@ -14,72 +14,79 @@ endif
 
 
 "-------------------------------------------
-call plug#begin('$HOME/.vim/plugged')
-"-------------------------------------------
-" Plugins I know I want
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rsi'
-Plug 'tpope/vim-endwise'
-Plug 'junegunn/vim-easy-align'
-Plug 'godlygeek/tabular'
-Plug 'dbakker/vim-paragraph-motion'
-Plug 'sheerun/vim-polyglot'
-Plug 'Vimjas/vim-python-pep8-indent'
-Plug 'airblade/vim-gitgutter'
-Plug 'kshenoy/vim-signature'
-Plug 'axvr/photon.vim'
-Plug 'itchyny/lightline.vim'
-"-------------------------------------------
-" Plugins I'm not sure I want
-" Plug 'tpope/vim-repeat'
-" Plug 'tpope/vim-unimpaired'
-" Plug 'tpope/vim-eunuch'
-" Plug 'tpope/vim-abolish'
-" Plug 'tpope/vim-sleuth'
-" Plug 'tpope/vim-speeddating'
-" Plug 'inkarkat/vim-ReplaceWithRegister'
-" Plug 'tommcdo/vim-exchange'
-" Plug 'jlanzarotta/bufexplorer'
-" Plug 'editorconfig/editorconfig-vim'
-" Plug 'tpope/vim-ragtag'
-" Plug 'wellle/targets.vim'
-" Plug 'michaeljsmith/vim-indent-object'
-" Plug 'kana/vim-textobj-user'
-" Plug 'kana/vim-textobj-entire'
-" Plug 'tpope/vim-vinegar'
-" Plug 'machakann/vim-highlightedyank'
-" Plug 'Yggdroot/indentLine'
-" Plug 'frazrepo/vim-rainbow'
-call plug#end()
-packadd! matchit
-"-------------------------------------------
+" Have plugins
+ if filereadable( expand("$HOME/.vim/autoload/plug.vim") )
+   autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+     \| PlugInstall --sync | source $MYVIMRC
+   \| endif
+  "-------------------------------------------
+  call plug#begin('$HOME/.vim/plugged')
+  "-------------------------------------------
+  " Plugins I know I want
+  Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-rsi'
+  Plug 'tpope/vim-endwise'
+  Plug 'junegunn/vim-easy-align'
+  Plug 'godlygeek/tabular'
+  Plug 'dbakker/vim-paragraph-motion'
+  Plug 'sheerun/vim-polyglot'
+  Plug 'Vimjas/vim-python-pep8-indent'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'kshenoy/vim-signature'
+  Plug 'axvr/photon.vim'
+  Plug 'itchyny/lightline.vim'
+  "-------------------------------------------
+  " Plugins I'm not sure I want
+  " Plug 'tpope/vim-repeat'
+  " Plug 'tpope/vim-unimpaired'
+  " Plug 'tpope/vim-eunuch'
+  " Plug 'tpope/vim-abolish'
+  " Plug 'tpope/vim-sleuth'
+  " Plug 'tpope/vim-speeddating'
+  " Plug 'inkarkat/vim-ReplaceWithRegister'
+  " Plug 'tommcdo/vim-exchange'
+  " Plug 'jlanzarotta/bufexplorer'
+  " Plug 'editorconfig/editorconfig-vim'
+  " Plug 'tpope/vim-ragtag'
+  " Plug 'wellle/targets.vim'
+  " Plug 'michaeljsmith/vim-indent-object'
+  " Plug 'kana/vim-textobj-user'
+  " Plug 'kana/vim-textobj-entire'
+  " Plug 'tpope/vim-vinegar'
+  " Plug 'machakann/vim-highlightedyank'
+  " Plug 'Yggdroot/indentLine'
+  " Plug 'frazrepo/vim-rainbow'
+  call plug#end()
+  "-------------------------------------------
 
 
-"-------------------------------------------
-" Related to plugins
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
-let g:lightline = { 'colorscheme': 'one',
-      \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
-      \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
-      \ }
-let g:python_highlight_all = 1
-" let g:highlightedyank_highlight_duration = 250
-" let g:indentLine_char = ''
-" let g:indentLine_defaultGroup = 'SpecialKey'
-" let g:indentLine_enabled = 1
-" let g:rainbow_active   = 1
-function! Toggler()
-  :GitGutterSignsToggle
-  " :IndentLinesToggle
-endfunction
-colorscheme antiphoton
-highlight clear specialkey
-highlight clear signcolumn
-highlight clear foldcolumn
-" :command IN :IndentLinesToggle
+  "-------------------------------------------
+  " Related to plugins
+  xmap ga <Plug>(EasyAlign)
+  nmap ga <Plug>(EasyAlign)
+  let g:lightline = { 'colorscheme': 'one',
+        \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+        \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
+        \ }
+  let g:python_highlight_all = 1
+  " let g:highlightedyank_highlight_duration = 250
+  " let g:indentLine_char = ''
+  " let g:indentLine_defaultGroup = 'SpecialKey'
+  " let g:indentLine_enabled = 1
+  " let g:rainbow_active   = 1
+  function! Toggler()
+    :GitGutterSignsToggle
+    " :IndentLinesToggle
+  endfunction
+  colorscheme antiphoton
+  highlight clear specialkey
+  highlight clear signcolumn
+  highlight clear foldcolumn
+  " :command IN :IndentLinesToggle
+endif
+" End have plugins
 "-------------------------------------------
 
 
@@ -94,6 +101,7 @@ endif
 
 "-------------------------------------------
 " Begin standard vimrc
+packadd! matchit
 filetype plugin indent on
 syntax on
 let mapleader = " "
