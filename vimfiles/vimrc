@@ -217,11 +217,7 @@ iab <buffer> usec µs
 "-------------------------------------------
 " GUI
 if has('gui_running')
-  if has('nvim')
-    set guifont="JetBrainsMonoNL_NFM_Light:h10:l"
-  else
-    set guifont=JetBrainsMonoNL_NFM_Light:h10:W200:cANSI:qDRAFT
-  endif
+  set guifont=JetBrainsMonoNL_NFM_Light:h10:W200:cANSI:qDRAFT
   set guioptions=gmtTlar
   set mouse=nvi
   set mousehide
