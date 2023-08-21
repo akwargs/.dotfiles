@@ -68,31 +68,15 @@ endif
         \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
         \ }
   let g:python_highlight_all = 1
-  " let g:highlightedyank_highlight_duration = 250
-  " let g:indentLine_char = ''
-  " let g:indentLine_defaultGroup = 'SpecialKey'
-  " let g:indentLine_enabled = 1
-  " let g:rainbow_active   = 1
   function! Toggler()
     :GitGutterSignsToggle
-    " :IndentLinesToggle
   endfunction
   colorscheme antiphoton
   highlight clear specialkey
   highlight clear signcolumn
   highlight clear foldcolumn
-  " :command IN :IndentLinesToggle
 endif
 " End have plugins
-"-------------------------------------------
-
-
-"-------------------------------------------
-if has('nvim')
-  set undodir=~/temp/nvim
-else
-  set undodir=~/temp
-endif
 "-------------------------------------------
 
 
