@@ -61,8 +61,7 @@ endif
 
   "-------------------------------------------
   " Related to plugins
-  xmap ga <Plug>(EasyAlign)
-  nmap ga <Plug>(EasyAlign)
+  vnoremap <Enter> <Plug>(EasyAlign)
   let g:lightline = { 'colorscheme': 'one',
         \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
         \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
