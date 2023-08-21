@@ -55,9 +55,6 @@ endif
   " Plug 'kana/vim-textobj-user'
   " Plug 'kana/vim-textobj-entire'
   " Plug 'tpope/vim-vinegar'
-  " Plug 'machakann/vim-highlightedyank'
-  " Plug 'Yggdroot/indentLine'
-  " Plug 'frazrepo/vim-rainbow'
   call plug#end()
   "-------------------------------------------
 
