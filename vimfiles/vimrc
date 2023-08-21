@@ -37,6 +37,8 @@ endif
   Plug 'kshenoy/vim-signature'
   Plug 'axvr/photon.vim'
   Plug 'itchyny/lightline.vim'
+  Plug 'vimwiki/vimwiki'
+
   "-------------------------------------------
   " Plugins I'm not sure I want
   " Plug 'tpope/vim-repeat'
@@ -67,6 +69,11 @@ endif
         \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
         \ }
   let g:python_highlight_all = 1
+  let g:vimwiki_listsyms = '󰂎󰁻󰁽󰂁󱟢'
+  let g:vimwiki_list = [{'path': '~/vimfiles/vimwiki/',
+                        \ 'syntax': 'markdown', 'ext': '.md',
+                        \ 'links_space_char': '_'}]
+  au FileType vimwiki setlocal sw=5 ts=5 sts=5 tw=0 noet nobk noudf
   function! Toggler()
     :GitGutterSignsToggle
   endfunction
