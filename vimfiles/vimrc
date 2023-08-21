@@ -117,9 +117,9 @@ endif
 set pastetoggle=<F12>
 set ruler
 set shiftwidth=4
+set showmatch
 set signcolumn=yes
 set smartcase
-set showmatch
 set noshowmode ""redundant with statusline
 set smartindent
 set softtabstop=4
@@ -128,8 +128,9 @@ set t_Co=256
 set tabstop=4
 set textwidth=80
 set timeout timeoutlen=3000 ttimeoutlen=100
-set visualbell
+set undodir=~/temp
 set undofile
+set visualbell
 set whichwrap=<,>,h,l
 set wildignorecase
 set wildmenu
@@ -168,10 +169,6 @@ if !&diff
     autocmd BufLeave,FocusLost,InsertEnter   * if &signcolumn == "yes" | set nornu | endif
   augroup END
 endif
-augroup Insert
-  au!
-  au InsertEnter,InsertLeave * set cul! cuc!
-augroup END
 "-------------------------------------------
 
 
