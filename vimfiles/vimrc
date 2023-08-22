@@ -97,7 +97,7 @@ set fileformats=unix,dos
 set foldmethod=syntax
 set hidden
 set history=100
-set hls
+set hlsearch
 set ignorecase
 set incsearch
 set infercase
