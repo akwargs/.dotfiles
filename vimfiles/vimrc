@@ -118,9 +118,9 @@ set pastetoggle=<F12>
 set ruler
 set shiftwidth=4
 set showmatch
+set noshowmode ""redundant with statusline
 set signcolumn=yes
 set smartcase
-set noshowmode ""redundant with statusline
 set smartindent
 set softtabstop=4
 set nostartofline
