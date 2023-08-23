@@ -164,7 +164,7 @@ augroup END
 if !&diff
   augroup signcolumngroup
     au!
-    autocmd BufEnter,FocusGained,InsertLeave * if &signcolumn == "yes" | set rnu | endif
+    autocmd BufEnter,FocusGained,InsertLeave * if &signcolumn == "yes" | set nu rnu | endif
     autocmd BufLeave,FocusLost,InsertEnter   * if &signcolumn == "yes" | set nornu | endif
   augroup END
 endif
