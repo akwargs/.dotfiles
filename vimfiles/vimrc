@@ -190,12 +190,6 @@ inoremap <S-Insert> <C-R>+
 inoremap ..l -------------------------------------------<CR><CR>
 inoremap ..d ============<C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>============<CR><CR>
 nnoremap / /\v
-nnoremap <C-W>e <C-W>=
-nnoremap <C-W>= <C-W>-
-nnoremap <C-W>- <C-W>s
-nnoremap <C-W><bar> <C-W>v
-nnoremap <C-W>c <C-L>
-nnoremap <C-W>X <C-W>c
 nnoremap <leader>jq :%!jq .<CR>
 nnoremap <leader>Jq :%!jq . -c<CR>
 nnoremap <leader>l  :nohl<CR>
@@ -203,10 +197,7 @@ nnoremap <silent> <leader>nn :exe "set nu! rnu! list!" \| call Toggler()<CR>
 nnoremap <silent> <leader>cc :exe "set cc=" . (&cc == "" ? "80,120" : "")<CR>
 nnoremap <silent> <leader>rr :exe "set rnu!"<CR>
 nnoremap <silent> <leader>cl :exe "set cuc! cul!"<CR>
-vnoremap <S-Del> "+x
-vnoremap <C-Insert> "+y"
 vnoremap <S-Insert> +gp
-vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 vnoremap < <gv
 vnoremap > >gv
 iab <buffer> um µm
