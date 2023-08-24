@@ -26,6 +26,9 @@ require('lazy').setup({
   'axvr/photon.vim',
 }, {})
 
+-- For minimal only
+vim.cmd [[ set statusline=%<%f%=\ %{fugitive#statusline()}\ [%1*%M%*%{','.&fileformat}%R%Y]\ [%6l,%4c%V]\ %3b\ 0x%02Bh\ %P ]]
+
 -- See `:help vim.o`
 vim.o.backup = true
 vim.o.breakindent = true
@@ -44,7 +47,6 @@ vim.o.listchars = 'tab:»·,trail:·'
 vim.o.modelines = 1
 -- vim.o.mouse = ''
 vim.o.showmatch = true
-vim.o.showmode = false
 vim.o.smartcase = true
 vim.o.smartindent = true
 vim.o.softtabstop = 2
