@@ -21,7 +21,6 @@ require('lazy').setup({
   'tpope/vim-fugitive',
   'tpope/vim-rsi',
   'tpope/vim-endwise',
-  'junegunn/vim-easy-align',
   'godlygeek/tabular',
   'dbakker/vim-paragraph-motion',
   'axvr/photon.vim',
@@ -108,7 +107,8 @@ vim.cmd [[
   nnoremap <silent> <leader>nn :exe "set nu! rnu! list!"<CR>
   nnoremap <silent> <leader>cc :exe "set cc=" . (&cc == "" ? "80,120" : "")<CR>
   nnoremap <silent> <leader>cl :exe "set cuc! cul!"<CR>
-  vnoremap <Enter> <Plug>(EasyAlign)
+  vnoremap <silent> <leader>a= :Tabularize /=<CR>
+  vnoremap <silent> <leader>a: :Tabularize /:\zs<CR>
   vnoremap <S-Insert> +gp
 
   iab <buffer> um µm
