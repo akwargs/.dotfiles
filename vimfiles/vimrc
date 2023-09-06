@@ -178,6 +178,7 @@ imap `u μ
 imap `l -------------------------------------------<CR><CR>
 imap `d ============<C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>============<CR><CR>
 nnoremap / /\v
+nnoremap ? ?\v
 nmap <leader>jq :%!jq .<CR>
 nmap <leader>Jq :%!jq . -c<CR>
 nmap <leader>l  :nohl<CR>
