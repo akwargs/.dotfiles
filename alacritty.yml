@@ -1,0 +1,104 @@
+# alacritty for windows
+env:
+  TERM: xterm-256color
+
+window:
+  dimensions:
+    columns: 200
+    lines: 50
+  padding:
+    x: 20
+    y: 20
+  decorations: full
+  opacity: 1.0
+  startup_mode: Windowed
+  dynamic_title: true
+  decorations_theme_variant: Light
+
+scrolling:
+  history: 20000
+  multiplier: 3
+
+font:
+  normal:
+    family: JetBrainsMonoNL Nerd Font Mono
+    style: Light
+  bold:
+    family: JetBrainsMonoNL Nerd Font Mono
+    style: Italic
+  italic:
+    family: JetBrainsMonoNL Nerd Font Mono
+    style: Italic
+  bold_italic:
+    family: JetBrainsMonoNL Nerd Font Mono
+    style: Bold Italic
+  size: 10.0
+
+bell:
+  duration: 0
+
+selection:
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+  save_to_clipboard: true
+
+cursor:
+  style:
+    shape: Block
+    blinking: Always
+  blink_interval: 750
+  blink_timeout: 5
+  unfocused_hollow: true
+
+live_config_reload: true
+
+shell:
+  program: 'C:/Program Files/Neovim/bin/nvim.exe'
+
+working_directory: ~
+
+mouse:
+  hide_when_typing: true
+
+key_bindings:
+  - { key: Key6,      mods: Control,                    chars: "\x1e"       }
+  - { key: N,         mods: Shift|Control,              action: CreateNewWindow }
+  - { key: L,         mods: Control,                    action: ReceiveChar }
+  - { key: Space,     mods: Shift|Control,              action: ReceiveChar }
+  - { key: F,         mods: Shift|Control,              action: ReceiveChar }
+
+# sourced from alacritty-themes
+colors:
+  # Default colors
+  primary:
+    background: '0xffffff'
+    foreground: '0x0E1116'
+
+  # Normal colors
+  normal:
+    black:   '0x24292f'
+    red:     '0xcf222e'
+    green:   '0x116329'
+    yellow:  '0x4d2d00'
+    blue:    '0x0969da'
+    magenta: '0x8250df'
+    cyan:    '0x1b7c83'
+    white:   '0x6e7781'
+
+  # Bright colors
+  bright:
+    black:   '0x57606a'
+    red:     '0xa40e26'
+    green:   '0x1a7f37'
+    yellow:  '0x633c01'
+    blue:    '0x218bff'
+    magenta: '0xa475f9'
+    cyan:    '0x3192aa'
+    white:   '0x8c959f'
+
+  indexed_colors:
+    - { index: 16, color: '0xd18616' }
+    - { index: 17, color: '0xa40e26' }
+
+  cursor:
+    text: CellForeground
+    cursor: '#4FFF33'
