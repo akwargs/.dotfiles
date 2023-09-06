@@ -1,0 +1,208 @@
+" vimrc for windows
+set rtp+=~/.vim
+set nocompatible
+filetype off
+if empty(glob("$HOME/vimfiles/autoload/plug.vim"))
+  silent ! powershell -Command "
+        \ New-Item -Path "$env:HOME/vimfiles" -Name autoload -Type Directory -Force;
+        \ Invoke-WebRequest
+        \ -Uri 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+        \ -OutFile "$env:HOME/vimfiles/autoload/plug.vim"
+        \ "
+endif
+"-------------------------------------------
+
+
+"-------------------------------------------
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+      \| PlugInstall --sync | source $MYVIMRC
+      \| endif
+"-------------------------------------------
+call plug#begin("$HOME/.vim/plugged")
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rsi'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-vinegar'
+Plug 'godlygeek/tabular'
+Plug 'dbakker/vim-paragraph-motion'
+Plug 'farmergreg/vim-lastplace'
+Plug 'airblade/vim-gitgutter'
+Plug 'kshenoy/vim-signature'
+Plug 'jlanzarotta/bufexplorer'
+Plug 'axvr/photon.vim'
+Plug 'itchyny/lightline.vim'
+call plug#end()
+"-------------------------------------------
+
+
+"-------------------------------------------
+" Related to plugins
+function! Toggler()
+  :GitGutterSignsToggle
+endfunction
+if !empty($VIM_LIGHT)
+  set bg=light
+  try
+    colorscheme antiphoton
+    highlight clear SpecialKey
+    highlight clear SignColumn
+    highlight clear FoldColumn
+  catch /^Vim\%((\a\+)\)\=:E185/
+    colorscheme default
+  endtry
+  let g:lightline = {
+      \ 'colorscheme': 'one',
+      \ }
+else
+  try
+    colorscheme jellybeans
+  catch /^Vim\%((\a\+)\)\=:E185/
+    colorscheme slate
+  endtry
+  set bg=dark
+endif
+"-------------------------------------------
+
+
+"-------------------------------------------
+" Begin standard vimrc
+packadd! matchit
+filetype plugin indent on
+syntax on
+let mapleader = " "
+set background=light
+set backup
+set cmdheight=2
+set clipboard=unnamed
+set display=truncate
+set encoding=utf-8
+set expandtab
+set fileformats=unix,dos
+set foldmethod=syntax
+set hidden
+set history=100
+set hlsearch
+set ignorecase
+set incsearch
+set infercase
+" set iskeyword+=- " to make '-' a word character
+" set iskeyword-=_ " to make '_' not a word character
+set nolangremap
+set laststatus=2
+set linebreak
+set list
+set listchars=tab:»·,trail:·
+set modelines=1
+set mouse=
+set nu rnu
+if &diff
+  set nornu nocul nocuc
+endif
+set pastetoggle=<F12>
+set ruler
+set shiftwidth=4
+set signcolumn=yes
+set smartcase
+set showmatch
+set noshowmode
+set smartindent
+set softtabstop=4
+set nostartofline
+set t_Co=256
+set tabstop=4
+set textwidth=80
+set timeoutlen=500
+set ttimeoutlen=100
+set visualbell
+set undodir=~/tmp
+set undofile
+set whichwrap=<,>,h,l
+set wildignorecase
+set wildmenu
+set wildmode=list:longest,full
+set nowrapscan
+"-------------------------------------------
+
+
+"-------------------------------------------
+" autocommands
+augroup Unfold
+  au!
+  au BufWinEnter * normal zR
+augroup END
+augroup Python
+  au!
+  autocmd FileType python setlocal foldmethod=indent
+augroup END
+augroup Vim
+  au!
+  autocmd FileType vim setlocal sw=2 ts=2 sts=2 foldmethod=indent
+augroup END
+if !&diff
+  augroup SignColumnGroup
+    au!
+    autocmd BufEnter,FocusGained,InsertLeave * if &signcolumn == "yes" | set nu rnu | endif
+    autocmd BufLeave,FocusLost,InsertEnter   * if &signcolumn == "yes" | set nornu | endif
+  augroup END
+endif
+augroup InsertFocus
+  au!
+  au InsertEnter,InsertLeave * set cul! cuc!
+augroup END
+"-------------------------------------------
+
+
+"-------------------------------------------
+" Custom functions/commands without plugins
+if !exists(":DiffOrig")
+  command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
+          \ | wincmd p | diffthis
+endif
+"-------------------------------------------
+
+
+"-------------------------------------------
+" Maps and abbreviations
+map Q gq
+inoremap <C-U> <C-G>u<C-U>
+imap <C-S> <Esc>:up<CR>gi
+imap <C-Z> <C-O>u
+imap <S-Insert> <C-R>+
+" micron is <C-k>m*
+imap `u μ
+imap `l -------------------------------------------<CR><CR>
+imap `d ============<C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>============<CR><CR>
+nnoremap / /\v
+nmap <leader>jq :%!jq .<CR>
+nmap <leader>Jq :%!jq . -c<CR>
+nmap <leader>l  :nohl<CR>
+nmap <C-l>      :nohl<CR>
+nmap <silent> <leader>nn :exe "set nu! rnu! list!" \| call Toggler()<CR>
+nmap <silent> <leader>cc :exe "set cc=" . (&cc == "" ? "80,120" : "")<CR>
+nmap <silent> <leader>rr :exe "set rnu!"<CR>
+nmap <silent> <leader>cl :exe "set cuc! cul!"<CR>
+vmap <S-Insert> +gp
+vnoremap < <gv
+vnoremap > >gv
+iab <buffer> Francais Français
+"-------------------------------------------
+
+
+"-------------------------------------------
+" GUI
+if has('gui_running')
+  set guifont=JetBrainsMonoNL_NFM_Light:h10:W200:cANSI:qDRAFT
+  set guioptions=gmtTlar
+  set mouse=nvi
+  set mousehide
+  set columns=130 lines=35
+  map <ScrollWheelUp>   <C-Y>
+  map <ScrollWheelDown> <C-E>
+endif
+"-------------------------------------------
+" vim:ft=vim:tw=0:sw=2:ts=2:sts=2:nowrap
