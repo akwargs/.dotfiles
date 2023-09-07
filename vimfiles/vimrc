@@ -1,5 +1,4 @@
 " vimrc for windows
-set rtp+=~/.vim
 set nocompatible
 filetype off
 if empty(glob("$HOME/vimfiles/autoload/plug.vim"))
@@ -35,46 +34,26 @@ Plug 'airblade/vim-gitgutter'
 Plug 'kshenoy/vim-signature'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'axvr/photon.vim'
-Plug 'itchyny/lightline.vim'
 call plug#end()
 "-------------------------------------------
 
 
 "-------------------------------------------
-" Related to plugins
+" custom functions
 function! Toggler()
   :GitGutterSignsToggle
 endfunction
-if !empty($VIM_LIGHT)
-  set bg=light
-  try
-    colorscheme antiphoton
-    highlight clear SpecialKey
-    highlight clear SignColumn
-    highlight clear FoldColumn
-  catch /^Vim\%((\a\+)\)\=:E185/
-    colorscheme default
-  endtry
-  let g:lightline = {
-      \ 'colorscheme': 'one',
-      \ }
-else
-  try
-    colorscheme jellybeans
-  catch /^Vim\%((\a\+)\)\=:E185/
-    colorscheme slate
-  endtry
-  set bg=dark
+if !exists(":DiffOrig")
+  command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
+          \ | wincmd p | diffthis
 endif
-vmap <leader>a= :Tabularize /=<CR>
-vmap <leader>a: :Tabularize /:\zs<CR>
 "-------------------------------------------
 
 
 "-------------------------------------------
 " Begin standard vimrc
-packadd! matchit
 filetype plugin indent on
+packadd! matchit
 syntax on
 let mapleader = " "
 set background=light
@@ -85,7 +64,6 @@ set display=truncate
 set encoding=utf-8
 set expandtab
 set fileformats=unix,dos
-set foldmethod=syntax
 set hidden
 set history=100
 set hlsearch
@@ -111,60 +89,24 @@ set shiftwidth=4
 set signcolumn=yes
 set smartcase
 set showmatch
-set noshowmode
+set showmode
 set smartindent
 set softtabstop=4
 set nostartofline
+set statusline=%<%f%=\ %{fugitive#statusline()}\ %1*%M%*%{','.&fileformat}%R%Y,L:%l/%L,C:%c%V
 set t_Co=256
 set tabstop=4
 set textwidth=80
 set timeoutlen=500
 set ttimeoutlen=100
 set visualbell
-set undodir=~/tmp
+set undodir=~/temp
 set undofile
 set whichwrap=<,>,h,l
 set wildignorecase
 set wildmenu
 set wildmode=list:longest,full
 set nowrapscan
-"-------------------------------------------
-
-
-"-------------------------------------------
-" autocommands
-augroup Unfold
-  au!
-  au BufWinEnter * normal zR
-augroup END
-augroup Python
-  au!
-  autocmd FileType python setlocal foldmethod=indent
-augroup END
-augroup Vim
-  au!
-  autocmd FileType vim setlocal sw=2 ts=2 sts=2 foldmethod=indent
-augroup END
-if !&diff
-  augroup SignColumnGroup
-    au!
-    autocmd BufEnter,FocusGained,InsertLeave * if &signcolumn == "yes" | set nu rnu | endif
-    autocmd BufLeave,FocusLost,InsertEnter   * if &signcolumn == "yes" | set nornu | endif
-  augroup END
-endif
-augroup InsertFocus
-  au!
-  au InsertEnter,InsertLeave * set cul! cuc!
-augroup END
-"-------------------------------------------
-
-
-"-------------------------------------------
-" Custom functions/commands without plugins
-if !exists(":DiffOrig")
-  command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
-          \ | wincmd p | diffthis
-endif
 "-------------------------------------------
 
 
@@ -188,10 +130,12 @@ nnoremap <C-d> <C-d>zz
 nmap <leader>l  :nohl<CR><C-l>
 nmap <leader>jq :%!jq .<CR>
 nmap <leader>Jq :%!jq . -c<CR>
-nmap <silent> <leader>nn :exe "set nu! rnu! list!" \| call Toggler()<CR>
 nmap <silent> <leader>cc :exe "set cc=" . (&cc == "" ? "80,120" : "")<CR>
 nmap <silent> <leader>rr :exe "set rnu!"<CR>
 nmap <silent> <leader>cl :exe "set cuc! cul!"<CR>
+nmap <silent> <leader>nn :exe "set nu! rnu! list!" \| call Toggler()<CR>
+vmap <leader>a= :Tabularize /=<CR>
+vmap <leader>a: :Tabularize /:\zs<CR>
 vmap <S-Insert> +gp
 vmap J :m '>+1<CR>gv=gv
 vmap K :m '<-2<CR>gv=gv
@@ -199,6 +143,39 @@ vnoremap < <gv
 vnoremap > >gv
 xmap <leader>p "_dPa
 iab <buffer> Francais Français
+"-------------------------------------------
+
+
+"-------------------------------------------
+" autocommands
+augroup Vim
+  au!
+  autocmd FileType vim setlocal sw=2 ts=2 sts=2 tw=0 nowrap
+augroup END
+if !&diff
+  augroup SignColumnGroup
+    au!
+    autocmd BufEnter,FocusGained,InsertLeave * if &signcolumn == "yes" | set nu rnu | endif
+    autocmd BufLeave,FocusLost,InsertEnter   * if &signcolumn == "yes" | set nornu | endif
+  augroup END
+endif
+augroup InsertFocus
+  au!
+  au InsertEnter,InsertLeave * set cul! cuc!
+augroup END
+"-------------------------------------------
+
+
+"-------------------------------------------
+" Colorscheme
+try
+  colorscheme antiphoton
+    highlight clear SpecialKey
+    highlight clear SignColumn
+    highlight clear FoldColumn
+  catch /^Vim\%((\a\+)\)\=:E185/
+    colorscheme zellner
+endtry
 "-------------------------------------------
 
 
@@ -214,4 +191,3 @@ if has('gui_running')
   map <ScrollWheelDown> <C-E>
 endif
 "-------------------------------------------
-" vim:ft=vim:tw=0:sw=2:ts=2:sts=2:nowrap
