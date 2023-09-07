@@ -168,14 +168,10 @@ augroup END
 
 "-------------------------------------------
 " Colorscheme
-try
-  colorscheme antiphoton
-    highlight clear SpecialKey
-    highlight clear SignColumn
-    highlight clear FoldColumn
-  catch /^Vim\%((\a\+)\)\=:E185/
-    colorscheme zellner
-endtry
+colorscheme antiphoton
+highlight clear SpecialKey
+highlight clear SignColumn
+highlight clear FoldColumn
 "-------------------------------------------
 
 
