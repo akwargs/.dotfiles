@@ -66,6 +66,8 @@ else
   endtry
   set bg=dark
 endif
+vmap <leader>a= :Tabularize /=<CR>
+vmap <leader>a: :Tabularize /:\zs<CR>
 "-------------------------------------------
 
 
@@ -180,6 +182,9 @@ imap `d ============<C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>============<CR><CR>
 nnoremap / /\v
 nnoremap ? ?\v
 nnoremap <C-l>  :nohl<CR><C-l>
+nnoremap J mzJ`z
+nnoremap <C-u> <C-u>zz
+nnoremap <C-d> <C-d>zz
 nmap <leader>l  :nohl<CR><C-l>
 nmap <leader>jq :%!jq .<CR>
 nmap <leader>Jq :%!jq . -c<CR>
@@ -188,8 +193,11 @@ nmap <silent> <leader>cc :exe "set cc=" . (&cc == "" ? "80,120" : "")<CR>
 nmap <silent> <leader>rr :exe "set rnu!"<CR>
 nmap <silent> <leader>cl :exe "set cuc! cul!"<CR>
 vmap <S-Insert> +gp
+vmap J :m '>+1<CR>gv=gv
+vmap K :m '<-2<CR>gv=gv
 vnoremap < <gv
 vnoremap > >gv
+xmap <leader>p "_dPa
 iab <buffer> Francais Français
 "-------------------------------------------
 
