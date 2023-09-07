@@ -179,10 +179,10 @@ imap `l -------------------------------------------<CR><CR>
 imap `d ============<C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>============<CR><CR>
 nnoremap / /\v
 nnoremap ? ?\v
+nnoremap <C-l>  :nohl<CR><C-l>
+nmap <leader>l  :nohl<CR><C-l>
 nmap <leader>jq :%!jq .<CR>
 nmap <leader>Jq :%!jq . -c<CR>
-nmap <leader>l  :nohl<CR>
-nmap <C-l>      :nohl<CR>
 nmap <silent> <leader>nn :exe "set nu! rnu! list!" \| call Toggler()<CR>
 nmap <silent> <leader>cc :exe "set cc=" . (&cc == "" ? "80,120" : "")<CR>
 nmap <silent> <leader>rr :exe "set rnu!"<CR>
