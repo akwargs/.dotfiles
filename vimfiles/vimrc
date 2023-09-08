@@ -194,6 +194,7 @@ endif
 " Plugin specific settings
 let g:vimwiki_listsyms = '󰂎󰁻󰁽󰂁'
 let g:vimwiki_list = [{'path': '~/vimwiki/',
-                      \ 'links_space_char': '_',
-                      \ }]
+                     \ 'links_space_char': '_',
+                     \ }]
+" Note re links_space_char https://github.com/vimwiki/vimwiki/issues/1031
 "-------------------------------------------
