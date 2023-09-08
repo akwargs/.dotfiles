@@ -52,7 +52,7 @@ cursor:
 live_config_reload: true
 
 shell:
-  program: 'C:/Program Files/Neovim/bin/nvim.exe -u ~/tmux.nvim/init.lua'
+  program: 'C:/Program Files/Neovim/bin/nvim.exe -u ~/.tmux.nvim/init.lua'
 
 working_directory: ~
 
