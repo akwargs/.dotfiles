@@ -33,6 +33,7 @@ Plug 'farmergreg/vim-lastplace'
 Plug 'airblade/vim-gitgutter'
 Plug 'kshenoy/vim-signature'
 Plug 'jlanzarotta/bufexplorer'
+Plug 'vimwiki/vimwiki'
 Plug 'axvr/photon.vim'
 call plug#end()
 "-------------------------------------------
@@ -186,4 +187,13 @@ if has('gui_running')
   map <ScrollWheelUp>   <C-Y>
   map <ScrollWheelDown> <C-E>
 endif
+"-------------------------------------------
+
+
+"-------------------------------------------
+" Plugin specific settings
+let g:vimwiki_listsyms = '󰂎󰁻󰁽󰂁'
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+                      \ 'links_space_char': '_',
+                      \ }]
 "-------------------------------------------
