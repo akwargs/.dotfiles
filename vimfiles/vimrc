@@ -60,7 +60,6 @@ let mapleader = " "
 set background=light
 set backup
 set cmdheight=2
-set clipboard=unnamed
 set display=truncate
 set encoding=utf-8
 set expandtab
@@ -89,6 +88,7 @@ set ruler
 set shiftwidth=4
 set signcolumn=yes
 set smartcase
+set shell=pwsh
 set showmatch
 set showmode
 set smartindent
@@ -98,10 +98,8 @@ set statusline=%<%f%=\ %{fugitive#statusline()}\ %1*%M%*%{','.&fileformat}%R%Y,L
 set t_Co=256
 set tabstop=4
 set textwidth=80
-set timeoutlen=500
-set ttimeoutlen=100
+set ttimeoutlen=300
 set visualbell
-set undodir=~/temp
 set undofile
 set whichwrap=<,>,h,l
 set wildignorecase
@@ -164,6 +162,20 @@ augroup InsertFocus
   au!
   au InsertEnter,InsertLeave * set cul! cuc!
 augroup END
+"-------------------------------------------
+
+
+"-------------------------------------------
+" nvim vs vim stuff
+if has('nvim')
+  set undodir=~/temp/nvim
+  augroup Terminal
+    au!
+    au TermOpen,TermEnter * setlocal nonu nornu nolist scl=no
+  augroup END
+else
+  set undodir=~/temp
+endif
 "-------------------------------------------
 
 
