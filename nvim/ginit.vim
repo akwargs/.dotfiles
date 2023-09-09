@@ -1,4 +1,3 @@
-set rtp+=C:/Program\ Files/Neovim/share/nvim-qt
 source C:/Program\ Files/Neovim/share/nvim-qt/runtime/plugin/nvim_gui_shim.vim
 
 set columns=130 lines=35
