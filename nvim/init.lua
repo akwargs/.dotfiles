@@ -364,6 +364,7 @@ vim.o.scrollback = 20000
 vim.o.scrolloff = 8
 vim.o.shiftwidth = 2
 vim.o.showmatch = true
+vim.o.showmode = false
 vim.o.smartcase = true
 vim.o.smartindent = true
 vim.o.softtabstop = 2
