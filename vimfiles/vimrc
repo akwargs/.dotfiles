@@ -33,6 +33,7 @@ Plug 'farmergreg/vim-lastplace'
 Plug 'airblade/vim-gitgutter'
 Plug 'kshenoy/vim-signature'
 Plug 'jlanzarotta/bufexplorer'
+Plug 'frioux/vim-regedit'
 Plug 'vimwiki/vimwiki'
 Plug 'axvr/photon.vim'
 call plug#end()

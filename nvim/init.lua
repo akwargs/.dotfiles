@@ -30,6 +30,7 @@ require('lazy').setup({
   'mbbill/undotree',
   'ThePrimeagen/harpoon',
   'jlanzarotta/bufexplorer',
+  'frioux/vim-regedit',
   'axvr/photon.vim',
 
   {
