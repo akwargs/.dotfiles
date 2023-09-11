@@ -816,18 +816,18 @@ ls.add_snippets('all', {
 })
 ls.filetype_extend('all', { '_' })
 
--- if windows
--- cpanm -n Neovim::Ext
+-- windows vs linux here
 if vim.fn.has 'win32' == 1 then
-  vim.g.python3_host_prog = [[~/Envs/py3nvim/Scripts/python.exe]]
-  vim.g.node_host_prog = [[~/AppData/Roaming/npm/node_modules/neovim/bin/cli.js]]
   vim.o.shell = 'pwsh'
 else
   vim.o.shell = 'zsh'
   vim.o.timeoutlen = 300
-  vim.g.python3_host_prog = os.getenv 'NVIM_PYTHON3_HOST'
-  vim.g.node_host_prog = os.getenv 'NVIM_NODE_HOST'
 end
+
+-- some providers
+-- cpanm -n Neovim::Ext
+vim.g.python3_host_prog = os.getenv 'NVIM_PYTHON3_HOST'
+vim.g.node_host_prog = os.getenv 'NVIM_NODE_HOST'
 
 -- vim stuff
 vim.cmd [[
