@@ -825,6 +825,8 @@ if vim.fn.has 'win32' == 1 then
 else
   vim.o.shell = 'zsh'
   vim.o.timeoutlen = 300
+  vim.g.python3_host_prog = os.getenv 'NVIM_PYTHON3_HOST'
+  vim.g.node_host_prog = os.getenv 'NVIM_NODE_HOST'
 end
 
 -- vim stuff
