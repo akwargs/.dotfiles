@@ -37,7 +37,7 @@ require('lazy').setup({
     dependencies = {
       { 'williamboman/mason.nvim', config = true },
       'williamboman/mason-lspconfig.nvim',
-      { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+      { 'j-hui/fidget.nvim',       tag = 'legacy', opts = {} },
       'folke/neodev.nvim',
     },
   },
@@ -53,7 +53,7 @@ require('lazy').setup({
     },
   },
 
-  { 'folke/which-key.nvim', opts = {} },
+  { 'folke/which-key.nvim',  opts = {} },
 
   {
     'lewis6991/gitsigns.nvim',
