@@ -167,6 +167,7 @@ augroup END
 "-------------------------------------------
 " nvim vs vim stuff
 if has('nvim')
+  set shell=pwsh
   set undodir=~/temp/nvim
   augroup Terminal
     au!
