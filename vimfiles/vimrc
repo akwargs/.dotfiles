@@ -88,7 +88,6 @@ set ruler
 set shiftwidth=4
 set signcolumn=yes
 set smartcase
-set shell=pwsh
 set showmatch
 set showmode
 set smartindent
