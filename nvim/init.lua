@@ -834,7 +834,7 @@ vim.cmd [[
   if !empty($VIM_LIGHT)
     colorscheme antiphoton
   else
-    colorscheme slate
+    colorscheme photon
   endif
   iab <buffer> Francais Français
   iab <buffer> naive naïve
