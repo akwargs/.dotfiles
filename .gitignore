@@ -2,7 +2,6 @@
 *.swp
 *.swo
 *.py[co]
-vimfiles/autoload
 /venv*
 /.mypy_cache
 /.pytest_cache

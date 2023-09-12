@@ -1,18 +1,19 @@
 " vimrc for windows
 set nocompatible
 filetype off
-if empty(glob("$HOME/vimfiles/autoload/plug.vim"))
+if empty(glob("$HOME/.vim/autoload/plug.vim"))
   silent ! powershell -Command "
-        \ New-Item -Path "$env:HOME/vimfiles" -Name autoload -Type Directory -Force;
+        \ New-Item -Path "$env:HOME/.vim" -Name autoload -Type Directory -Force;
         \ Invoke-WebRequest
         \ -Uri 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-        \ -OutFile "$env:HOME/vimfiles/autoload/plug.vim"
+        \ -OutFile "$env:HOME/.vim/autoload/plug.vim"
         \ "
 endif
 "-------------------------------------------
 
 
 "-------------------------------------------
+set rtp+=~/.vim
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
       \| PlugInstall --sync | source $MYVIMRC
       \| endif
