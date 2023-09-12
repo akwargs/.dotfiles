@@ -89,6 +89,7 @@ set nu rnu
 if &diff
   set nornu nocul nocuc
 endif
+set omnifunc=syntaxcomplete#Complete
 set pastetoggle=<F12>
 set ruler
 set shiftwidth=4
