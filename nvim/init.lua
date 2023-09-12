@@ -421,7 +421,7 @@ keymap.set('n', '<leader>cl', [[:exe "set cuc! cul!"<CR>]])
 -- toggle rnu doesn't appear to restore the rnu leave for now
 keymap.set('n', '<leader>rr', [[:exe "set rnu!"<CR>]])
 -- undotree
-keymap.set('n', '<F5>', vim.cmd.UndotreeToggle)
+keymap.set('n', '<F9>', vim.cmd.UndotreeToggle)
 -- tabularize
 keymap.set('v', '<leader>a=', [[:Tabularize /=<CR>]])
 keymap.set('v', '<leader>a:', [[:Tabularize /:\zs<CR>]])
