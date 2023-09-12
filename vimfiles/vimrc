@@ -175,7 +175,7 @@ if has('nvim')
     au TermOpen,TermEnter * setlocal nonu nornu nolist scl=no
   augroup END
 else
-  set undodir=~/temp
+  set undodir=~/temp/vim
 endif
 "-------------------------------------------
 
