@@ -35,6 +35,11 @@ Plug 'kshenoy/vim-signature'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'frioux/vim-regedit'
 Plug 'vimwiki/vimwiki'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'mbbill/undotree'
 Plug 'axvr/photon.vim'
 call plug#end()
 "-------------------------------------------
@@ -209,5 +214,7 @@ let g:vimwiki_listsyms = '󰂎󰁻󰁽󰂁'
 let g:vimwiki_list = [{'path': '~/vimwiki/',
                      \ 'links_space_char': '_',
                      \ }]
+let g:python_highlight_all = 1
+nmap <F9> :UndotreeToggle<CR>
 " Note re links_space_char https://github.com/vimwiki/vimwiki/issues/1031
 "-------------------------------------------
