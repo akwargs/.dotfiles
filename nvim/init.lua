@@ -821,7 +821,7 @@ ls.filetype_extend('all', { '_' })
 
 -- windows vs linux here
 if vim.fn.has 'win32' == 1 then
-  vim.o.shell = 'pwsh'
+  vim.o.shell = 'powershell'
 else
   vim.o.shell = 'zsh'
   vim.o.timeoutlen = 300
