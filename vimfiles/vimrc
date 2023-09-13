@@ -198,7 +198,9 @@ highlight clear FoldColumn
 "-------------------------------------------
 " GUI
 if has('gui_running')
-  set guifont=JetBrainsMonoNL_NFM_Light:h10:W200:cANSI:qDRAFT
+  if !has('nvim')
+    set guifont=JetBrainsMonoNL_NFM_Light:h10:W200:cANSI:qDRAFT
+  endif
   set guioptions=gmtTlar
   set mouse=nvi
   set mousehide
