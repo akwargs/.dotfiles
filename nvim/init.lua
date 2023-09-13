@@ -393,7 +393,7 @@ local silent = { silent = true }
 local ns = { noremap = true, silent = true }
 keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', silent)
+keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', ns)
 -- quick save
 keymap.set('i', '<C-s>', '<Esc>:up<CR>gi', noremap)
 keymap.set('n', '<C-s>', ':up<CR>', noremap)
@@ -408,6 +408,8 @@ keymap.set('i', '`d', [[============<C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>=====
 -- very magic
 keymap.set('n', '/', [[/\v]], noremap)
 keymap.set('n', '?', [[?\v]], noremap)
+-- redo
+keymap.set('n', 'U', [[:redo<CR>]], ns)
 -- clear hls
 keymap.set('n', '<leader>l', ':nohl<CR><C-l>', noremap)
 -- depending on terminal, might need this
