@@ -388,79 +388,81 @@ vim.wo.signcolumn = 'yes'
 
 -- keymaps
 local keymap = vim.keymap
-local opts = { noremap = true }
-keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+local noremap = { noremap = true }
+local silent = { silent = true }
+local ns = { noremap = true, silent = true }
 keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', silent)
 -- quick save
-keymap.set('i', '<C-s>', '<Esc>:up<CR>gi')
-keymap.set('n', '<C-s>', ':up<CR>')
+keymap.set('i', '<C-s>', '<Esc>:up<CR>gi', noremap)
+keymap.set('n', '<C-s>', ':up<CR>', noremap)
 -- finer grain undo
-keymap.set('i', '<C-u>', '<C-g>u<C-u>', opts)
+keymap.set('i', '<C-u>', '<C-g>u<C-u>', noremap)
 -- quick undo
-keymap.set('i', '<C-z>', '<C-o>u')
+keymap.set('i', '<C-z>', '<C-o>u', noremap)
 -- custom maps
-keymap.set('i', '`u', 'µ')
-keymap.set('i', '`l', [[-------------------------------------------<CR><CR>]])
-keymap.set('i', '`d', [[============<C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>============<CR><CR>]])
+keymap.set('i', '`u', 'µ', noremap)
+keymap.set('i', '`l', [[-------------------------------------------<CR><CR>]], noremap)
+keymap.set('i', '`d', [[============<C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>============<CR><CR>]], noremap)
 -- very magic
-keymap.set('n', '/', [[/\v]], opts)
-keymap.set('n', '?', [[?\v]], opts)
+keymap.set('n', '/', [[/\v]], noremap)
+keymap.set('n', '?', [[?\v]], noremap)
 -- clear hls
-keymap.set('n', '<leader>l', ':nohl<CR><C-l>')
+keymap.set('n', '<leader>l', ':nohl<CR><C-l>', noremap)
 -- depending on terminal, might need this
-keymap.set('n', '<F12>', ':set paste!<CR>')
+keymap.set('n', '<F12>', ':set paste!<CR>', noremap)
 -- show columns at 80 and 120
-keymap.set('n', '<leader>cc', [[:exe "set cc=" . (&cc == "" ? "80,120" : "")<CR>]])
-keymap.set('n', '<leader>nn', [[:exe "set nu! rnu! list!"<CR>:Gitsigns toggle_signs<CR>:MarksToggleSigns<CR>]])
-keymap.set('n', '<leader>cl', [[:exe "set cuc! cul!"<CR>]])
+keymap.set('n', '<leader>cc', [[:exe "set cc=" . (&cc == "" ? "80,120" : "")<CR>]], noremap)
+keymap.set('n', '<leader>nn', [[:exe "set nu! rnu! list!"<CR>:Gitsigns toggle_signs<CR>:MarksToggleSigns<CR>]], noremap)
+keymap.set('n', '<leader>cl', [[:exe "set cuc! cul!"<CR>]], noremap)
 -- function toggle_rnu()
 --   vim.o.relativenumber = not vim.o.relativenumber
 -- end
--- keymap.set('n', '<leader>rr', [[:lua toggle_rnu()<CR>]])
+-- keymap.set('n', '<leader>rr', [[:lua toggle_rnu()<CR>]], noremap)
 -- toggle rnu doesn't appear to restore the rnu leave for now
-keymap.set('n', '<leader>rr', [[:exe "set rnu!"<CR>]])
+keymap.set('n', '<leader>rr', [[:exe "set rnu!"<CR>]], noremap)
 -- undotree
-keymap.set('n', '<F9>', vim.cmd.UndotreeToggle)
+keymap.set('n', '<F9>', vim.cmd.UndotreeToggle, noremap)
 -- tabularize
-keymap.set('v', '<leader>a=', [[:Tabularize /=<CR>]])
-keymap.set('v', '<leader>a:', [[:Tabularize /:\zs<CR>]])
+keymap.set('v', '<leader>a=', [[:Tabularize /=<CR>]], noremap)
+keymap.set('v', '<leader>a:', [[:Tabularize /:\zs<CR>]], noremap)
 -- visual indent stays in visual
-keymap.set('v', '<', '<gv', opts)
-keymap.set('v', '>', '>gv', opts)
+keymap.set('v', '<', '<gv', noremap)
+keymap.set('v', '>', '>gv', noremap)
 -- terminal escape is double C-\
-keymap.set('t', [[<C-\><C-\>]], [[<C-\><C-n>]])
-keymap.set('t', [[<C-b>[]], [[<C-\><C-n>]])
+keymap.set('t', [[<C-\><C-\>]], [[<C-\><C-n>]], noremap)
+keymap.set('t', [[<C-b>[]], [[<C-\><C-n>]], noremap)
 -- visual line moves
-keymap.set('v', 'J', [[:m '>+1<CR>gv=gv]])
-keymap.set('v', 'K', [[:m '<-2<CR>gv=gv]])
+keymap.set('v', 'J', [[:m '>+1<CR>gv=gv]], noremap)
+keymap.set('v', 'K', [[:m '<-2<CR>gv=gv]], noremap)
 -- cursor remains in place after J
-keymap.set('n', 'J', [[mzJ`z]], opts)
+keymap.set('n', 'J', [[mzJ`z]], noremap)
 -- C-u/d stays in middle of the page
-keymap.set('n', '<C-u>', '<C-u>zz', opts)
-keymap.set('n', '<C-d>', '<C-d>zz', opts)
+keymap.set('n', '<C-u>', '<C-u>zz', noremap)
+keymap.set('n', '<C-d>', '<C-d>zz', noremap)
 -- search stays in the middle of the page
--- keymap.set('n', 'n', 'nzzzv', opts)
--- keymap.set('n', 'N', 'Nzzzv', opts)
+-- keymap.set('n', 'n', 'nzzzv', noremap)
+-- keymap.set('n', 'N', 'Nzzzv', noremap)
 -- paste over highlight, which deletes to void register
-keymap.set('x', '<leader>p', [["_dPa]])
--- yank into clipboard(+)keymap.set('n', '<leader>y', [["+y]])
--- keymap.set('v', '<leader>y', [["+y]])
--- keymap.set('n', '<leader>Y', [["+Y]])
+keymap.set('x', '<leader>p', [["_dPa]], noremap)
+-- yank into clipboard(+)keymap.set('n', '<leader>y', [["+y]], noremap)
+-- keymap.set('v', '<leader>y', [["+y]], noremap)
+-- keymap.set('n', '<leader>Y', [["+Y]], noremap)
 -- disable Q
-keymap.set('n', 'Q', '<nop>')
+keymap.set('n', 'Q', '<nop>', noremap)
 -- quickfix navigation
-keymap.set('n', '<C-k>', '<cmd>cnext<CR>zz')
-keymap.set('n', '<C-j>', '<cmd>cprev<CR>zz')
-keymap.set('n', '<leader>k', '<cmd>lnext<CR>zz')
-keymap.set('n', '<leader>j', '<cmd>lprev<CR>zz')
+keymap.set('n', '<C-k>', '<cmd>cnext<CR>zz', noremap)
+keymap.set('n', '<C-j>', '<cmd>cprev<CR>zz', noremap)
+keymap.set('n', '<leader>k', '<cmd>lnext<CR>zz', noremap)
+keymap.set('n', '<leader>j', '<cmd>lprev<CR>zz', noremap)
 -- experiment with these
 -- keymap.set('n', '<C-f>', '<cmd>silent !tmux neww tmux-sessionizer<CR>')
 -- keymap.set('n', '<leader>f', function()
 --   vim.lsp.buf.format()
 -- end)
 -- keymap.set('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
--- keymap.set('n', '<leader>x', '<cmd>!chmod +x %<CR>', { silent = true })
+-- keymap.set('n', '<leader>x', '<cmd>!chmod +x %<CR>', silent)
 keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
 keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
