@@ -119,35 +119,35 @@ set nowrapscan
 "-------------------------------------------
 " Maps and abbreviations
 map Q gq
-inoremap <C-U> <C-G>u<C-U>
-imap <C-S> <Esc>:up<CR>gi
-imap <C-Z> <C-O>u
-imap <S-Insert> <C-R>+
+inoremap <C-u> <C-G>u<C-u>
+inoremap <C-s> <Esc>:up<CR>gi
+inoremap <C-z> <C-O>u
+inoremap <S-Insert> <C-R>+
 " micron is <C-k>m*
-imap `u μ
-imap `l -------------------------------------------<CR><CR>
-imap `d ============<C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>============<CR><CR>
+inoremap `u μ
+inoremap `l -------------------------------------------<CR><CR>
+inoremap `d ============<C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>============<CR><CR>
 nnoremap / /\v
 nnoremap ? ?\v
 nnoremap <C-l>  :nohl<CR><C-l>
 nnoremap J mzJ`z
 nnoremap <C-u> <C-u>zz
 nnoremap <C-d> <C-d>zz
-nmap <leader>l  :nohl<CR><C-l>
-nmap <leader>jq :%!jq .<CR>
-nmap <leader>Jq :%!jq . -c<CR>
-nmap <silent> <leader>cc :exe "set cc=" . (&cc == "" ? "80,120" : "")<CR>
-nmap <silent> <leader>rr :exe "set rnu!"<CR>
-nmap <silent> <leader>cl :exe "set cuc! cul!"<CR>
-nmap <silent> <leader>nn :exe "set nu! rnu! list!" \| call Toggler()<CR>
-vmap <leader>a= :Tabularize /=<CR>
-vmap <leader>a: :Tabularize /:\zs<CR>
-vmap <S-Insert> +gp
-vmap J :m '>+1<CR>gv=gv
-vmap K :m '<-2<CR>gv=gv
+nnoremap <leader>l  :nohl<CR><C-l>
+nnoremap <leader>jq :%!jq .<CR>
+nnoremap <leader>Jq :%!jq . -c<CR>
+nnoremap <silent> <leader>cc :exe "set cc=" . (&cc == "" ? "80,120" : "")<CR>
+nnoremap <silent> <leader>rr :exe "set rnu!"<CR>
+nnoremap <silent> <leader>cl :exe "set cuc! cul!"<CR>
+nnoremap <silent> <leader>nn :exe "set nu! rnu! list!" \| call Toggler()<CR>
+vnoremap <leader>a= :Tabularize /=<CR>
+vnoremap <leader>a: :Tabularize /:\zs<CR>
+vnoremap <S-Insert> +gp
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
 vnoremap < <gv
 vnoremap > >gv
-xmap <leader>p "_dPa
+xnoremap <leader>p "_dPa
 iab <buffer> Francais Français
 "-------------------------------------------
 
@@ -217,6 +217,6 @@ let g:vimwiki_list = [{'path': '~/vimwiki/',
                      \ 'links_space_char': '_',
                      \ }]
 let g:python_highlight_all = 1
-nmap <F9> :UndotreeToggle<CR>
+nnoremap <F9> :UndotreeToggle<CR>
 " Note re links_space_char https://github.com/vimwiki/vimwiki/issues/1031
 "-------------------------------------------
