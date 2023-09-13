@@ -9,14 +9,15 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 "-------------------------------------------
 
-if has('win32')
-  set rtp+=~/.vim  " windows uses ~/vimfiles by default
-endif
+
 "-------------------------------------------
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
       \| PlugInstall --sync | source $MYVIMRC
       \| endif
 "-------------------------------------------
+if has('win32')
+  set rtp+=~/.vim  " windows uses ~/vimfiles by default
+endif
 call plug#begin("$HOME/.vim/plugged")
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
