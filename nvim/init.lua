@@ -385,6 +385,8 @@ api.nvim_create_autocmd({ 'BufEnter', 'FocusGained', 'InsertLeave', 'CmdlineLeav
   callback = function()
     if vim.o.nu and vim.api.nvim_get_mode().mode ~= 'i' then
       vim.opt.relativenumber = true
+      vim.opt.cursorline = false
+      vim.opt.cursorcolumn = false
     end
   end,
 })
@@ -394,6 +396,8 @@ api.nvim_create_autocmd({ 'BufLeave', 'FocusLost', 'InsertEnter', 'CmdlineEnter'
   callback = function()
     if vim.o.nu then
       vim.opt.relativenumber = false
+      vim.opt.cursorline = true
+      vim.opt.cursorcolumn = true
       vim.cmd.redraw()
     end
   end,
