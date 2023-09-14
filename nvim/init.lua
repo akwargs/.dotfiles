@@ -267,7 +267,6 @@ vim.o.infercase = true
 vim.o.linebreak = true
 vim.o.list = true
 vim.o.listchars = 'tab:»·,trail:·'
-vim.o.mouse = 'a'
 vim.o.scrollback = 20000
 vim.o.scrolloff = 8
 vim.o.shiftwidth = 2
