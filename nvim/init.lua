@@ -321,7 +321,7 @@ keymap.set('n', '<leader>l', ':nohl<CR><C-l>', noremap)
 keymap.set('n', '<F12>', ':set paste!<CR>', noremap)
 -- show columns at 80 and 120
 keymap.set('n', '<leader>cc', [[:exe "set cc=" . (&cc == "" ? "80,120" : "")<CR>]], noremap)
-keymap.set('n', '<leader>nn', [[:exe "set nu! rnu! list!"<CR>:Gitsigns toggle_signs<CR>:MarksToggleSigns<CR>]], noremap)
+keymap.set('n', '<leader>nn', [[:exe "set nu! rnu! list!"<CR>]], noremap)
 keymap.set('n', '<leader>cl', [[:exe "set cuc! cul!"<CR>]], noremap)
 -- function toggle_rnu()
 --   vim.o.relativenumber = not vim.o.relativenumber
