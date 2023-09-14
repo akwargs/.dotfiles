@@ -38,7 +38,7 @@ Plug 'frioux/vim-regedit'
 Plug 'vimwiki/vimwiki'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-let g:polyglot_disabled = ['markdown']
+let g:polyglot_disabled = ['powershell']
 Plug 'sheerun/vim-polyglot'
 Plug 'zigford/vim-powershell'
 Plug 'mbbill/undotree'
