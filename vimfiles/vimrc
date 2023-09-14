@@ -135,6 +135,7 @@ nnoremap <leader>l  :nohl<CR><C-l>
 nnoremap <leader>jq :%!jq .<CR>
 nnoremap <leader>Jq :%!jq . -c<CR>
 nnoremap <silent> U :redo<CR>
+nnoremap <silent> Y y$
 nnoremap <silent> <leader>cc :exe "set cc=" . (&cc == "" ? "80,120" : "")<CR>
 nnoremap <silent> <leader>rr :exe "set rnu!"<CR>
 nnoremap <silent> <leader>cl :exe "set cuc! cul!"<CR>
