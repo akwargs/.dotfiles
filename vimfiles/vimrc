@@ -105,7 +105,8 @@ set statusline=%<%f%=\ %{fugitive#statusline()}\ %1*%M%*%{','.&fileformat}%R%Y,L
 set t_Co=256
 set tabstop=4
 set textwidth=80
-set ttimeoutlen=300
+" set timeoutlen=500
+" set ttimeoutlen=500
 set visualbell
 set undofile
 set whichwrap=<,>,h,l
