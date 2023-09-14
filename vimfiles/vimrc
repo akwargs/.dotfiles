@@ -65,6 +65,7 @@ let mapleader = " "
 set background=light
 set backup
 set cmdheight=2
+set complete=.,w,b,u,t,i,kspell
 set display=truncate
 set encoding=utf-8
 set expandtab
