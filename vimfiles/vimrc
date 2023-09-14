@@ -38,8 +38,10 @@ Plug 'frioux/vim-regedit'
 Plug 'vimwiki/vimwiki'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+let g:polyglot_disabled = ['markdown']
 Plug 'sheerun/vim-polyglot'
 Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'zigford/vim-powershell'
 Plug 'mbbill/undotree'
 Plug 'axvr/photon.vim'
 call plug#end()

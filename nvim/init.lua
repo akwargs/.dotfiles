@@ -38,6 +38,7 @@ require('lazy').setup({
   'mbbill/undotree',
   'ThePrimeagen/harpoon',
   'axvr/photon.vim',
+  'zigford/vim-powershell',
 
   {
     'neovim/nvim-lspconfig',
