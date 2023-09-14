@@ -272,14 +272,13 @@ vim.o.scrollback = 20000
 vim.o.scrolloff = 8
 vim.o.shiftwidth = 2
 vim.o.showmatch = true
-vim.o.showmode = false
 vim.o.smartcase = true
 vim.o.smartindent = true
 vim.o.softtabstop = 2
 vim.o.tabstop = 2
 vim.o.termguicolors = true
 vim.o.textwidth = 100
-vim.o.ttimeoutlen = 300
+vim.o.ttimeoutlen = 500
 vim.o.undodir = os.getenv 'TEMP' .. '/nvim'
 vim.o.undofile = true
 vim.o.undofile = true
@@ -742,7 +741,7 @@ if vim.fn.has 'win32' == 1 then
   vim.o.shell = 'powershell'
 else
   vim.o.shell = 'zsh'
-  vim.o.timeoutlen = 300
+  vim.o.timeoutlen = 500
 end
 
 -- some providers
@@ -761,5 +760,6 @@ vim.cmd [[
   iab <buffer> naive naïve
   iab <buffer> um µm
   iab <buffer> usec µs
+  set statusline=%<%f%=\ %{fugitive#statusline()}\ %1*%M%*%{','.&fileformat}%R%Y,L:%l/%L,C:%c%V
 ]]
 -- vim: ts=2 sts=2 sw=2 et
