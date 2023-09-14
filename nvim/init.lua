@@ -28,6 +28,7 @@ require('lazy').setup({
   'tpope/vim-sleuth',
   'godlygeek/tabular',
   'dbakker/vim-paragraph-motion',
+  'airblade/vim-gitgutter',
   'kshenoy/vim-signature',
   'jlanzarotta/bufexplorer',
   'frioux/vim-regedit',
@@ -56,81 +57,6 @@ require('lazy').setup({
       'hrsh7th/cmp-nvim-lsp',
       'rafamadriz/friendly-snippets',
       'hrsh7th/cmp-path',
-    },
-  },
-
-  { 'folke/which-key.nvim',  opts = {} },
-
-  {
-    'lewis6991/gitsigns.nvim',
-    opts = {
-      signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
-      },
-      on_attach = function(bufnr)
-        vim.keymap.set('n', '<leader>hp', require('gitsigns').preview_hunk, { buffer = bufnr, desc = 'Preview git hunk' })
-        local gs = package.loaded.gitsigns
-        vim.keymap.set({ 'n', 'v' }, ']c', function()
-          if vim.wo.diff then
-            return ']c'
-          end
-          vim.schedule(function()
-            gs.next_hunk()
-          end)
-          return '<Ignore>'
-        end, { expr = true, buffer = bufnr, desc = 'Jump to next hunk' })
-        vim.keymap.set({ 'n', 'v' }, '[c', function()
-          if vim.wo.diff then
-            return '[c'
-          end
-          vim.schedule(function()
-            gs.prev_hunk()
-          end)
-          return '<Ignore>'
-        end, { expr = true, buffer = bufnr, desc = 'Jump to previous hunk' })
-      end,
-    },
-  },
-
-  -- keep this in case i find a colorscheme i like
-  -- {
-  --   'navarasu/onedark.nvim',
-  --   priority = 1000,
-  --   config = function()
-  --     vim.cmd.colorscheme 'onedark'
-  --   end,
-  -- },
-
-  {
-    'nvim-lualine/lualine.nvim',
-    opts = {
-      options = {
-        icons_enabled = false,
-        theme = 'onelight',
-        component_separators = { left = '', right = '' },
-        section_separators = { left = '', right = '' },
-      },
-      sections = {
-        lualine_a = {
-          'mode',
-          {
-            'buffers',
-            mode = 4,
-          },
-        },
-      },
-    },
-  },
-
-  {
-    'lukas-reineke/indent-blankline.nvim',
-    opts = {
-      char = '┊',
-      show_trailing_blankline_indent = false,
     },
   },
 
