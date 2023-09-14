@@ -17,8 +17,9 @@ vim.opt.rtp:prepend(lazypath)
 
 -- begin plugins
 require('lazy').setup({
-  'tpope/vim-fugitive',
   'tpope/vim-surround',
+  'tpope/vim-commentary',
+  'tpope/vim-fugitive',
   'tpope/vim-rsi',
   'tpope/vim-speeddating',
   'tpope/vim-repeat',
@@ -27,10 +28,14 @@ require('lazy').setup({
   'tpope/vim-sleuth',
   'godlygeek/tabular',
   'dbakker/vim-paragraph-motion',
-  'mbbill/undotree',
-  'ThePrimeagen/harpoon',
+  'kshenoy/vim-signature',
   'jlanzarotta/bufexplorer',
   'frioux/vim-regedit',
+  'vimwiki/vimwiki',
+  'junegunn/fzf',
+  'junegunn/fzf.vim',
+  'mbbill/undotree',
+  'ThePrimeagen/harpoon',
   'axvr/photon.vim',
 
   {
@@ -128,8 +133,6 @@ require('lazy').setup({
       show_trailing_blankline_indent = false,
     },
   },
-
-  { 'numToStr/Comment.nvim', opts = {} },
 
   {
     'nvim-telescope/telescope.nvim',
@@ -264,28 +267,6 @@ require('lazy').setup({
     'vladdoster/remember.nvim',
     event = { 'BufReadPre', 'BufNewFile' },
     opts = {},
-  },
-
-  {
-    'chentoast/marks.nvim',
-    event = { 'BufReadPre', 'BufNewFile' },
-    config = function()
-      require('marks').setup {
-        default_mappings = true,
-        builtin_marks = { '.', '<', '>', '^' },
-        cyclic = true,
-        force_write_shada = false,
-        refresh_interval = 250,
-        sign_priority = { lower = 10, upper = 15, builtin = 8, bookmark = 20 },
-        excluded_filetypes = {},
-        bookmark_0 = {
-          sign = '󰉀',
-          virt_text = 'hello world',
-          annotate = false,
-        },
-        mappings = {},
-      }
-    end,
   },
 
   -- null-ls, mason-null-ls: replace soon
@@ -793,6 +774,15 @@ end)
 require('harpoon').setup {}
 -- :Telescope harpoon marks
 require('telescope').load_extension 'harpoon'
+
+-- vimwiki
+vim.g.vimwiki_listsyms = '󰂎󰁻󰁽󰂁'
+vim.g.vimwiki_list = {
+  {
+    path = '~/vimwiki/',
+    links_space_char = '_',
+  },
+}
 
 -- local snippets
 local ls = require 'luasnip'
