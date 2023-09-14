@@ -257,6 +257,7 @@ require('lazy').setup({
 -- options
 vim.o.backup = true
 vim.o.breakindent = true
+vim.o.complete = '.,w,b,u,t,kspell'
 vim.o.completeopt = 'menuone,noselect'
 vim.o.display = 'truncate'
 vim.o.expandtab = true
