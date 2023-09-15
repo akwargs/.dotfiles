@@ -67,6 +67,7 @@ key_bindings:
   - { key: F,         mods: Shift|Control,              action: ReceiveChar }
 
 # sourced from alacritty-themes
+# github_light_default.yaml
 colors:
   # Default colors
   primary:
