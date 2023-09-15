@@ -55,8 +55,8 @@ mouse:
   hide_when_typing: true
 
 key_bindings:
-  - { key: Key6,      mods: Control,                    chars: "\x1e"       }
-  - { key: N,         mods: Shift|Control,              action: CreateNewWindow }
+  - { key: Key6, mods: Control,       chars: "\x1e" }
+  - { key: N,    mods: Shift|Control, action: CreateNewWindow }
 
 # sourced from alacritty-themes
 # github_light_default.yaml
