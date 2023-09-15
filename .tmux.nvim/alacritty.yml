@@ -24,13 +24,13 @@ font:
     family: JetBrainsMonoNL Nerd Font Mono
     style: Light
   bold:
-    family: JetBrainsMonoNL Nerd Font Mono
-    style: Italic
+    family: VictorMono Nerd Font
+    style: Medium Italic
   italic:
-    family: JetBrainsMonoNL Nerd Font Mono
-    style: Italic
+    family: VictorMono Nerd Font
+    style: SemiBold Italic
   bold_italic:
-    family: JetBrainsMonoNL Nerd Font Mono
+    family: VictorMono Nerd Font
     style: Bold Italic
   size: 10.0
 
@@ -67,7 +67,6 @@ key_bindings:
   - { key: F,         mods: Shift|Control,              action: ReceiveChar }
 
 # sourced from alacritty-themes
-# github_light_default.yaml
 colors:
   # Default colors
   primary:
