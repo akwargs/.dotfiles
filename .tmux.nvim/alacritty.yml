@@ -9,11 +9,6 @@ window:
   padding:
     x: 20
     y: 20
-  decorations: full
-  opacity: 1.0
-  startup_mode: Windowed
-  dynamic_title: true
-  decorations_theme_variant: Light
 
 scrolling:
   history: 20000
@@ -62,9 +57,6 @@ mouse:
 key_bindings:
   - { key: Key6,      mods: Control,                    chars: "\x1e"       }
   - { key: N,         mods: Shift|Control,              action: CreateNewWindow }
-  - { key: L,         mods: Control,                    action: ReceiveChar }
-  - { key: Space,     mods: Shift|Control,              action: ReceiveChar }
-  - { key: F,         mods: Shift|Control,              action: ReceiveChar }
 
 # sourced from alacritty-themes
 # github_light_default.yaml
