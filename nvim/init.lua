@@ -761,6 +761,6 @@ vim.cmd [[
   iab <buffer> naive naïve
   iab <buffer> um µm
   iab <buffer> usec µs
-  set statusline=%<%f%=\ %{fugitive#statusline()}\ %1*%M%*%{','.&fileformat}%R%Y,L:%l/%L,C:%c%V
+  set statusline=%<%{&paste?'[PASTE]\ ':''}%f%=\ %{fugitive#statusline()}\ %1*%M%*%{','.&fileformat}%R%Y,L:%l/%L,C:%c%V
 ]]
 -- vim: ts=2 sts=2 sw=2 et
