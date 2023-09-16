@@ -305,22 +305,22 @@ keymap.set('i', '<C-u>', '<C-g>u<C-u>', noremap)
 -- quick undo
 keymap.set('i', '<C-z>', '<C-o>u', noremap)
 -- custom maps
-keymap.set('i', '`u', 'µ', noremap)
-keymap.set('i', '`l', [[-------------------------------------------<CR><CR>]], noremap)
-keymap.set('i', '`d', [[============<C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>============<CR><CR>]], noremap)
+keymap.set('i', '`u', 'µ', ns)
+keymap.set('i', '`l', [[-------------------------------------------<CR><CR>]], ns)
+keymap.set('i', '`d', [[============<C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>============<CR><CR>]], ns)
 -- very magic
 keymap.set('n', '/', [[/\v]], noremap)
 keymap.set('n', '?', [[?\v]], noremap)
 -- redo
 keymap.set('n', 'U', [[:redo<CR>]], ns)
 -- clear hls
-keymap.set('n', '<leader>l', ':nohl<CR><C-l>', noremap)
+keymap.set('n', '<leader>l', ':nohl<CR><C-l>', ns)
 -- depending on terminal, might need this
-keymap.set('n', '<F12>', ':set paste!<CR>', noremap)
+keymap.set('n', '<F12>', ':set paste!<CR>', ns)
 -- show columns at 80 and 120
-keymap.set('n', '<leader>cc', [[:exe "set cc=" . (&cc == "" ? "80,120" : "")<CR>]], noremap)
-keymap.set('n', '<leader>nn', [[:exe "set nu! rnu! list!"<CR>]], noremap)
-keymap.set('n', '<leader>cl', [[:exe "set cuc! cul!"<CR>]], noremap)
+keymap.set('n', '<leader>cc', [[:exe "set cc=" . (&cc == "" ? "80,120" : "")<CR>]], ns)
+keymap.set('n', '<leader>nn', [[:exe "set nu! rnu! list!"<CR>]], ns)
+keymap.set('n', '<leader>cl', [[:exe "set cuc! cul!"<CR>]], ns)
 -- function toggle_rnu()
 --   vim.o.relativenumber = not vim.o.relativenumber
 -- end
