@@ -101,7 +101,7 @@ set showmode
 set smartindent
 set softtabstop=4
 set nostartofline
-set statusline=%<%f%=\ %{fugitive#statusline()}\ %1*%M%*%{','.&fileformat}%R%Y,L:%l/%L,C:%c%V
+set statusline=%<%{&paste?'[PASTE]\ ':''}%f%=\ %{fugitive#statusline()}\ %1*%M%*%{','.&fileformat}%R%Y,L:%l/%L,C:%c%V
 set t_Co=256
 set tabstop=4
 set textwidth=80
