@@ -178,7 +178,7 @@ augroup END
 "-------------------------------------------
 " nvim vs vim stuff
 if has('nvim')
-  set shell=powershell
+  set shell=powershell\ -NoLogo
   set undodir=~/temp/nvim
   augroup Terminal
     au!
