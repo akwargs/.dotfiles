@@ -74,6 +74,11 @@ return {
   enable_scroll_bar = true,
   freetype_load_target = 'HorizontalLcd',
   font = wezterm.font('JetBrainsMonoNL Nerd Font Mono', { weight = 'Light' }),
+  -- font = wezterm.font_with_fallback({
+  --   "JetBrains Mono",
+  --   { family = "Symbols Nerd Font Mono", scale = 0.75 },
+  -- }),
+  use_cap_height_to_scale_fallback_fonts = true,
   font_size = 10.0,
   font_rules = {
     {
