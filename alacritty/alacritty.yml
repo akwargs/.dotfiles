@@ -20,7 +20,7 @@ font:
     style: Light
   bold:
     family: VictorMono Nerd Font
-    style: SemiBold Italic
+    style: Bold Italic
   italic:
     family: VictorMono Nerd Font
     style: SemiBold Italic
