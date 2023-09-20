@@ -86,8 +86,8 @@ return {
       intensity = 'Bold',
       italic = false,
       font = wezterm.font {
-        family = 'VictorMono Nerd Font',
-        weight = 'DemiBold',
+        family = 'Victor Mono',
+        weight = 'Bold',
         style = 'Italic',
       },
     },
@@ -96,7 +96,7 @@ return {
       intensity = 'Bold',
       italic = true,
       font = wezterm.font {
-        family = 'VictorMono Nerd Font',
+        family = 'Victor Mono',
         weight = 'Bold',
         style = 'Italic',
       },
@@ -106,8 +106,8 @@ return {
       intensity = 'Normal',
       italic = true,
       font = wezterm.font {
-        family = 'VictorMono Nerd Font',
-        weight = 'Medium',
+        family = 'Victor Mono',
+        weight = 'DemiBold',
         style = 'Italic',
       },
     },
@@ -116,8 +116,8 @@ return {
       intensity = 'Half',
       italic = true,
       font = wezterm.font {
-        family = 'VictorMono Nerd Font',
-        weight = 'Regular',
+        family = 'Victor Mono',
+        weight = 'Medium',
         style = 'Italic',
       },
     },
