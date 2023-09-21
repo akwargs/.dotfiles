@@ -759,10 +759,10 @@ vim.cmd [[
   else
     colorscheme photon
   endif
-  iab <buffer> Francais Français
-  iab <buffer> naive naïve
-  iab <buffer> um µm
-  iab <buffer> usec µs
+  inorea <buffer> Francais Français
+  inorea <buffer> naive naïve
+  inorea <buffer> um µm
+  inorea <buffer> usec µs
   set statusline=%<%{&paste?'[PASTE]\ ':''}%f%=\ %{fugitive#statusline()}\ %1*%M%*%{','.&fileformat}%R%Y,L:%l/%L,C:%c%V
 ]]
 -- vim: ts=2 sts=2 sw=2 et
