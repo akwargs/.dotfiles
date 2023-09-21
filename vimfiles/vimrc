@@ -180,9 +180,40 @@ augroup END
 if has('nvim')
   set shell=powershell\ -NoLogo
   set undodir=~/temp/nvim
+  function! Highlight()
+    call matchadd('SpellBad', '\<\(administratively \)\=down\>')
+    call matchadd('SpellBad', '\<los\(t\|ing\)\>')
+    call matchadd('SpellBad', '\<err\(ors\=\)\=\>')
+    call matchadd('SpellBad', '\<[Dd]en\(y\|ies\|ied\)\>')
+    call matchadd('SpellBad', '\<reject\(ing\|ed\)\=\>')
+    call matchadd('SpellBad', '\<drop\(ped\|s\)\=\>')
+    call matchadd('SpellBad', '\<\(err-\)\=disabled\>')
+    call matchadd('SpellBad', '\<timed\=-\=out\>')
+    call matchadd('SpellBad', '\<[Ff]ail\(s\|ed\|ure\)\=\>')
+    call matchadd('SpellBad', '\<disconnect\(ed\)\=\>')
+    call matchadd('SpellBad', '\<unreachable\>')
+    call matchadd('SpellBad', '\<invalid\>')
+    call matchadd('SpellBad', '\<bad\>')
+    call matchadd('SpellBad', '\<notconnect\>')
+    call matchadd('SpellBad', '\<unusable\>')
+    call matchadd('SpellBad', '\<D\(own\|OWN\)\>')
+    call matchadd('SpellBad', '\<DENIED\>')
+    call matchadd('SpellBad', '\<infinity\>')
+    call matchadd('SpellBad', '\<inaccessible\>')
+    call matchadd('SpellBad', '\<wrong\>')
+    call matchadd('SpellBad', '\<unsynchronized\>')
+    call matchadd('SpellBad', '\<mismatch\>')
+    call matchadd('SpellBad', '\<runts\>')
+    call matchadd('SpellBad', '\<\(BLK\|blk\)\>')
+    call matchadd('SpellBad', '\<[Ss]hutdown\>')
+    call matchadd('SpellCap', '\<Allowed\>')
+    call matchadd('Conceal',  '^Process.\+StandbyVer')
+    call matchadd('Conceal',  '^Neighbor.\+PfxRcd')
+  endfunction
   augroup Terminal
     au!
     au TermOpen,TermEnter * setlocal nonu nornu nolist scl=no
+    au TermOpen,TermEnter * call Highlight()
   augroup END
 else
   set undodir=~/temp/vim
