@@ -38,6 +38,7 @@ Plug 'frioux/vim-regedit'
 Plug 'vimwiki/vimwiki'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/vim-easy-align'
 let g:polyglot_disabled = ['powershell']
 Plug 'sheerun/vim-polyglot'
 Plug 'zigford/vim-powershell'
@@ -254,5 +255,6 @@ let g:vimwiki_list = [{'path': '~/vimwiki/',
                      \ }]
 let g:python_highlight_all = 1
 nnoremap <F9> :UndotreeToggle<CR>
+vmap <Enter> <Plug>(EasyAlign)
 " Note re links_space_char https://github.com/vimwiki/vimwiki/issues/1031
 "-------------------------------------------
