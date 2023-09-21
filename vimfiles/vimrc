@@ -87,6 +87,7 @@ set list
 set listchars=tab:»·,trail:·
 set modelines=1
 set mouse=
+set nf+=alpha
 set nu rnu
 if &diff
   set nornu nocul nocuc

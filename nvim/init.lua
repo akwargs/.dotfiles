@@ -286,6 +286,10 @@ vim.o.whichwrap = '<,>,h,l'
 vim.o.wildignorecase = true
 vim.o.wrapscan = false
 
+-- vim.opt.iskeyword:append '-'
+-- vim.opt.iskeyword:remove '_'
+vim.opt.nrformats:append 'alpha'
+
 vim.wo.number = true
 vim.wo.relativenumber = true
 vim.wo.signcolumn = 'yes'
