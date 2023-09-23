@@ -227,7 +227,11 @@ endif
 
 "-------------------------------------------
 " Colorscheme
-colorscheme antiphoton
+if !empty($VIM_LIGHT)
+  colorscheme antiphoton
+else
+  colorscheme photon
+endif
 highlight clear SpecialKey
 highlight clear SignColumn
 highlight clear FoldColumn
