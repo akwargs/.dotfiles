@@ -181,7 +181,7 @@ augroup END
 " nvim vs vim stuff
 if has('nvim')
   set shell=powershell\ -NoLogo
-  set undodir=~/temp/nvim
+  set undodir=~/tmp/nvim
   function! Highlight()
     hi TerminalError cterm=underline ctermfg=124 gui=underline guifg=#af0000 guisp=Red
     hi TerminalGood  cterm=underline ctermfg=28 gui=underline guifg=#008700 guisp=Blue
@@ -220,7 +220,7 @@ if has('nvim')
     au TermOpen,TermEnter * call Highlight()
   augroup END
 else
-  set undodir=~/temp/vim
+  set undodir=~/tmp/vim
 endif
 "-------------------------------------------
 
