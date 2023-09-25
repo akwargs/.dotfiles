@@ -209,14 +209,14 @@ require('lazy').setup({
       local mason_null_ls = require 'mason-null-ls'
       local null_ls = require 'null-ls'
       mason_null_ls.setup {
-        ensure_installed = { 'markdownlint', 'flake8', 'black', 'isort', 'stylua' },
+        ensure_installed = { 'markdownlint', 'flake8', 'black', 'isort', 'stylua', 'yamllint' },
         automatic_installation = false,
         handlers = {
           function() end,
-          markdownlint = function(source_name, methods)
+          markdownlint = function()
             null_ls.register(null_ls.builtins.formatting.markdownlint)
           end,
-          flake8 = function(source_name, methods)
+          flake8 = function()
             null_ls.register(null_ls.builtins.diagnostics.flake8.with {
               extra_args = {
                 '--max-line-length',
@@ -224,7 +224,7 @@ require('lazy').setup({
               },
             })
           end,
-          black = function(source_name, methods)
+          black = function()
             null_ls.register(null_ls.builtins.formatting.black.with {
               extra_args = {
                 '--max-line-length',
@@ -232,13 +232,16 @@ require('lazy').setup({
               },
             })
           end,
-          isort = function(source_name, methods)
+          isort = function()
             null_ls.register(null_ls.builtins.formatting.isort)
           end,
-          stylua = function(source_name, methods)
+          stylua = function()
             null_ls.register(null_ls.builtins.formatting.stylua)
           end,
-          -- ruff = function(source_name, methods)
+          yamllint = function()
+            null_ls.register(null_ls.builtins.diagnostics.yamllint)
+          end,
+          -- ruff = function()
           --   null_ls.register(null_ls.builtins.formatting.ruff)
           --   null_ls.register(null_ls.builtins.diagnostics.ruff)
           -- end,

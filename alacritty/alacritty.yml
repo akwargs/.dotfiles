@@ -1,4 +1,5 @@
 # alacritty for windows
+---
 env:
   TERM: xterm-256color
 
