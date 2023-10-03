@@ -185,7 +185,7 @@ if has('nvim')
   function! Highlight()
     hi TerminalError cterm=underline ctermfg=124 gui=underline guifg=#af0000 guisp=Red
     hi TerminalGood  cterm=underline ctermfg=28 gui=underline guifg=#008700 guisp=Blue
-    call matchadd('TerminalError', '\c\<\(administrative\(ly\)\= \)\=\(shut\)\=down\>', 0)
+    call matchadd('TerminalError', '\c\<\(admin\(istrative\)\=\(ly\)\= \)\=\(shut\)\=down\>', 0)
     call matchadd('TerminalError', '\c\<bad\>', 0)
     call matchadd('TerminalError', '\c\<blk\>', 0)
     call matchadd('TerminalError', '\c\<den\(y\|ies\|ied\)\>', 0)
