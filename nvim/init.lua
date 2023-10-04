@@ -33,7 +33,7 @@ require('lazy').setup({
   'jlanzarotta/bufexplorer',
   'frioux/vim-regedit',
   'vimwiki/vimwiki',
-  'junegunn/fzf',
+  { 'junegunn/fzf', build = './install --bin' },
   'junegunn/fzf.vim',
   'junegunn/vim-easy-align',
   'mbbill/undotree',
