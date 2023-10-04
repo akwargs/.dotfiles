@@ -297,14 +297,15 @@ vim.wo.number = true
 vim.wo.relativenumber = true
 vim.wo.signcolumn = 'yes'
 
--- keymaps
+vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
+-- my keymaps
 local keymap = vim.keymap
 local noremap = { noremap = true }
 local silent = { silent = true }
 local ns = { noremap = true, silent = true }
-keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', ns)
 -- quick save
 keymap.set('i', '<C-s>', '<Esc>:up<CR>gi', noremap)
 keymap.set('n', '<C-s>', ':up<CR>', noremap)
@@ -376,10 +377,6 @@ keymap.set('n', '<leader>j', '<cmd>lprev<CR>zz', noremap)
 -- end)
 -- keymap.set('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 -- keymap.set('n', '<leader>x', '<cmd>!chmod +x %<CR>', silent)
-keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
-keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
-keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
-keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 keymap.set('v', '<Enter>', '<Plug>(EasyAlign)')
 
 -- autocommands
@@ -455,99 +452,106 @@ vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
-vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]resume' })
+vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
 
-require('nvim-treesitter.configs').setup {
-  ensure_installed = {
-    'c',
-    'comment',
-    'cpp',
-    'csv',
-    'diff',
-    'git_config',
-    'git_rebase',
-    'gitattributes',
-    'gitcommit',
-    'gitignore',
-    'go',
-    'html',
-    'javascript',
-    'json',
-    'lua',
-    'markdown',
-    'markdown_inline',
-    'perl',
-    'python',
-    'regex',
-    'rust',
-    'toml',
-    'tsx',
-    'typescript',
-    'vim',
-    'vimdoc',
-    'xml',
-    'yaml',
-    'yang',
-  },
-  modules = {},
-  auto_install = true,
-  highlight = { enable = true },
-  ignore_install = {},
-  indent = { enable = true },
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = '<c-space>',
-      node_incremental = '<c-space>',
-      scope_incremental = '<c-s>',
-      node_decremental = '<M-space>',
+vim.defer_fn(function()
+  require('nvim-treesitter.configs').setup {
+    -- Add languages to be installed here that you want installed for treesitter
+    ensure_installed = {
+      'c',
+      'comment',
+      'cpp',
+      'csv',
+      'diff',
+      'git_config',
+      'git_rebase',
+      'gitattributes',
+      'gitcommit',
+      'gitignore',
+      'go',
+      'html',
+      'javascript',
+      'json',
+      'lua',
+      'markdown',
+      'markdown_inline',
+      'perl',
+      'python',
+      'regex',
+      'rust',
+      'toml',
+      'tsx',
+      'typescript',
+      'vim',
+      'vimdoc',
+      'xml',
+      'yaml',
+      'yang',
     },
-  },
-  sync_install = true,
-  textobjects = {
-    select = {
+    sync_install = true,
+    auto_install = true,
+    highlight = { enable = true },
+    indent = { enable = true },
+    incremental_selection = {
       enable = true,
-      lookahead = true,
       keymaps = {
-        ['aa'] = '@parameter.outer',
-        ['ia'] = '@parameter.inner',
-        ['af'] = '@function.outer',
-        ['if'] = '@function.inner',
-        ['ac'] = '@class.outer',
-        ['ic'] = '@class.inner',
+        init_selection = '<c-space>',
+        node_incremental = '<c-space>',
+        scope_incremental = '<c-s>',
+        node_decremental = '<M-space>',
       },
     },
-    move = {
-      enable = true,
-      set_jumps = true,
-      goto_next_start = {
-        [']m'] = '@function.outer',
-        [']]'] = '@class.outer',
+    textobjects = {
+      select = {
+        enable = true,
+        lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
+        keymaps = {
+          -- You can use the capture groups defined in textobjects.scm
+          ['aa'] = '@parameter.outer',
+          ['ia'] = '@parameter.inner',
+          ['af'] = '@function.outer',
+          ['if'] = '@function.inner',
+          ['ac'] = '@class.outer',
+          ['ic'] = '@class.inner',
+        },
       },
-      goto_next_end = {
-        [']M'] = '@function.outer',
-        [']['] = '@class.outer',
+      move = {
+        enable = true,
+        set_jumps = true, -- whether to set jumps in the jumplist
+        goto_next_start = {
+          [']m'] = '@function.outer',
+          [']]'] = '@class.outer',
+        },
+        goto_next_end = {
+          [']M'] = '@function.outer',
+          [']['] = '@class.outer',
+        },
+        goto_previous_start = {
+          ['[m'] = '@function.outer',
+          ['[['] = '@class.outer',
+        },
+        goto_previous_end = {
+          ['[M'] = '@function.outer',
+          ['[]'] = '@class.outer',
+        },
       },
-      goto_previous_start = {
-        ['[m'] = '@function.outer',
-        ['[['] = '@class.outer',
-      },
-      goto_previous_end = {
-        ['[M'] = '@function.outer',
-        ['[]'] = '@class.outer',
+      swap = {
+        enable = true,
+        swap_next = {
+          ['<leader>a'] = '@parameter.inner',
+        },
+        swap_previous = {
+          ['<leader>A'] = '@parameter.inner',
+        },
       },
     },
-    swap = {
-      enable = true,
-      swap_next = {
-        ['<leader>a'] = '@parameter.inner',
-      },
-      swap_previous = {
-        ['<leader>A'] = '@parameter.inner',
-      },
-    },
-  },
-}
+  }
+end, 0)
+
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
 local on_attach = function(_, bufnr)
   local nmap = function(keys, func, desc)
