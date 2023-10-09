@@ -102,6 +102,7 @@ set showmatch
 set showmode
 set smartindent
 set softtabstop=4
+set spelloptions=camel
 set nostartofline
 set statusline=%<%{&paste?'[PASTE]\ ':''}%f%=\ %{fugitive#statusline()}\ %1*%M%*%{','.&fileformat}%R%Y,L:%l/%L,C:%c%V
 set t_Co=256

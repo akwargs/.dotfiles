@@ -275,6 +275,7 @@ vim.o.showmatch = true
 vim.o.smartcase = true
 vim.o.smartindent = true
 vim.o.softtabstop = 2
+vim.o.spelloptions = 'camel'
 vim.o.tabstop = 2
 vim.o.termguicolors = true
 vim.o.textwidth = 100
