@@ -207,7 +207,7 @@ require('lazy').setup({
     },
     config = function()
       local mason_null_ls = require 'mason-null-ls'
-      local null_ls = require 'none-ls'
+      local null_ls = require 'null-ls'
       mason_null_ls.setup {
         ensure_installed = { 'markdownlint', 'flake8', 'black', 'isort', 'stylua', 'yamllint' },
         automatic_installation = false,
