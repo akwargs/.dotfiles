@@ -193,7 +193,7 @@ require('lazy').setup({
 
   -- null-ls, mason-null-ls: replace soon
   {
-    'jose-elias-alvarez/null-ls.nvim',
+    'nvimtools/none-ls.nvim',
     config = function()
       require('null-ls').setup {}
     end,
@@ -203,11 +203,11 @@ require('lazy').setup({
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
       'williamboman/mason.nvim',
-      'jose-elias-alvarez/null-ls.nvim',
+      'nvimtools/none-ls.nvim',
     },
     config = function()
       local mason_null_ls = require 'mason-null-ls'
-      local null_ls = require 'null-ls'
+      local null_ls = require 'none-ls'
       mason_null_ls.setup {
         ensure_installed = { 'markdownlint', 'flake8', 'black', 'isort', 'stylua', 'yamllint' },
         automatic_installation = false,
