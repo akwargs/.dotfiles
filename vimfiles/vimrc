@@ -221,6 +221,7 @@ if has('nvim')
     au TermOpen,TermEnter * call Highlight()
   augroup END
 else
+  set showtabline=2
   set undodir=~/tmp/vim
 endif
 "-------------------------------------------
