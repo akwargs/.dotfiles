@@ -21,7 +21,7 @@ require('lazy').setup({
   'tpope/vim-commentary',
   'tpope/vim-fugitive',
   'tpope/vim-rsi',
-  'tpope/vim-speeddating',
+  -- 'tpope/vim-speeddating',
   'tpope/vim-repeat',
   'tpope/vim-eunuch',
   'tpope/vim-vinegar',
