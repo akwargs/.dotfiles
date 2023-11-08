@@ -85,105 +85,8 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
-  -- autoformat
-  {
-    'neovim/nvim-lspconfig',
-    config = function()
-      local format_is_enabled = true
-      vim.api.nvim_create_user_command('AutoFormatToggle', function()
-        format_is_enabled = not format_is_enabled
-        print('Setting autoformatting to: ' .. tostring(format_is_enabled))
-      end, {})
-      local _augroups = {}
-      local get_augroup = function(client)
-        if not _augroups[client.id] then
-          local group_name = 'auto-lsp-format-' .. client.name
-          local id = vim.api.nvim_create_augroup(group_name, { clear = true })
-          _augroups[client.id] = id
-        end
-        return _augroups[client.id]
-      end
-      vim.api.nvim_create_autocmd('LspAttach', {
-        group = vim.api.nvim_create_augroup('auto-lsp-attach-format', { clear = true }),
-        callback = function(args)
-          local client_id = args.data.client_id
-          local client = vim.lsp.get_client_by_id(client_id)
-          local bufnr = args.buf
-          if not client.server_capabilities.documentFormattingProvider then
-            return
-          end
-          if client.name == 'tsserver' then
-            return
-          end
-          vim.api.nvim_create_autocmd('BufWritePre', {
-            group = get_augroup(client),
-            buffer = bufnr,
-            callback = function()
-              if not format_is_enabled then
-                return
-              end
-              vim.lsp.buf.format {
-                async = false,
-                filter = function(c)
-                  return c.id == client.id
-                end,
-              }
-            end,
-          })
-        end,
-      })
-    end,
-  },
-
-  -- debug.lua
-  {
-    'mfussenegger/nvim-dap',
-    dependencies = {
-      'rcarriga/nvim-dap-ui',
-      'williamboman/mason.nvim',
-      'jay-babu/mason-nvim-dap.nvim',
-      -- 'leoluz/nvim-dap-go',
-    },
-    config = function()
-      local dap = require 'dap'
-      local dapui = require 'dapui'
-      require('mason-nvim-dap').setup {
-        automatic_installation = true,
-        automatic_setup = true,
-        handlers = {},
-        ensure_installed = {},
-      }
-      vim.keymap.set('n', '<F5>', dap.continue, { desc = 'Debug: Start/Continue' })
-      vim.keymap.set('n', '<F1>', dap.step_into, { desc = 'Debug: Step Into' })
-      vim.keymap.set('n', '<F2>', dap.step_over, { desc = 'Debug: Step Over' })
-      vim.keymap.set('n', '<F3>', dap.step_out, { desc = 'Debug: Step Out' })
-      vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
-      vim.keymap.set('n', '<leader>B', function()
-        dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
-      end, { desc = 'Debug: Set Breakpoint' })
-      dapui.setup {
-        icons = { expanded = '▾', collapsed = '▸', current_frame = '*' },
-        controls = {
-          icons = {
-            pause = '⏸',
-            play = '▶',
-            step_into = '⏎',
-            step_over = '⏭',
-            step_out = '⏮',
-            step_back = 'b',
-            run_last = '▶▶',
-            terminate = '⏹',
-            disconnect = '⏏',
-          },
-        },
-      }
-      vim.keymap.set('n', '<F7>', dapui.toggle, { desc = 'Debug: See last session result.' })
-      dap.listeners.after.event_initialized['dapui_config'] = dapui.open
-      dap.listeners.before.event_terminated['dapui_config'] = dapui.close
-      dap.listeners.before.event_exited['dapui_config'] = dapui.close
-      -- require('dap-go').setup()
-    end,
-  },
+  require 'plugins.autoformat',
+  require 'plugins.debug',
 
   {
     'vladdoster/remember.nvim',
@@ -268,6 +171,7 @@ vim.o.infercase = true
 vim.o.linebreak = true
 vim.o.list = true
 vim.o.listchars = 'tab:»·,trail:·'
+vim.o.mouse = ''
 vim.o.scrollback = 20000
 vim.o.scrolloff = 8
 vim.o.shiftwidth = 2
@@ -453,6 +357,7 @@ vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { des
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
+vim.keymap.set('n', '<leader>sG', ':LiveGrepGitRoot<cr>', { desc = '[S]earch by [G]rep on Git Root' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
 
