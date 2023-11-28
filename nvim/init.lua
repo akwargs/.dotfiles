@@ -32,7 +32,7 @@ require('lazy').setup({
   'kshenoy/vim-signature',
   'jlanzarotta/bufexplorer',
   'frioux/vim-regedit',
-  'vimwiki/vimwiki',
+  -- 'vimwiki/vimwiki',
   { 'junegunn/fzf', build = './install --bin' },
   'junegunn/fzf.vim',
   'junegunn/vim-easy-align',
@@ -597,13 +597,13 @@ require('harpoon').setup {}
 require('telescope').load_extension 'harpoon'
 
 -- vimwiki
-vim.g.vimwiki_listsyms = '󰂎󰁻󰁽󰂁'
-vim.g.vimwiki_list = {
-  {
-    path = '~/vimwiki/',
-    links_space_char = '_',
-  },
-}
+-- vim.g.vimwiki_listsyms = '󰂎󰁻󰁽󰂁'
+-- vim.g.vimwiki_list = {
+--   {
+--     path = '~/vimwiki/',
+--     links_space_char = '_',
+--   },
+-- }
 
 -- local snippets
 local ls = require 'luasnip'
