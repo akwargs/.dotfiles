@@ -1,7 +1,7 @@
 source C:/Program\ Files/Neovim/share/nvim-qt/runtime/plugin/nvim_gui_shim.vim
 
 set columns=130 lines=35
-set guifont="JetBrains_Mono_NL_Light:h10:l"
+set guifont="JetBrainsMonoNL_NFM_Light:h10:l"
 set guioptions=gmtTlar
 set mouse=a
 set mousehide
