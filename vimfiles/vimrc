@@ -35,7 +35,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'kshenoy/vim-signature'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'frioux/vim-regedit'
-Plug 'vimwiki/vimwiki'
+" Plug 'vimwiki/vimwiki'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
@@ -258,12 +258,13 @@ endif
 
 "-------------------------------------------
 " Plugin specific settings
-let g:vimwiki_listsyms = '󰂎󰁻󰁽󰂁'
-let g:vimwiki_list = [{'path': '~/vimwiki/',
-                     \ 'links_space_char': '_',
-                     \ }]
+" let g:vimwiki_listsyms = '󰂎󰁻󰁽󰂁'
+" let g:vimwiki_list = [{'path': '~/vimwiki/',
+"                      \ 'links_space_char': '_',
+"                      \ }]
+" Note re links_space_char https://github.com/vimwiki/vimwiki/issues/1031
+"-------------------------------------------
 let g:python_highlight_all = 1
 nnoremap <F9> :UndotreeToggle<CR>
 vmap <Enter> <Plug>(EasyAlign)
-" Note re links_space_char https://github.com/vimwiki/vimwiki/issues/1031
 "-------------------------------------------
