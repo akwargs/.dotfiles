@@ -86,7 +86,6 @@ require('lazy').setup({
   },
 
   require 'plugins.autoformat',
-  require 'plugins.debug',
 
   {
     'vladdoster/remember.nvim',
