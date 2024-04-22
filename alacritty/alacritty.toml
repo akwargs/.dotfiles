@@ -71,6 +71,11 @@ style = "SemiBold Italic"
 family = "JetBrainsMonoNL Nerd Font Mono"
 style = "Light"
 
+[[hints.enabled]]
+action = "Select"
+hyperlinks = true
+mouse.enabled = true
+
 [[keyboard.bindings]]
 chars = "\u001E"
 key = "Key6"
