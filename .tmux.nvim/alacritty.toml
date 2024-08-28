@@ -101,8 +101,8 @@ semantic_escape_chars = '''\,│`|:"' ()#[]{}<>	'''
 program = "C:/Program Files/Neovim/bin/nvim.exe -u ~/.tmux.nvim/init.lua"
 
 [window.dimensions]
-columns = 120
-lines = 30
+columns = 180
+lines = 50
 
 [window.padding]
 x = 20

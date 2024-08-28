@@ -102,7 +102,7 @@ args = ["-NoLogo"]
 program = "powershell"
 
 [window.dimensions]
-columns = 150
+columns = 180
 lines = 50
 
 [window.padding]
