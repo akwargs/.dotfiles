@@ -102,7 +102,7 @@ program = "C:/Program Files/Neovim/bin/nvim.exe -u ~/.tmux.nvim/init.lua"
 
 [window.dimensions]
 columns = 180
-lines = 50
+lines = 40
 
 [window.padding]
 x = 20

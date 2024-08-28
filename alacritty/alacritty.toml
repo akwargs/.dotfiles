@@ -103,7 +103,7 @@ program = "powershell"
 
 [window.dimensions]
 columns = 180
-lines = 50
+lines = 40
 
 [window.padding]
 x = 20
