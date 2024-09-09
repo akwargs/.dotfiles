@@ -48,7 +48,8 @@ set textwidth=80
 " set timeoutlen=500
 " set ttimeoutlen=500
 set visualbell
-set undofile
+" set undofile
+" set undodir=~/tmp/vim
 set whichwrap=<,>,h,l
 set wildignorecase
 set wildmenu
