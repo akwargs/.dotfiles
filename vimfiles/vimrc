@@ -134,3 +134,10 @@ if has('gui_running')
   map <ScrollWheelUp>   <C-Y>
   map <ScrollWheelDown> <C-E>
 endif
+
+"-------------------------------------------
+" Remember last cursor position
+autocmd BufReadPost *
+  \ if line("'\"") > 0 && line("'\"") <= line("$") |
+  \   exe "normal! g`\"" |
+  \ endif
