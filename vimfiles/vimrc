@@ -107,10 +107,10 @@ if !&diff
     autocmd BufLeave,FocusLost,InsertEnter   * if &signcolumn == "yes" | set nornu | endif
   augroup END
 endif
-augroup InsertFocus
-  au!
-  au InsertEnter,InsertLeave * set cul! cuc!
-augroup END
+" augroup InsertFocus
+"   au!
+"   au InsertEnter,InsertLeave * set cul! cuc!
+" augroup END
 "-------------------------------------------
 
 
