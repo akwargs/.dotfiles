@@ -73,9 +73,9 @@ family = "VictorMono Nerd Font"
 style = "SemiBold Italic"
 
 [[hints.enabled]]
-action = "Select"
-hyperlinks = true
-mouse.enabled = true
+action          = "Select"
+hyperlinks      = true
+mouse.enabled   = true
 
 [[keyboard.bindings]]
 chars = "\u001E"
@@ -99,12 +99,11 @@ save_to_clipboard = true
 semantic_escape_chars = '''\,│`|:"' ()#[]{}<>	'''
 
 [terminal.shell]
-args = ["-NoLogo"]
-program = "powershell"
+program = "nvim -u ~/.tmux.nvim/init.lua"
 
 [window.dimensions]
-columns = 180
-lines = 40
+columns = 140
+lines = 30
 
 [window.padding]
 x = 20
