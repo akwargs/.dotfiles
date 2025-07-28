@@ -2,34 +2,18 @@
 local wezterm = require 'wezterm'
 local act = wezterm.action
 return {
-  check_for_updates = true,
   term = 'xterm-256color',
-  use_ime = true,
   default_prog = { 'pwsh', '-NoLogo' },
   window_padding = {
-    left = 50,
-    right = 0,
-    top = 0,
-    bottom = 10,
-  },
-  foreground_text_hsb = {
-    hue = 1.0,
-    saturation = 1.0,
-    brightness = 1.5,
-  },
-  inactive_pane_hsb = {
-    saturation = 0.9,
-    brightness = 0.7,
+    left = 20,
   },
   color_scheme = [[Github Dark (Gogh)]],
   initial_cols = 150,
   initial_rows = 30,
-  use_fancy_tab_bar = false,
+  -- use_fancy_tab_bar = false,
   hide_tab_bar_if_only_one_tab = false,
   tab_bar_at_bottom = true,
   scrollback_lines = 20000,
-  enable_scroll_bar = true,
-  freetype_load_target = 'HorizontalLcd',
 	font = wezterm.font("CodeNewRoman Nerd Font"),
 	font_rules = {
 			{
