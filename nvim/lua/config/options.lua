@@ -1,3 +1,13 @@
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.node_host_prog = vim.env.NVIM_NODE_HOST
+vim.g.python3_host_prog = vim.env.NVIM_PYTHON3_HOST
+vim.opt.background = "light"
 vim.opt.backup = true
+vim.opt.cursorline = false
+vim.opt.list = true
+vim.opt.listchars = "tab:»·,trail:·,nbsp:·"
+vim.opt.mouse = ""
+vim.opt.mouse = "n"
 vim.opt.undofile = true
 vim.opt.undodir = { "." }
