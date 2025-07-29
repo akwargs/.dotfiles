@@ -7,7 +7,5 @@ vim.opt.backup = true
 vim.opt.cursorline = false
 vim.opt.list = true
 vim.opt.listchars = "tab:»·,trail:·,nbsp:·"
-vim.opt.mouse = ""
-vim.opt.mouse = "n"
 vim.opt.undofile = true
 vim.opt.undodir = { "." }
