@@ -22,7 +22,6 @@ $GitPromptSettings.DefaultPromptPrefix.Text = "`nPS "
 # z (quick directory jump) install
 # Install-Module -Name z -Scope CurrentUser -AllowClobber -Force
 Import-Module z
-## TODO look into z.lua
 
 # psreadline upgrade/install
 # Install-Module -Name PSReadLine -Scope CurrentUser -AllowClobber -Force
