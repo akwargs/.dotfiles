@@ -1,6 +1,0 @@
-{
-  "use_external_7zip": true,
-  "aria2-enabled": false,
-  "scoop_repo": "https://github.com/ScoopInstaller/Scoop",
-  "scoop_branch": "master"
-}
