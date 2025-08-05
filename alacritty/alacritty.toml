@@ -100,6 +100,9 @@ semantic_escape_chars = '''\,│`|:"' ()#[]{}<>	'''
 
 [terminal.shell]
 program = "nvim -u ~/.tmux.nvim/init.lua"
+# program = "nvim -u ~/nvim-terminal/init.lua +terminal"
+# program = "powershell"
+# args = ["-NoLogo"]
 
 [window.dimensions]
 columns = 140
