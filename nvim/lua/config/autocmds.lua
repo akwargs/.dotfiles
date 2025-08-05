@@ -35,7 +35,7 @@ api.nvim_create_autocmd({ "TermOpen", "TermEnter" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd({ "FileType" }, {
+api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "text" },
   callback = function()
     vim.opt.spell = false
