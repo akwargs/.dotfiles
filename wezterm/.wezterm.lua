@@ -14,29 +14,29 @@ return {
   hide_tab_bar_if_only_one_tab = false,
   tab_bar_at_bottom = true,
   scrollback_lines = 20000,
-	font = wezterm.font("CodeNewRoman Nerd Font"),
-	font_rules = {
-			{
-					intensity = 'Normal',
-					italic = true,
-					font = wezterm.font("VictorMono Nerd Font Propo", {weight="DemiBold", stretch="Normal", style="Italic"})
-			},
-			{
-					intensity = 'Bold',
-					italic = false,
-					font = wezterm.font("VictorMono Nerd Font Propo", {weight="Bold", stretch="Normal", style="Italic"})
-			},
-			{
-					intensity = 'Bold',
-					italic = true,
-					font = wezterm.font("VictorMono Nerd Font Propo", {weight="Bold", stretch="Normal", style="Italic"})
-			},
-			{
-					intensity = 'Half',
-					italic = true,
-					font = wezterm.font("VictorMono Nerd Font Propo", {weight="Light", stretch="Normal", style="Italic"})
-			},
-	},
+  font = wezterm.font("CodeNewRoman Nerd Font"),
+  font_rules = {
+      {
+          intensity = 'Normal',
+          italic = true,
+          font = wezterm.font("VictorMono Nerd Font Propo", {weight="DemiBold", stretch="Normal", style="Italic"})
+      },
+      {
+          intensity = 'Bold',
+          italic = false,
+          font = wezterm.font("VictorMono Nerd Font Propo", {weight="Bold", stretch="Normal", style="Italic"})
+      },
+      {
+          intensity = 'Bold',
+          italic = true,
+          font = wezterm.font("VictorMono Nerd Font Propo", {weight="Bold", stretch="Normal", style="Italic"})
+      },
+      {
+          intensity = 'Half',
+          italic = true,
+          font = wezterm.font("VictorMono Nerd Font Propo", {weight="Light", stretch="Normal", style="Italic"})
+      },
+  },
   font_size = 12.0,
   selection_word_boundary = '{}[]|\\()"\'`.,;: <>',
   leader = { key = 'b', mods = 'CTRL', timeout_milliseconds = 1000 },
