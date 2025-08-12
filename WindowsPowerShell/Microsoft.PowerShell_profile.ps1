@@ -50,6 +50,11 @@ Set-PSReadLineOption -Colors @{
   ListPredictionTooltip  = "Green"
   Default                = "DarkGray"
 }
+
+# swap these key chords
+Set-PSReadLineKeyHandler -Chord 'Ctrl+w' -Function BackwardKillWord
+Set-PSReadLineKeyHandler -Chord 'Alt-Backspace' -Function UnixWordRubout
+
 #############################################################
 
 function f              { fd.exe -c never $args }
