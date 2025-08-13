@@ -52,8 +52,8 @@ Set-PSReadLineOption -Colors @{
 }
 
 # swap these key chords
-Set-PSReadLineKeyHandler -Chord 'Ctrl+w' -Function BackwardKillWord
-Set-PSReadLineKeyHandler -Chord 'Alt-Backspace' -Function UnixWordRubout
+# Set-PSReadLineKeyHandler -Chord 'Ctrl+w' -Function BackwardKillWord
+# Set-PSReadLineKeyHandler -Chord 'Alt-Backspace' -Function UnixWordRubout
 
 #############################################################
 
