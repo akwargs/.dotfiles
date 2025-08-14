@@ -2,15 +2,8 @@
 # powershell profile
 # Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 #############################################################
-#
-# virtualenvwrapper install
-# git clone https://github.com/regisf/virtualenvwrapper-powershell
-## TODO: look into uv
-# ./Install.ps1
-
-$PowerShellProfile = $PROFILE.CurrentUserAllHosts
-$PowerShellPath = Split-Path $PowerShellProfile
-Import-Module $PowerShellPath\Modules\VirtualEnvWrapper.psm1
+# replace virtualenvwrapper with uv
+#############################################################
 
 # post-git install
 # Install-Module -Name posh-git -Scope CurrentUser -AllowClobber -Force
