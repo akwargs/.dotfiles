@@ -56,7 +56,9 @@ function Get-HardLinks  { fsutil.exe hardlink list $args }
 Set-Alias vim           nvim.exe
 function startopensuse  { & $Env:ProgramFiles\Oracle\VirtualBox\VBoxManage.exe startvm openSUSE --type headless }
 Set-Alias startlinux    startopensuse
-
+function uv             { uv.exe --native-tls $args }
+function mycurl         { curl.exe --ssl-revoke-best-effort $args }
+Set-Alias curl          mycurl -Force -Option Constant,AllScope
 function gitpull        { git.exe pull $args }
 function gitpush        { git.exe push $args }
 Set-Alias gl            gitpull -Force -Option Constant,AllScope
