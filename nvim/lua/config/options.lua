@@ -4,8 +4,14 @@ vim.g.node_host_prog = vim.env.NVIM_NODE_HOST
 vim.g.python3_host_prog = vim.env.NVIM_PYTHON3_HOST
 vim.opt.background = "light"
 vim.opt.backup = true
+if vim.env.TMUX then
+	vim.opt.clipboard = "unnamedplus,unnamed"
+else
+	vim.opt.clipboard = ""
+end
 vim.opt.cursorline = false
 vim.opt.list = true
 vim.opt.listchars = "tab:»·,trail:·,nbsp:·"
+vim.opt.mouse = ""
 vim.opt.undofile = true
 vim.opt.undodir = { "." }
