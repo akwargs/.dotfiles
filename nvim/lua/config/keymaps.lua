@@ -4,8 +4,8 @@ local opts = { noremap = true }
 
 -- custom maps
 vim.keymap.set("i", "umeter", "µ", opts)
-vim.keymap.set("i", "..l", [[-------------------------------------------<CR><CR>]], opts)
-vim.keymap.set("i", "..d", [[============<C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>============<CR><CR>]], opts)
+vim.keymap.set("i", ";;l", [[-------------------------------------------<CR><CR>]], opts)
+vim.keymap.set("i", ";;d", [[============<C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>============<CR><CR>]], opts)
 
 -- clear hls
 vim.keymap.set("n", "<C-l>", ":nohl<CR><C-l>", opts)
@@ -34,5 +34,9 @@ vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz", opts)
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz", opts)
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", opts)
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", opts)
+
+vim.keymap.set("n", "<leader>Y", require("osc52").copy_operator, { expr = true })
+vim.keymap.set("n", "<leader>yy", "<leader>y_", { remap = true })
+vim.keymap.set("v", "<leader>y", require("osc52").copy_visual)
 
 return M
