@@ -13,7 +13,7 @@ vim.keymap.set("n", "<C-l>", ":nohl<CR><C-l>", opts)
 -- show columns at 80 and 120
 vim.keymap.set("n", "<leader>ro", [[:exe "set cc=" . (&cc == "" ? "80,120" : "")<CR>]], opts)
 vim.keymap.set("n", "<leader>rl", [[:exe "set cuc! cul!"<CR>]], opts)
-vim.keymap.set("n", "<leader>rr", [[:exe "set rnu! nu!"<CR>]], opts)
+vim.keymap.set("n", "<leader>rr", [[:exe "set rnu! nu! list!"<CR>]], opts)
 
 -- cursor remains in place after J
 vim.keymap.set("n", "J", [[mzJ`z]], opts)
