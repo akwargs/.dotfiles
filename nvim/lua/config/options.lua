@@ -5,9 +5,9 @@ vim.g.python3_host_prog = vim.env.NVIM_PYTHON3_HOST
 vim.opt.background = "light"
 vim.opt.backup = true
 if vim.env.TMUX then
-	vim.opt.clipboard = "unnamedplus,unnamed"
+  vim.opt.clipboard = "unnamedplus,unnamed"
 else
-	vim.opt.clipboard = ""
+  vim.opt.clipboard = ""
 end
 vim.opt.copyindent = true
 vim.opt.cursorline = false

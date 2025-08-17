@@ -32,13 +32,13 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", opts)
 
 -- yank into clipboard(+)
 if vim.env.SSH_TTY and not vim.env.TMUX then
-	vim.keymap.set("v", "<leader>y", require("osc52").copy_visual)
-	vim.keymap.set("n", "<leader>Y", require("osc52").copy_operator, { expr = true })
-	vim.keymap.set("n", "<leader>yy", "<leader>y_", { remap = true })
+  vim.keymap.set("v", "<leader>y", require("osc52").copy_visual)
+  vim.keymap.set("n", "<leader>Y", require("osc52").copy_operator, { expr = true })
+  vim.keymap.set("n", "<leader>yy", "<leader>y_", { remap = true })
 else
-	vim.keymap.set("v", "<leader>y", [["+y]], opts)
-	vim.keymap.set("n", "<leader>Y", [["+y]], opts)
-	vim.keymap.set("n", "<leader>yy", [["+yy]], opts)
+  vim.keymap.set("v", "<leader>y", [["+y]], opts)
+  vim.keymap.set("n", "<leader>Y", [["+y]], opts)
+  vim.keymap.set("n", "<leader>yy", [["+yy]], opts)
 end
 
 return M
