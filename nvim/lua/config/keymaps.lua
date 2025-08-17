@@ -21,11 +21,6 @@ vim.keymap.set("n", "J", [[mzJ`z]], opts)
 -- paste over highlight, which deletes to void register
 vim.keymap.set("x", "<leader>p", [["_dPa]], opts)
 
--- yank into clipboard(+)
-vim.keymap.set("n", "<leader>y", [["+y]], opts)
-vim.keymap.set("v", "<leader>y", [["+y]], opts)
-vim.keymap.set("n", "<leader>Y", [["+Y]], opts)
-
 -- disable Q
 vim.keymap.set("n", "Q", "<nop>", opts)
 
@@ -35,8 +30,15 @@ vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz", opts)
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", opts)
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", opts)
 
-vim.keymap.set("n", "<leader>Y", require("osc52").copy_operator, { expr = true })
-vim.keymap.set("n", "<leader>yy", "<leader>y_", { remap = true })
-vim.keymap.set("v", "<leader>y", require("osc52").copy_visual)
+-- yank into clipboard(+)
+if vim.env.SSH_TTY and not vim.env.TMUX then
+	vim.keymap.set("v", "<leader>y", require("osc52").copy_visual)
+	vim.keymap.set("n", "<leader>Y", require("osc52").copy_operator, { expr = true })
+	vim.keymap.set("n", "<leader>yy", "<leader>y_", { remap = true })
+else
+	vim.keymap.set("v", "<leader>y", [["+y]], opts)
+	vim.keymap.set("n", "<leader>Y", [["+y]], opts)
+	vim.keymap.set("n", "<leader>yy", [["+yy]], opts)
+end
 
 return M
