@@ -8,7 +8,7 @@ api.nvim_create_autocmd({ "BufEnter", "FocusGained", "InsertLeave", "CmdlineLeav
   group = numbertoggle,
   callback = function()
     if vim.o.nu and vim.api.nvim_get_mode().mode ~= "i" then
-      vim.opt.relativenumber = true
+      vim.opt_local.relativenumber = true
     end
   end,
 })
@@ -17,7 +17,7 @@ api.nvim_create_autocmd({ "BufLeave", "FocusLost", "InsertEnter", "CmdlineEnter"
   group = numbertoggle,
   callback = function()
     if vim.o.nu then
-      vim.opt.relativenumber = false
+      vim.opt_local.relativenumber = false
       vim.cmd.redraw()
     end
   end,
@@ -38,7 +38,13 @@ api.nvim_create_autocmd({ "TermOpen", "TermEnter" }, {
 api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "text" },
   callback = function()
-    vim.opt.spell = false
+    vim.opt_local.cursorline = false
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.signcolumn = "no"
+    vim.opt_local.softtabstop = 4
+    vim.opt_local.spell = false
+    vim.opt_local.tabstop = 4
+    vim.opt_local.textwidth = 79
   end,
 })
 
