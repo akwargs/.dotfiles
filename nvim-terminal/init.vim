@@ -2,10 +2,15 @@ set clipboard=unnamedplus,unnamed
 set cmdheight=0
 set laststatus=0
 set mouse=""
-set shell=powershell\ -NoLogo
+" set shell=powershell\ -NoLogo
+set shell=~/cygwin/bin/screen.exe
 set wrap
 
 function! Highlight()
+  hi clear SpecialKey
+  hi clear SignColumn
+  hi clear FoldColumn
+  hi Normal ctermfg=None ctermbg=None guifg=None guibg=None
   hi TerminalError cterm=underline ctermfg=124 gui=underline guifg=#af0000 guisp=Red
   hi TerminalGood  cterm=underline ctermfg=28 gui=underline guifg=#008700 guisp=Blue
   call matchadd('TerminalError', '\c\<\(admin\(istrative\)\=\(ly\)\= \)\=\(shut\)\=down\>', 0)
@@ -42,7 +47,4 @@ augroup Terminal
   au TermOpen * startinsert
   au TermOpen,TermEnter * call Highlight()
 augroup END
-
-highlight clear SpecialKey
-highlight clear SignColumn
-highlight clear FoldColumn
+"-------------------------------------------
