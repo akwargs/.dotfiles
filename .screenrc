@@ -1,0 +1,76 @@
+autodetach on
+compacthist on
+defflow off
+defobuflimit 9128
+defscrollback 50000
+defwrap on
+escape ^Bb
+ignorecase on
+msgwait 1
+shell /usr/bin/bash
+startup_message off
+term xterm
+vbell off
+
+bind \\
+bind \\ split -v
+bind -
+bind - split
+bind w
+bind w windowlist -b
+bind P
+bind P hardcopy
+bind h
+bind h focus left
+bind j
+bind j focus down
+bind k
+bind k focus up
+bind l
+bind l focus right
+bind t
+bind t focus top
+bind b
+bind b focus bottom
+bind Q
+bind Q remove
+bind K
+bind K kill
+bind o
+bind o only
+bind ,
+bind , bumpleft
+bind .
+bind . bumpright
+
+# f12 to enter resize mode https://gist.github.com/joaopizani/2718397
+bindkey "[24~" eval "command -c rsz"
+# use hjkl keys to resize regions
+bind -c rsz h eval "resize -h +1" "command -c rsz"
+bind -c rsz j eval "resize -v +1" "command -c rsz"
+bind -c rsz k eval "resize -v -1" "command -c rsz"
+bind -c rsz l eval "resize -h -1" "command -c rsz"
+# quickly switch between regions without exiting resize mode
+bind -c rsz \t    eval "focus"       "command -c rsz"
+bind -c rsz -k kl eval "focus left"  "command -c rsz"
+bind -c rsz -k kr eval "focus right" "command -c rsz"
+bind -c rsz -k ku eval "focus up"    "command -c rsz"
+bind -c rsz -k kd eval "focus down"  "command -c rsz"
+# reset the region sizes with =
+bind -c rsz =     eval "resize =" "command -c rsz"
+######## end binds
+
+# logging and status strings
+screen 0
+bufferfile "${HOME}/logs/.screen-exchange"
+deflog on
+logfile "${HOME}/logs/%t.log"
+# logfile "${HOME}/logs/%t_%Y%m%d_T%0c_%D_(%n).log"
+logtstamp off
+hardcopydir "${HOME}/logs"
+hardcopy_append on
+caption string '%{= 7}%3n-%t'
+rendition so "=7"
+hardstatus alwayslastline
+hardstatus string '%{= 7}%-w%{= 0}%{= 7}%n-%t%{= 7}%{= 7}%+w %-=[%c]'
+# vim:ft=screen:tw=0
