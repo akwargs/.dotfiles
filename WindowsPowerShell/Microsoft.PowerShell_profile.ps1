@@ -1,64 +1,38 @@
 ######################################################################
 # Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ######################################################################
-
 # posh-git install
 # Install-Module -Name posh-git -Scope CurrentUser -AllowClobber -Force
 Import-Module posh-git
-# To retain the customary powershell prompt
 $GitPromptSettings.DefaultPromptPrefix.Text = "`nPS "
-
-# z (quick directory jump) install
-# Install-Module -Name z -Scope CurrentUser -AllowClobber -Force
-# Import-Module z
 
 # psreadline upgrade/install
 # Install-Module -Name PSReadLine -Scope CurrentUser -AllowClobber -Force
 Set-PSReadLineOption -BellStyle Visual
 Set-PSReadLineOption -EditMode Emacs
-Set-PSReadLineOption -HistorySavePath $Env:HOME\_PSReadLineHistory
+Set-PSReadLineOption -HistorySavePath $Env:ONEDRIVE\_PSReadLineHistory
 Set-PSReadLineOption -PredictionViewStyle ListView
-##Set-PSReadLineOption -PredictionSource HistoryAndPlugin ##needs PS 7.2+
 
-## light color theme
-# Set-PSReadLineOption -Colors @{
-#   Command                = "Gray"
-#   Number                 = "DarkGray"
-#   Member                 = "DarkGray"
-#   Emphasis               = "$([char]0x1b)[1;94m"
-#   Error                  = "$([char]0x1b)[1;91m"
-#   Operator               = "DarkGray"
-#   Keyword                = "DarkGreen"
-#   Type                   = "DarkGray"
-#   Variable               = "DarkGreen"
-#   Parameter              = "DarkGreen"
-#   ContinuationPrompt     = "DarkGray"
-#   String                 = "DarkBlue"
-#   ListPredictionSelected = "$([char]0x1b)[48;5;47m"
-#   InlinePrediction       = "Green"
-#   ListPredictionTooltip  = "Green"
-#   Default                = "DarkGray"
-# }
+# git clone https://github.com/ThePoShWolf/Utilities $Env:ONEDRIVE/Utilities
+Import-Module $Env:ONEDRIVE\Utilities\Misc\Set-PathVariable.ps1
+######################################################################
 
-# swap these key chords
-# Set-PSReadLineKeyHandler -Chord 'Ctrl+w' -Function BackwardKillWord
-# Set-PSReadLineKeyHandler -Chord 'Alt-Backspace' -Function UnixWordRubout
-
-#############################################################
-
+Set-Alias PythonScripts $Env:USERPROFILE\Projects\PythonScripts\Scripts\activate.ps1
 function f              { fd.exe -c never $args }
 function g              { rg.exe -N -i $args }
 function Get-HardLinks  { fsutil.exe hardlink list $args }
-Set-Alias vim           nvim.exe
-function startopensuse  { & $Env:ProgramFiles\Oracle\VirtualBox\VBoxManage.exe startvm openSUSE --type headless }
-Set-Alias startlinux    startopensuse
+function vim            { & $Env:ProgramFiles\vim\vim90\vim.exe $args }
+function gvim           { & $Env:ProgramFiles\vim\vim90\gvim.exe $args }
+function vi             { & $Env:ProgramFiles\vim\vim90\vim.exe -u NONE -U NONE }
 function uv             { uv.exe --native-tls $args }
-function mycurl         { curl.exe --ssl-revoke-best-effort $args }
-Set-Alias curl          mycurl -Force -Option Constant,AllScope
+function startlinux     { & $Env:ProgramFiles\Oracle\VirtualBox\VBoxManage.exe startvm linux --type headless }
+function attachlinux    { & $Env:ProgramFiles\Oracle\VirtualBox\VBoxManage.exe startvm linux --type separate }
 function gitpull        { git.exe pull $args }
 function gitpush        { git.exe push $args }
 Set-Alias gl            gitpull -Force -Option Constant,AllScope
 Set-Alias gp            gitpush -Force -Option Constant,AllScope
+function mycurl         { curl.exe --ssl-revoke-best-effort $args }
+Set-Alias curl          mycurl -Force -Option Constant,AllScope
 function ga             { git.exe add $args }
 function gaa            { git.exe add --all $args }
 function gc!            { git.exe commit -v --amend $args }
@@ -80,30 +54,6 @@ function Get-UTC        { Get-Date -Format U }
 function dns            { Resolve-DnsName -DnsOnly "$args" }
 function l              { Get-ChildItem -Name }
 function rmrf           { Remove-Item -Recurse -Force $args }
-
-# https://github.com/ThePoShWolf/Utilities/blob/master/Misc/Set-PathVariable.ps1
-function Set-PathVariable {
-    param (
-        [string]$AddPath,
-        [string]$RemovePath,
-        [string]$Scope = 'User'
-    )
-    $regexPaths = @()
-    if ($PSBoundParameters.Keys -contains 'AddPath') {
-        $regexPaths += [regex]::Escape($AddPath)
-    }
-
-    if ($PSBoundParameters.Keys -contains 'RemovePath') {
-        $regexPaths += [regex]::Escape($RemovePath)
-    }
-
-    $arrPath = [System.Environment]::GetEnvironmentVariable('PATH', $Scope) -split ';'
-    foreach ($path in $regexPaths) {
-        $arrPath = $arrPath | Where-Object { $_ -notMatch "^$path\\?" }
-    }
-    $value = ($arrPath + $addPath) -join ';'
-    [System.Environment]::SetEnvironmentVariable('PATH', $value, $Scope)
-}
 
 function which($name) {
   Get-Command $name | Select-Object -ExpandProperty Definition
@@ -187,11 +137,10 @@ function time {
   Measure-Command { Invoke-Expression $Command | Out-Default }
 }
 
-##{ not needed with pwsh 7.x
 # https://superuser.com/questions/593987/change-directory-to-previous-directory-in-powershell
 function custom_cd {
   if ($args.Count -eq 0) {
-    $tmp_path = ${HOME}
+    $tmp_path = $Env:USERPROFILE
   }
   elseif ($args[0] -eq '-') {
     $tmp_path = $OLDPWD;
@@ -206,11 +155,11 @@ function custom_cd {
 }
 Set-Alias cd  custom_cd -Option AllScope
 
-function cdh  { cd $Env:HOME }
+function cdh  { cd $Env:USERPROFILE }
 Set-Alias c   cdh
-##} not needed with pwsh 7.x
 
-function w {
+### these functions were written by ChatGPT
+function wag {
   [CmdletBinding()]
   param (
       [Parameter(Mandatory=$true, Position=0)]
@@ -221,7 +170,7 @@ function w {
   return "10.$SECOND.$THIRD.0"
 }
 
-function 2w {
+function 2wag {
   param (
       [string]$IPAddress
       )
@@ -456,11 +405,9 @@ function q2n {
   }
 }
 
-## TODO
 function q2h {
 }
 
-## TODO
 function q2b {
 }
 
@@ -494,19 +441,18 @@ function q2m {
   }
 }
 
-# TODO... to dotted quad
+# ... to dotted quad
 function n2q {
 }
 
-# TODO
 function h2q {
 }
 
-# TODO... to ascii string
+# ... to ascii string
 function h2s {
 }
 
-# TODO ascii string to ...
+# ascii string to ...
 function s2h {
 }
 # vim:sw=2:ts=2:sts=2:tw=0:et
