@@ -2,7 +2,7 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
 return {
-  color_scheme = [[iTerm2 Default]],
+  color_scheme = [[Github]],
   default_prog = { 'powershell', '-NoLogo' },
   -- front_end = "WebGpu",
   harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
@@ -19,7 +19,7 @@ return {
   },
 
   font = wezterm.font_with_fallback({
-    { family = "Code New Roman", weight = "Regular" },
+    { family = "Cascadia Mono", weight = "Light" },
     { family = "Symbols Nerd Font", scale = 0.75 },
   }),
 
@@ -61,7 +61,7 @@ return {
   },
 
   selection_word_boundary = "{}[]|\\()\"'`,;: <>",
-  leader = { key = "b", mods = "CTRL|ALT", timeout_milliseconds = 1000 },
+  leader = { key = "b", mods = "CTRL|ALT", timeout_milliseconds = 5000 },
 
   keys = {
     { key = "b",  mods = "LEADER|CTRL|ALT", action = act({ SpawnTab = "CurrentPaneDomain" }) },
