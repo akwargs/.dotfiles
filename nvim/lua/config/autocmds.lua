@@ -35,7 +35,7 @@ api.nvim_create_autocmd({ "TermOpen", "TermEnter" }, {
   end,
 })
 
-api.nvim_create_autocmd({ "FileType" }, {
+vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "text" },
   callback = function()
     vim.opt_local.cursorline = false
