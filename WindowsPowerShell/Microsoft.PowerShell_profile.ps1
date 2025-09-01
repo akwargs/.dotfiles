@@ -23,7 +23,7 @@ function g              { rg.exe -N -i $args }
 function Get-HardLinks  { fsutil.exe hardlink list $args }
 function vim            { & $Env:ProgramFiles\vim\vim90\vim.exe $args }
 function gvim           { & $Env:ProgramFiles\vim\vim90\gvim.exe $args }
-function vi             { & $Env:ProgramFiles\vim\vim90\vim.exe -u NONE -U NONE }
+function vi             { & $Env:ProgramFiles\vim\vim90\vim.exe -u NONE -U NONE $args }
 function uv             { uv.exe --native-tls $args }
 function startlinux     { & $Env:ProgramFiles\Oracle\VirtualBox\VBoxManage.exe startvm linux --type headless }
 function attachlinux    { & $Env:ProgramFiles\Oracle\VirtualBox\VBoxManage.exe startvm linux --type separate }
