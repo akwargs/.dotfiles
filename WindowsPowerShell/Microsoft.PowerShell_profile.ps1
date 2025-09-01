@@ -1,20 +1,16 @@
-#############################################################
-# powershell profile
+######################################################################
 # Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-#############################################################
-# replace virtualenvwrapper with uv
-#############################################################
+######################################################################
 
-# post-git install
+# posh-git install
 # Install-Module -Name posh-git -Scope CurrentUser -AllowClobber -Force
 Import-Module posh-git
-## TODO look into starship
 # To retain the customary powershell prompt
 $GitPromptSettings.DefaultPromptPrefix.Text = "`nPS "
 
 # z (quick directory jump) install
 # Install-Module -Name z -Scope CurrentUser -AllowClobber -Force
-Import-Module z
+# Import-Module z
 
 # psreadline upgrade/install
 # Install-Module -Name PSReadLine -Scope CurrentUser -AllowClobber -Force
@@ -25,24 +21,24 @@ Set-PSReadLineOption -PredictionViewStyle ListView
 ##Set-PSReadLineOption -PredictionSource HistoryAndPlugin ##needs PS 7.2+
 
 ## light color theme
-Set-PSReadLineOption -Colors @{
-  Command                = "Gray"
-  Number                 = "DarkGray"
-  Member                 = "DarkGray"
-  Emphasis               = "$([char]0x1b)[1;94m"
-  Error                  = "$([char]0x1b)[1;91m"
-  Operator               = "DarkGray"
-  Keyword                = "DarkGreen"
-  Type                   = "DarkGray"
-  Variable               = "DarkGreen"
-  Parameter              = "DarkGreen"
-  ContinuationPrompt     = "DarkGray"
-  String                 = "DarkBlue"
-  ListPredictionSelected = "$([char]0x1b)[48;5;47m"
-  InlinePrediction       = "Green"
-  ListPredictionTooltip  = "Green"
-  Default                = "DarkGray"
-}
+# Set-PSReadLineOption -Colors @{
+#   Command                = "Gray"
+#   Number                 = "DarkGray"
+#   Member                 = "DarkGray"
+#   Emphasis               = "$([char]0x1b)[1;94m"
+#   Error                  = "$([char]0x1b)[1;91m"
+#   Operator               = "DarkGray"
+#   Keyword                = "DarkGreen"
+#   Type                   = "DarkGray"
+#   Variable               = "DarkGreen"
+#   Parameter              = "DarkGreen"
+#   ContinuationPrompt     = "DarkGray"
+#   String                 = "DarkBlue"
+#   ListPredictionSelected = "$([char]0x1b)[48;5;47m"
+#   InlinePrediction       = "Green"
+#   ListPredictionTooltip  = "Green"
+#   Default                = "DarkGray"
+# }
 
 # swap these key chords
 # Set-PSReadLineKeyHandler -Chord 'Ctrl+w' -Function BackwardKillWord
@@ -77,7 +73,6 @@ function d              { diff.exe -u $args }
 
 ## misc aliases and functions - native powershell
 Set-Alias m             more
-## TODO: look at moar+bat
 Set-Alias ll            Get-ChildItem
 function Get-Pass       { -join(48..57+65..90+97..122|ForEach-Object{[char]$_}|Get-Random -C 20) }
 function Get-PubIP      { (Invoke-WebRequest http://ifconfig.me/ip ).Content }
