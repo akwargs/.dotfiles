@@ -160,13 +160,13 @@ return {
     },
 
     search_mode = {
-      { key = "Escape", mods = "NONE", action = act({ CopyMode = "Close" }) },
-      { key = "Enter",  mods = "NONE", action = "ActivateCopyMode" },
-      { key = "c",      mods = "CTRL", action = "ActivateCopyMode" },
-      { key = "n",      mods = "CTRL", action = act({ CopyMode = "NextMatch" }) },
-      { key = "p",      mods = "CTRL", action = act({ CopyMode = "PriorMatch" }) },
-      { key = "r",      mods = "CTRL", action = act.CopyMode("CycleMatchType") },
-      { key = "u",      mods = "CTRL", action = act.CopyMode("ClearPattern") },
+      { key = "Escape",     mods = "NONE", action = act({ CopyMode = "Close" }) },
+      { key = "Enter",      mods = "NONE", action = "ActivateCopyMode" },
+      { key = "c",          mods = "CTRL", action = "ActivateCopyMode" },
+      { key = "n",          mods = "CTRL", action = act({ CopyMode = "NextMatch" }) },
+      { key = "p",          mods = "CTRL", action = act({ CopyMode = "PriorMatch" }) },
+      { key = "r",          mods = "CTRL", action = act.CopyMode("CycleMatchType") },
+      { key = "u",          mods = "CTRL", action = act.CopyMode("ClearPattern") },
     },
   },
 }
