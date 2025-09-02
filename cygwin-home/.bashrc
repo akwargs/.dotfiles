@@ -3,7 +3,7 @@ export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
 export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls:ll:lla:la'
 export MANPAGER='less -XRF'
 export PAGER='less -XRF'
-export PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
+export PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/cygdrive/c/Windows/System32
 
 PS1='\n$ '
 
