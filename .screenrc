@@ -12,8 +12,8 @@ startup_message off
 term xterm
 vbell off
 
-bind \\
-bind \\ split -v
+bind %
+bind % split -v
 bind -
 bind - split
 bind w
