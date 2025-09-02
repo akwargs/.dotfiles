@@ -4,61 +4,61 @@ local act = wezterm.action
 return {
   color_scheme = [[Github]],
   default_prog = { 'powershell', '-NoLogo' },
-  -- front_end = "WebGpu",
   harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
   hide_tab_bar_if_only_one_tab = false,
   initial_cols = 135,
   initial_rows = 35,
-  scrollback_lines = 20000,
+  scrollback_lines = 9000,
   tab_bar_at_bottom = true,
   term = "xterm-256color",
-  -- use_cap_height_to_scale fixes too large victor mono
-  use_cap_height_to_scale_fallback_fonts = true,
-  window_padding = {
-    left = 20,
-  },
+  window_padding = { left = 20, },
 
-  font = wezterm.font_with_fallback({
-    { family = "Cascadia Mono", weight = "Light" },
-    { family = "Symbols Nerd Font", scale = 0.75 },
-  }),
+  font_size = 11.0,
 
-  font_size = 15.0,
+  font = wezterm.font('Consolas', { weight = 'Light' }),
 
-  font_rules = {
-    {
-      intensity = "Normal",
-      italic = true,
-      font = wezterm.font("Victor Mono", {
-        weight = "DemiBold",
-        style = "Italic",
-      }),
-    },
-    {
-      intensity = "Bold",
-      italic = false,
-      font = wezterm.font("Victor Mono", {
-        weight = "Bold",
-        style = "Italic",
-      }),
-    },
-    {
-      intensity = "Bold",
-      italic = true,
-      font = wezterm.font("Victor Mono", {
-        weight = "Bold",
-        style = "Italic",
-      }),
-    },
-    {
-      intensity = "Half",
-      italic = true,
-      font = wezterm.font("Code New Roman", {
-        weight = "Light",
-        style = "Italic",
-      }),
-    },
-  },
+  -- ALTERNATIVE FONTS
+  -- font = wezterm.font_with_fallback({
+  --   { family = "Cascadia Mono", weight = "Light" },
+  --   { family = "Symbols Nerd Font", scale = 0.75 },
+  -- }),
+
+  -- FIX VICTOR MONO
+  -- use_cap_height_to_scale_fallback_fonts = true,
+  -- font_rules = {
+  --   {
+  --     intensity = "Normal",
+  --     italic = true,
+  --     font = wezterm.font("Victor Mono", {
+  --       weight = "DemiBold",
+  --       style = "Italic",
+  --     }),
+  --   },
+  --   {
+  --     intensity = "Bold",
+  --     italic = false,
+  --     font = wezterm.font("Victor Mono", {
+  --       weight = "Bold",
+  --       style = "Italic",
+  --     }),
+  --   },
+  --   {
+  --     intensity = "Bold",
+  --     italic = true,
+  --     font = wezterm.font("Victor Mono", {
+  --       weight = "Bold",
+  --       style = "Italic",
+  --     }),
+  --   },
+  --   {
+  --     intensity = "Half",
+  --     italic = true,
+  --     font = wezterm.font("Victor Mono", {
+  --       weight = "Light",
+  --       style = "Italic",
+  --     }),
+  --   },
+  -- },
 
   selection_word_boundary = "{}[]|\\()\"'`,;: <>",
   leader = { key = "b", mods = "CTRL|ALT", timeout_milliseconds = 5000 },
