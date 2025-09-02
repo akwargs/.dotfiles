@@ -28,7 +28,8 @@ alias killagent='eval $(/usr/bin/ssh-pageant -qk 2>/dev/null)'
 
 scr ()
 {
-  screen -t $(date +%Y%m%d_T%H%M%S%Z)_$1 ssh $@;
+  # screen -t $(date +%Y%m%d_T%H%M%S%Z)_$1 ssh $@;
+  screen -t $1 ssh $@;
 }
 
 # if you start me up, i'll never stop

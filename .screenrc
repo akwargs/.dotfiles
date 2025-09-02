@@ -67,8 +67,8 @@ bind -c rsz =     eval "resize =" "command -c rsz"
 screen 0
 bufferfile "${HOME}/logs/.screen-exchange"
 deflog on
-logfile "${HOME}/logs/%t.log"
-# logfile "${HOME}/logs/%t_%Y%m%d_T%0c_%D_(%n).log"
+# logfile "${HOME}/logs/%t.log"
+logfile "${HOME}/logs/%Y%m%d_T%0c%D_%t_screen_%n.log"
 logtstamp off
 hardcopydir "${HOME}/logs"
 hardcopy_append on
