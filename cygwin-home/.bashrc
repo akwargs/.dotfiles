@@ -11,6 +11,7 @@ stty -ixon
 set -o notify
 set -o ignoreeof
 
+alias c=cd
 alias cp='cp -i'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
