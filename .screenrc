@@ -65,7 +65,7 @@ screen 0
 bufferfile "${HOME}/logs/.screen-exchange"
 deflog on
 # logfile "${HOME}/logs/%t.log"
-logfile "${HOME}/logs/%Y%m%d_T%0c%D_%t_screen_%n.log"
+logfile "${HOME}/logs/%Y%m%d_%D_T%0c_w%n_%t.log"
 logtstamp off
 hardcopydir "${HOME}/logs"
 hardcopy_append on
