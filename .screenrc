@@ -28,9 +28,6 @@ bind k
 bind k focus up
 bind l
 bind l focus right
-## disable screen copy mode
-## use nvims copy mode
-bind [
 bind t
 bind t focus top
 bind b
