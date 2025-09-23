@@ -1,0 +1,32 @@
+# reference for .gitconfig
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[alias]
+	hist = log --all --decorate --oneline --graph
+	lg = log --pretty='%C(red)%h%Creset %C(black)%d %s%Creset %C(blue)(%ar)%Creset'
+	new = lg main..HEAD
+	missing = lg HEAD..main
+[pull]
+	rebase = true
+[core]
+	autocrlf = false
+	editor = vim
+[user]
+	name = anthony
+	email = anthony@email
+[init]
+	defaultBranch = main
+[rebase]
+	autosquash = true
+	autoStash = true
+[color]
+	ui = true
+[color "status"]
+	header = blue
+[color "diff"]
+	frag = blue
+	header = blue
+	meta = blue
