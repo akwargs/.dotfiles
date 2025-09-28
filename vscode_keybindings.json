@@ -1,0 +1,19 @@
+[
+    {
+        "key": "ctrl+shift+alt+m",
+        "command": "markdown-preview-enhanced.openPreviewToTheSide",
+        "when": "editorLangId == 'markdown'"
+    },
+    {
+        "key": "alt+v",
+        "command": "editor.action.clipboardPasteAction"
+    },
+    {
+        "key": "ctrl+v",
+        "command": "-editor.action.clipboardPasteAction"
+    },
+    // {
+    //     "key": "alt+c",
+    //     "command": "editor.action.clipboardCopyAction"
+    // },
+]
