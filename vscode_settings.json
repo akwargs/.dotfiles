@@ -1,0 +1,252 @@
+{
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.fixAll": "explicit",
+            "source.organizeImports": "explicit"
+        },
+        "editor.rulers": [
+            80,
+            120
+        ],
+    },
+    "copyOnSelect.copyOnKeyboardSelection": true,
+    "diffEditor.experimental.showMoves": true,
+    "editor.bracketPairColorization.enabled": true,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": "explicit"
+    },
+    "editor.cursorStyle": "block",
+    "editor.cursorSurroundingLines": 5,
+    // "editor.fontFamily": "'JetBrainsMono Nerd Font', monospace, Consolas",
+    "editor.fontFamily": "'Cascadia Mono', Consolas",
+    "editor.fontLigatures": false,
+    "editor.fontSize": 13,
+    "editor.fontWeight": "300",
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "file",
+    "editor.formatOnType": true,
+    "editor.glyphMargin": true,
+    "editor.guides.bracketPairs": true,
+    "editor.guides.bracketPairsHorizontal": true,
+    "editor.lineHeight": 1.5,
+    "editor.lineNumbers": "on",
+    "editor.linkedEditing": true,
+    "editor.minimap.enabled": false,
+    "editor.mouseWheelZoom": true,
+    "editor.renderWhitespace": "trailing",
+    "editor.snippetSuggestions": "top",
+    "editor.stickyScroll.enabled": true,
+    "editor.suggest.insertMode": "replace",
+    "editor.suggestSelection": "first",
+    "editor.tabCompletion": "on",
+    "extensions.ignoreRecommendations": true,
+    "files.autoSave": "afterDelay",
+    "gitlens.advanced.messages": {
+        "suppressGitMissingWarning": true
+    },
+    "gitlens.telemetry.enabled": false,
+    "markdown.extension.math.enabled": false,
+    "scm.diffDecorationsGutterPattern": {
+        "added": true
+    },
+    "security.workspace.trust.untrustedFiles": "open",
+    "settingsSync.ignoredSettings": [
+        "workbench.colorTheme",
+        "projectManager.git.baseFolders"
+    ],
+    "settingsSync.keybindingsPerPlatform": false,
+    "sortJSON.orderOverride": [
+        "name",
+        "version",
+        "description"
+    ],
+    "sortJSON.orderUnderride": [
+        "dependencies",
+        "devDependencies"
+    ],
+    "telemetry.enableTelemetry": false,
+    "telemetry.telemetryLevel": "off",
+    "terminal.integrated.copyOnSelection": true,
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    // "terminal.integrated.fontFamily": "'JetBrainsMonoNL Nerd Font Mono', monospace, Consolas",
+    "terminal.integrated.fontFamily": "'Cascadia Mono', Consolas",
+    "terminal.integrated.fontWeight": "light",
+    "terminal.integrated.fontSize": 12,
+    "terminal.integrated.lineHeight": 1.3,
+    "terminal.integrated.localEchoExcludePrograms": [
+        "vim",
+        "vi",
+        "nvim",
+        "nano",
+        "tmux",
+        "screen"
+    ],
+    "terminal.integrated.rightClickBehavior": "default",
+    "vim.commandLineModeKeyBindings": [],
+    "vim.commandLineModeKeyBindingsNonRecursive": [],
+    "vim.cursorStylePerMode.insert": "line",
+    "vim.enableNeovim": true,
+    "vim.foldfix": true,
+    "vim.handleKeys": {
+        "<C-d>": true,
+        "<C-f>": false,
+        "<C-s>": false,
+        "<C-z>": false,
+    },
+    "vim.highlightedyank.color": "rgba(230, 97, 89, 0.7)",
+    "vim.highlightedyank.duration": 300,
+    "vim.highlightedyank.enable": true,
+    "vim.highlightedyank.textColor": "white",
+    "vim.history": 100,
+    "vim.hlsearch": true,
+    "vim.insertModeKeyBindings": [],
+    "vim.insertModeKeyBindingsNonRecursive": [],
+    "vim.leader": "<space>",
+    "vim.neovimUseConfigFile": true,
+    "vim.normalModeKeyBindings": [
+        {
+            "before": [
+                "<leader>",
+                "l"
+            ],
+            "commands": [
+                ":nohl"
+            ]
+        },
+        {
+            "before": [
+                "[",
+                "d"
+            ],
+            "commands": [
+                "editor.action.marker.next"
+            ]
+        },
+        {
+            "before": [
+                "]",
+                "d"
+            ],
+            "commands": [
+                "editor.action.marker.prev"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "q",
+                "f"
+            ],
+            "commands": [
+                "editor.action.aiQuickFix"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "\""
+            ],
+            "commands": [
+                ":vsplit"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "%"
+            ],
+            "commands": [
+                ":split"
+            ]
+        },
+        {
+            "before": [
+                "<left>"
+            ],
+            "commands": [
+                "workbench.action.focusLeftGroup"
+            ]
+        },
+        {
+            "before": [
+                "<down>"
+            ],
+            "commands": [
+                "workbench.action.focusBelowGroup"
+            ]
+        },
+        {
+            "before": [
+                "<up>"
+            ],
+            "commands": [
+                "workbench.action.focusAboveGroup"
+            ]
+        },
+        {
+            "before": [
+                "<right>"
+            ],
+            "commands": [
+                "workbench.action.focusRightGroup"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "n",
+                "e"
+            ],
+            "commands": [
+                "workbench.explorer.fileView.focus"
+            ]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [],
+    "vim.operatorPendingModeKeyBindings": [],
+    "vim.operatorPendingModeKeyBindingsNonRecursive": [],
+    "vim.overrideCopy": true,
+    "vim.showMarksInGutter": true,
+    "vim.smartRelativeLine": true,
+    "vim.sneakReplacesF": true,
+    "vim.statusBarColors.visualline": "",
+    "vim.useSystemClipboard": true,
+    "vim.visualModeKeyBindings": [
+        {
+            "before": [
+                ">"
+            ],
+            "commands": [
+                "editor.action.indentLines"
+            ]
+        },
+        {
+            "before": [
+                "<"
+            ],
+            "commands": [
+                "editor.action.outdentLines"
+            ]
+        }
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [],
+    "vim.visualstar": true,
+    "vim.whichwrap": "b,s,<,>,[,],h,l",
+    "vim.wrapscan": false,
+    "window.autoDetectColorScheme": true,
+    "workbench.editorAssociations": {
+        "*.xlsx": "default"
+    },
+    "workbench.settings.editor": "json",
+    "workbench.settings.openDefaultKeybindings": true,
+    "workbench.settings.openDefaultSettings": true,
+    "workbench.sideBar.location": "right",
+    "workbench.startupEditor": "none",
+    "zenMode.hideLineNumbers": false,
+    "workbench.colorTheme": "Default Light Modern",
+    "diffEditor.hideUnchangedRegions.enabled": true,
+    "window.newWindowProfile": "Default"
+}
